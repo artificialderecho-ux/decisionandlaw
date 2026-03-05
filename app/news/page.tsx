@@ -116,7 +116,7 @@ export default function NewsPage() {
                         </span>
                       )}
                       <span className="text-gray-400 text-sm">
-                        {article.date.toLocaleDateString('en-US', {
+                        {new Date(article.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric'
