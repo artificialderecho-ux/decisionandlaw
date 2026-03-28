@@ -17,88 +17,68 @@ interface ArticleClientProps {
 export default function ArticleClient({ article }: ArticleClientProps) {
   const MDXContent = useMDXComponent(article.body.code);
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'Legislation':
-        return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'Case Law':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'Ethics':
-        return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
-      case 'AI Regulation':
-        return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
-      default:
-        return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
-    }
-  };
+  const getCategoryColor = () => ({
+    backgroundColor: '#f4f4f5',
+    color: '#737373',
+    border: '1px solid #e5e5e5',
+  });
 
-  const getStatusColor = (status?: string) => {
-    switch (status) {
-      case 'pre-trial':
-        return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'decided':
-        return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'appealed':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      default:
-        return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
-    }
+  const tagStyle = {
+    padding: '4px 8px',
+    fontSize: '0.75rem',
+    fontWeight: '500',
+    backgroundColor: '#f4f4f5',
+    color: '#737373',
+    border: '1px solid #e5e5e5',
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white pt-[120px]">
+    <div className="min-h-screen" style={{ backgroundColor: '#ffffff', color: '#1a1a1a' }}>
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm">
             <li>
-              <Link href="/" className="text-[#D4AF37] hover:text-[#B8941F] transition-colors">
+              <Link href="/" style={{ color: '#1a1a1a', textDecoration: 'none' }}>
                 Home
               </Link>
             </li>
-            <li className="text-gray-400">/</li>
+            <li style={{ color: '#a1a1aa' }}>/</li>
             <li>
-              <Link href="/news" className="text-[#D4AF37] hover:text-[#B8941F] transition-colors">
+              <Link href="/news" style={{ color: '#1a1a1a', textDecoration: 'none' }}>
                 News
               </Link>
             </li>
-            <li className="text-white">{article.title}</li>
+            <li style={{ color: '#a1a1aa' }}>/</li>
+            <li style={{ color: '#737373' }}>{article.title}</li>
           </ol>
         </nav>
 
         {/* Article Header */}
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-4">
-            <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(article.category)}`}>
-              {article.category}
-            </span>
+            <span style={tagStyle}>{article.category}</span>
             {article.subcategory && (
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30">
-                {article.subcategory}
-              </span>
+              <span style={tagStyle}>{article.subcategory}</span>
             )}
             {article.breaking && (
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-red-500/20 text-red-400 border border-red-500/30">
+              <span style={{ ...tagStyle, backgroundColor: '#fef2f2', color: '#dc2626', border: '1px solid #fecaca' }}>
                 Breaking
               </span>
             )}
             {article.featured && (
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30">
-                Featured
-              </span>
+              <span style={tagStyle}>Featured</span>
             )}
             {article.premium && (
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-500/20 text-purple-400 border border-purple-500/30">
-                Premium
-              </span>
+              <span style={tagStyle}>Premium</span>
             )}
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#D4AF37] to-[#F4E4C1] bg-clip-text text-transparent">
+          <h1 style={{ fontSize: '2.25rem', fontWeight: '700', marginBottom: '24px', color: '#1a1a1a', lineHeight: '1.2' }}>
             {article.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-gray-400 text-sm mb-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm" style={{ color: '#737373' }}>
             <div className="flex items-center space-x-2">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -142,7 +122,7 @@ export default function ArticleClient({ article }: ArticleClientProps) {
               {article.topics.map((topic: string, index: number) => (
                 <span 
                   key={index}
-                  className="px-3 py-1 bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-full text-xs text-gray-300"
+                  style={tagStyle}
                 >
                   {topic}
                 </span>
@@ -152,42 +132,41 @@ export default function ArticleClient({ article }: ArticleClientProps) {
         </div>
 
         {/* Article Content */}
-        <div className="prose prose-invert prose-lg max-w-none">
+        <div style={{ maxWidth: '48rem' }}>
           <MDXContent 
             components={{
-              // Custom components for MDX
               CaseHeader,
               KeyTakeaways,
               PracticeNote,
               CaseCitation,
               RelatedCases,
-              h1: ({ children }) => <h1 className="text-3xl font-bold text-white mb-6">{children}</h1>,
-              h2: ({ children }) => <h2 className="text-2xl font-bold text-[#D4AF37] mb-4">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-xl font-semibold text-white mb-3">{children}</h3>,
-              p: ({ children }) => <p className="text-gray-300 leading-relaxed mb-4">{children}</p>,
+              h1: ({ children }: any) => <h1 style={{ fontSize: '1.875rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '24px', marginTop: '32px' }}>{children}</h1>,
+              h2: ({ children }: any) => <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#1a1a1a', marginBottom: '16px', marginTop: '32px' }}>{children}</h2>,
+              h3: ({ children }: any) => <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#1a1a1a', marginBottom: '12px', marginTop: '24px' }}>{children}</h3>,
+              p: ({ children }: any) => <p style={{ color: '#737373', lineHeight: '1.75', marginBottom: '16px' }}>{children}</p>,
               a: ({ href, children }: any) => (
                 <a 
                   href={href} 
-                  className="text-[#D4AF37] hover:text-[#B8941F] transition-colors underline"
+                  style={{ color: '#1a1a1a', textDecoration: 'underline' }}
                 >
                   {children}
                 </a>
               ),
-              ul: ({ children }) => <ul className="list-disc list-inside text-gray-300 mb-4 space-y-2">{children}</ul>,
-              ol: ({ children }) => <ol className="list-decimal list-inside text-gray-300 mb-4 space-y-2">{children}</ol>,
-              li: ({ children }) => <li>{children}</li>,
-              blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-[#D4AF37] pl-4 italic text-gray-400 my-4">
+              ul: ({ children }: any) => <ul style={{ listStyle: 'disc', paddingLeft: '24px', color: '#737373', marginBottom: '16px', lineHeight: '1.75' }}>{children}</ul>,
+              ol: ({ children }: any) => <ol style={{ listStyle: 'decimal', paddingLeft: '24px', color: '#737373', marginBottom: '16px', lineHeight: '1.75' }}>{children}</ol>,
+              li: ({ children }: any) => <li style={{ marginBottom: '8px' }}>{children}</li>,
+              blockquote: ({ children }: any) => (
+                <blockquote style={{ borderLeft: '4px solid #1a1a1a', paddingLeft: '16px', fontStyle: 'italic', color: '#737373', margin: '16px 0' }}>
                   {children}
                 </blockquote>
               ),
-              code: ({ children }) => (
-                <code className="bg-[#1A1A1A] text-[#D4AF37] px-2 py-1 rounded text-sm">
+              code: ({ children }: any) => (
+                <code style={{ backgroundColor: '#f4f4f5', color: '#1a1a1a', padding: '2px 4px', fontSize: '0.875em' }}>
                   {children}
                 </code>
               ),
-              pre: ({ children }) => (
-                <pre className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-4 overflow-x-auto">
+              pre: ({ children }: any) => (
+                <pre style={{ backgroundColor: '#f4f4f5', border: '1px solid #e5e5e5', padding: '16px', overflow: 'auto', marginBottom: '16px' }}>
                   {children}
                 </pre>
               ),
@@ -206,10 +185,10 @@ export default function ArticleClient({ article }: ArticleClientProps) {
         )}
 
         {/* Back to News */}
-        <div className="mt-12 pt-8 border-t border-[#D4AF37]/20">
+        <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid #e5e5e5' }}>
           <Link 
             href="/news"
-            className="inline-flex items-center space-x-2 text-[#D4AF37] hover:text-[#B8941F] transition-colors"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#1a1a1a', textDecoration: 'none' }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
