@@ -1,0 +1,167 @@
+---
+title: "BMG v. Anthropic: From 'Black Box' to 'Pirate Library' — Copyright, BitTorrent, and the Limits of Fair Use in Generative AI"
+slug: "bmg-anthropic-copyright-bittorrent-training-data"
+date: "2026-03-10"
+lastModified: "2026-03-28"
+
+seoTitle: "BMG v. Anthropic: Copyright Infringement, BitTorrent & AI Training Data | Decision&Law"
+metaDescription: "BMG and Universal sue Anthropic for using pirated music via BitTorrent to train Claude. Analysis of the Bartz precedent, CMI removal under § 1202, and the $1.5B settlement benchmark."
+
+ogTitle: "Anthropic Allegedly Used Pirated Books and Music to Train Claude. Now the Music Industry Is Suing."
+ogDescription: "BMG v. Anthropic goes beyond fair use — it alleges deliberate use of BitTorrent piracy networks, CMI removal, and verbatim lyric reproduction. The most aggressive AI copyright theory yet."
+ogImage: "/images/articles/bmg-anthropic-og.jpg"
+ogType: "article"
+
+category: "case-law"
+subcategory: "intellectual-property"
+topics:
+  - "copyright"
+  - "ai-training-data"
+  - "music-copyright"
+  - "cmi-removal"
+  - "fair-use"
+  - "bittorrent"
+jurisdiction: "federal"
+status: "pre-trial"
+
+author: "Decision & Law Editorial Team"
+authorSlug: "editorial-team"
+readingTime: 14
+wordCount: 3200
+
+caseName: "BMG Rights Management v. Anthropic PBC"
+caseNumber: ""
+court: "Northern District of California"
+judge: ""
+filingDate: "2026-01-01"
+aiTool: "Claude (Anthropic)"
+keyIssue: "Copyright infringement through BitTorrent acquisition of training data; CMI removal under § 1202; verbatim lyric reproduction in AI outputs"
+
+relatedCases:
+  - "thomson-reuters-v-ross-intelligence-ai-copyright"
+  - "britannica-merriam-webster-openai-copyright-trademark-hallucinations"
+
+featured: false
+breaking: false
+premium: false
+newsletter: true
+---
+
+
+<CaseHeader
+  caseName="BMG Rights Management v. Anthropic PBC"
+  caseNumber="N.D. Cal."
+  court="N.D. Cal."
+  date="2026"
+  status="pre-trial"
+  aiTool="Claude (Anthropic)"
+  keyIssue="BitTorrent piracy for AI training + CMI removal + lyric reproduction"
+/>
+
+<KeyTakeaways items={[
+  "BMG and Universal allege Anthropic deliberately used BitTorrent networks to acquire pirated books and music for Claude's training — a separate act of infringement from fair use analysis.",
+  "Judge Alsup's Bartz bifurcation: the court separates 'fair use of legitimately obtained data' from 'infringement through piracy' — the latter receives no fair use defense.",
+  "Section 1202 CMI removal claims: Anthropic allegedly used content extractors to strip copyright management information from training data, a standalone violation.",
+  "Claude reproduces song lyrics verbatim in outputs — constituting unauthorized derivative works and direct market substitution.",
+  "Personal liability for founders: Dario Amodei and Benjamin Mann named as individual defendants for direct participation in infringing activity.",
+  "The $1.5 billion Bartz settlement sets a benchmark — but the per-work figure of ~$3,000 may be a floor, not a ceiling, for future music copyright claims.",
+]} />
+
+## Beyond Fair Use: The Piracy Theory That Changes Everything
+
+Every AI copyright case to date has centered on the same question: does using copyrighted content to train an AI model constitute fair use? *Thomson Reuters v. Ross* answered no for legal headnotes. The *New York Times* and *Authors Guild* cases present the same question for journalism and books.
+
+*BMG v. Anthropic* asks a different question: **What if the training data wasn't just used without permission — what if it was stolen?**
+
+The complaint alleges that Anthropic deliberately acquired copyrighted music through BitTorrent piracy networks — downloading from Shadow Libraries like LibGen and PiLiMi — as a calculated strategy to obtain training data without paying licensing fees. If proven, this conduct falls entirely outside the fair use framework. You cannot assert fair use for content you obtained by theft.
+
+This is the most aggressive copyright theory yet advanced against an AI developer, and it arrives in the wake of a precedent — *Bartz v. Anthropic* — that suggests courts are willing to treat the data acquisition method as a separate and dispositive question.
+
+---
+
+## The Bartz Bifurcation: Training vs. Acquisition
+
+Judge William Alsup's ruling in *Bartz v. Anthropic* established a framework that the BMG plaintiffs have adopted directly. Judge Alsup bifurcated the analysis:
+
+**Track 1 — Fair use for legitimately obtained data:** AI training on data the company lawfully accessed may or may not constitute fair use depending on the four-factor analysis. This is the question every other AI copyright case addresses.
+
+**Track 2 — No fair use for pirated data:** If Anthropic obtained training data through infringement — downloading pirated files via BitTorrent — the fair use defense is unavailable for that data. The act of acquisition is itself a separate copyright violation, and fair use cannot retroactively cure an infringing taking.
+
+The BMG complaint lives entirely on Track 2. The theory is not that Anthropic's use of music was non-transformative (though that is also alleged for output reproduction). The theory is that Anthropic made a deliberate corporate decision to use piracy networks because licensing was expensive — and that decision constitutes willful infringement at the data acquisition stage.
+
+---
+
+## The BitTorrent Theory in Detail
+
+### How BitTorrent Acquisition Creates Additional Liability
+
+BitTorrent protocol involves not just downloading but **simultaneous uploading** — when a user downloads a file via BitTorrent, they automatically make portions of that file available to other downloaders. This means that each BitTorrent download of a copyrighted work constitutes both reproduction (downloading) and **public distribution** (uploading to the swarm).
+
+Section 106(3) of the Copyright Act gives copyright holders the exclusive right of public distribution. Every BitTorrent acquisition of copyrighted music or books by Anthropic would constitute a separate act of public distribution — multiplied across the number of files in the training dataset, the statutory damages exposure under 17 U.S.C. § 504(c) is potentially catastrophic.
+
+The complaint alleges Anthropic used content extractors specifically designed to strip metadata — including copyright management information (CMI) — from downloaded files before ingesting them into training pipelines.
+
+---
+
+## Section 1202: The CMI Removal Claim
+
+### Rule
+
+17 U.S.C. § 1202(b) prohibits the intentional removal or alteration of copyright management information from a work, knowing that removal will facilitate infringement. CMI includes the title, author, copyright notice, and terms of use embedded in digital files.
+
+### Application
+
+The complaint alleges Anthropic used tools — specifically Newspaper and Dragnet content extractors — to systematically strip CMI from training data files before ingesting them. The alleged purpose: to prevent the model from "seeing" copyright notices that would otherwise appear in training data and potentially surface in outputs.
+
+Internal communications allegedly show Anthropic employees dismissing copyright notices in training data as "junk" to be removed. If proven, this constitutes willful CMI removal under § 1202 — a standalone violation carrying statutory damages of $2,500 to $25,000 per work.
+
+The CMI removal theory matters beyond damages: it is evidence of **willful** infringement, which elevates statutory damages under § 504(c)(2) and defeats any claim of good faith reliance on fair use.
+
+---
+
+## Output Reproduction: Lyrics as Unauthorized Derivative Works
+
+The third theory addresses what Claude *does*, not just how it was trained. The complaint alleges Claude reproduces song lyrics verbatim in response to user queries — constituting unauthorized reproduction and creation of derivative works under § 106(1) and § 106(2).
+
+This is the theory that most directly affects Claude's current commercial operations. Training data infringement, if proven, creates historical liability. Output reproduction creates ongoing, real-time liability for every user interaction where Claude reproduces protected lyrics.
+
+---
+
+## Personal Liability: Amodei and Mann as Individual Defendants
+
+The complaint names Dario Amodei and Benjamin Mann as individual defendants based on their direct participation in and control over the infringing activity. This theory draws on contributory and vicarious liability doctrine: executives who knowingly authorize or benefit from infringing activity can be personally liable alongside the corporate entity.
+
+The inclusion of individual defendants is a litigation tactic designed to create settlement pressure — personal liability exposure for founders is categorically different from corporate exposure, and it complicates any attempt to resolve the case through insurance.
+
+---
+
+## The Bartz Settlement as Benchmark
+
+A prior case, *Bartz v. Anthropic*, settled for **$1.5 billion** — the largest AI copyright settlement to date. The per-work compensation figure of approximately $3,000 has become a reference point for subsequent negotiations.
+
+Whether $3,000 per work is a ceiling or a floor depends on the strength of the piracy theory. If courts accept that BitTorrent acquisition constitutes willful infringement, statutory damages under § 504(c)(2) can reach $150,000 per work — a figure that would make the Bartz settlement look modest.
+
+---
+
+<PracticeNote title="What BMG v. Anthropic Means for the AI Copyright Landscape">
+
+**The piracy theory is a game-changer.** Fair use analysis assumes the copier had lawful access to the work. If AI companies obtained training data through piracy networks, the entire fair use framework is bypassed. This theory, if proven, creates liability on a scale that dwarfs the training-use debates.
+
+**CMI removal is an independent violation.** Companies that systematically strip copyright notices from training data face standalone § 1202 liability — and that conduct is evidence of willfulness that enhances damages across all copyright claims.
+
+**Output reproduction creates ongoing exposure.** Unlike training data claims (which are historical), lyric and text reproduction in AI outputs creates new infringement with every user interaction. Enterprise AI deployments should audit model outputs for verbatim reproduction of protected content.
+
+**Personal liability for AI executives is real.** The inclusion of individual founders as defendants in AI copyright cases is becoming a standard litigation tactic. AI company officers should understand their personal exposure under contributory and vicarious liability doctrine.
+
+</PracticeNote>
+
+---
+
+<RelatedCases cases={[
+  { title: "Thomson Reuters v. Ross Intelligence: The Foundation Case for AI Copyright", slug: "thomson-reuters-v-ross-intelligence-ai-copyright" },
+  { title: "Britannica v. OpenAI: Hallucinations as Trademark Violations", slug: "britannica-merriam-webster-openai-copyright-trademark-hallucinations" },
+]} />
+
+---
+
+*This analysis is based on publicly available court filings and reported settlement information. It does not constitute legal advice.*

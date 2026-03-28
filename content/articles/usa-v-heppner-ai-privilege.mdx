@@ -1,0 +1,204 @@
+---
+title: "United States v. Heppner: When Using Claude Became Evidence Against You"
+slug: "usa-v-heppner-ai-privilege-attorney-client"
+date: 2026-03-04
+category: "case-law"
+seoTitle: "USA v. Heppner: Are AI Conversations Privileged? | Decision&Law"
+metaDescription: "First federal ruling on AI privilege: Can Claude outputs be protected by attorney-client privilege? Analysis of USA v. Heppner (S.D.N.Y. 2026) for lawyers."
+author: "Decision & Law Editorial Team"
+authorSlug: "editorial-team"
+featured: true
+caseName: "United States v. Heppner"
+caseNumber: "25 Cr. 503 (JSR)"
+court: "S.D.N.Y."
+aiTool: "Claude (Anthropic)"
+keyIssue: "Attorney-client privilege and work product doctrine over AI-generated documents"
+---
+
+<CaseHeader
+  caseName="United States v. Heppner"
+  caseNumber="25 Cr. 503 (JSR)"
+  court="S.D.N.Y."
+  date="February 6, 2026"
+  status="pre-trial"
+  aiTool="Claude (Anthropic)"
+  keyIssue="Attorney-client privilege and work product doctrine over AI-generated documents"
+/>
+
+<KeyTakeaways items={[
+  "AI conversations with commercial tools like Claude are not attorney-client privileged — the AI is not an attorney.",
+  "Sending AI outputs to your lawyer after the fact does not retroactively create privilege.",
+  "Commercial AI platforms retain user data and may disclose it to government authorities.",
+  "Work product doctrine requires attorney direction — client-initiated AI research does not qualify.",
+  "Advise clients immediately: AI conversations are no more private than Google searches.",
+]} />
+
+## The Question Every Defense Lawyer Must Now Answer
+
+Before your client types anything into Claude, ChatGPT, or any AI tool while under investigation — does that conversation become discoverable evidence?
+
+*United States v. Heppner* forces that question into federal court for the first time. The answer, based on the Government's February 6 motion, is almost certainly **yes**. And the implications extend far beyond one securities fraud case in the Southern District of New York.
+
+---
+
+## Facts
+
+On October 28, 2025, a federal grand jury indicted Bradley Heppner on five counts: securities fraud, wire fraud, conspiracy to commit both, making false statements to auditors, and falsification of records. The indictment charges an approximately $300 million scheme to defraud investors in Beneficient, a financial services company Heppner founded and controlled as CEO.
+
+The alleged fraud centered on a debt Beneficient owed to Highland Consolidated Limited Partnership (HCLP). Heppner allegedly misrepresented HCLP as an independent, arms-length lender associated with a wealthy family. In reality, prosecutors allege, HCLP was an entity Heppner created for his own benefit — and he directly received more than $150 million in GWG funds that were supposed to service the debt. The Government alleges he used this money for personal expenses, including over $40 million to renovate his Dallas mansion and more than $10 million for personal credit cards and private air travel.
+
+Heppner was arrested on November 4, 2025. At the time of arrest, FBI agents executed a search warrant at his Dallas mansion and seized dozens of electronic devices.
+
+Shortly after the search, defense counsel informed the Government that, **before his arrest**, Heppner had been running queries related to the Government's investigation through Claude — Anthropic's AI model. Approximately thirty-one documents containing Heppner's prompts and Claude's responses were found among the seized devices (the "AI Documents").
+
+Defense counsel claimed privilege over the AI Documents. The Government disagreed and moved for a ruling.
+
+---
+
+## The Legal Framework: Three Independent Grounds for Disclosure
+
+The Government's motion advances three independent arguments — each sufficient on its own to defeat the privilege claim.
+
+---
+
+### ISSUE 1: Are AI-Generated Documents Protected by the Attorney-Client Privilege?
+
+#### Rule
+
+The attorney-client privilege "protects communications (1) between a client and his or her attorney (2) that are intended to be, and in fact were, kept confidential (3) for the purpose of obtaining or providing legal advice." *United States v. Mejia*, 655 F.3d 126, 132 (2d Cir. 2011).
+
+All three elements must be satisfied. The privilege is narrowly construed because it "stands in derogation of the search for truth so essential to the effective operation of any system of justice." *United States v. Correia*, 468 F. Supp. 3d 618, 621 (S.D.N.Y. 2020). The party claiming privilege bears a heavy burden. *In re Grand Jury Subpoenas*, 318 F.3d 379, 384 (2d Cir. 2003).
+
+#### Application
+
+**Element 1 — Client and attorney:**
+
+The AI tool is not an attorney. No law degree. No bar membership. No duties of loyalty or confidentiality to users. No professional obligations to courts or regulatory bodies.
+
+Discussing legal matters with non-attorneys provides no privilege protection. *United States v. Ackert*, 169 F.3d 136, 139 (2d Cir. 1999). The Southern District recently applied this principle to AI directly in *In re OpenAI, Inc., Copyright Infringement Litig.*, 802 F. Supp. 3d 688, 699 (S.D.N.Y. 2025): "In the absence of an attorney-client relationship, the discussion of legal issues between two non-attorneys is not protected by attorney-client privilege."
+
+The narrow *Kovel* exception — which extends privilege to non-attorney agents assisting counsel — does not apply. Defense counsel expressly confirmed: "[counsel] did not direct [the defendant] to run Claude searches."
+
+**Element 2 — Purpose of obtaining legal advice:**
+
+Anthropic's own guidelines instruct Claude to choose responses that "least give the impression of giving specific legal advice" and to suggest "asking a lawyer." When users ask about legal advice, Claude explicitly states it cannot provide it. If the tool itself disclaims any legal advisory function, the defendant cannot credibly claim he used it for the purpose of obtaining legal advice.
+
+**Element 3 — Confidentiality:**
+
+The defendant shared his prompts with a third-party commercial platform. Anthropic's Privacy Policy — in effect at the time of Heppner's searches — disclosed that it collects prompts and outputs, uses this data to train its AI, and **may disclose it to governmental regulatory authorities and third parties**.
+
+The Southern District addressed this directly in *In re OpenAI, Inc., Copyright Infringement Litig.*, No. 25-md-3143 (S.D.N.Y. Jan. 5, 2026): users have a "diminished privacy interest" in AI conversations voluntarily disclosed to commercial platforms.
+
+#### Conclusion — Issue 1
+
+The AI Documents fail all three elements independently. Claude is not an attorney. The interactions were not for the purpose of obtaining legal advice. And the defendant had no reasonable expectation of confidentiality on a commercial platform that retains and may disclose user data to government authorities.
+
+---
+
+### ISSUE 2: Does Transmitting AI Documents to Counsel Retroactively Create Privilege?
+
+#### Rule
+
+Pre-existing, non-privileged documents do not become privileged merely because a client later transmits them to counsel. *United States v. Buyer*, 2023 WL 1381970, at *1 (S.D.N.Y. 2023): "sending preexisting documents to counsel does not confer attorney-client privilege." *Correia*, 468 F. Supp. 3d at 622: "the mere transmittal of non-privileged documents [to an attorney] is not a privileged communication."
+
+#### Application
+
+Heppner created the AI Documents independently, before counsel's involvement, then shared them with his lawyers. That sequence — independent creation, subsequent transmission — is precisely what the Second Circuit and Southern District have consistently held insufficient to generate privilege.
+
+The analogy is instructive: if Heppner had conducted Google searches or checked out library books to research his legal situation, those records would not become privileged merely because he later discussed them with his attorney. AI outputs are no different.
+
+#### Conclusion — Issue 2
+
+Subsequent transmission to counsel cannot retroactively transform non-privileged AI outputs into privileged materials.
+
+---
+
+### ISSUE 3: Are the AI Documents Protected by the Work Product Doctrine?
+
+#### Rule
+
+The work product doctrine "provides qualified protection for materials prepared by or at the behest of counsel in anticipation of litigation or for trial." *In re Grand Jury Subpoenas*, 318 F.3d at 383. It does not protect "materials in an attorney's possession that were prepared neither by the attorney nor his agents." *Id.* at 384.
+
+The policy rationale is to "preserve a zone of privacy in which a lawyer can prepare and develop legal theories and strategies 'with an eye toward litigation,' free from unnecessary intrusion by his adversaries." *Adlman*, 134 F.3d 1194, 1196 (2d Cir. 1998).
+
+#### Application
+
+Defense counsel conceded Heppner's AI research was not prepared at counsel's behest or direction. This concession is fatal. The doctrine's protective purpose is counsel-centered — it shields attorney thought processes, not client research conducted independently.
+
+Had counsel directed Heppner to run the searches — to test specific legal theories or compile information for case preparation — the analysis might differ. But the defendant acted alone. That his lawyers later found the results useful does not convert them into work product.
+
+#### Conclusion — Issue 3
+
+Client-initiated AI research conducted without attorney direction falls outside the work product doctrine, regardless of what the client intended to do with the results.
+
+---
+
+## What Heppner Means for Legal Practice
+
+<PracticeNote title="Immediate Action Items for Defense Counsel">
+
+**1. Advise clients at first contact.** Once an investigation is suspected or confirmed, clients must be explicitly counseled against using commercial AI platforms to research their legal situation. This should happen before the client has the opportunity to generate AI records that could be seized.
+
+**2. Treat AI conversations like search history.** Law enforcement has long sought browser history and Google searches. AI conversation logs are the next frontier — and they are more comprehensive than most clients realize.
+
+**3. Document attorney-directed AI use.** If you direct clients or staff to use AI tools as part of case preparation, document that direction in engagement letters or written communications to preserve a potential *Kovel* argument.
+
+**4. Update privilege review protocols.** AI-generated content must now be systematically identified in electronic discovery and privilege reviews. Thirty-one documents were found in Heppner's seized devices — that number will only grow.
+
+</PracticeNote>
+
+### The Kovel Question Remains Open
+
+The *Kovel* doctrine allows privilege to extend to non-attorney agents — accountants, translators, technical experts — when they assist counsel in providing legal advice. Whether *Kovel* could ever extend to AI tools that counsel directs and controls remains unresolved. The Government cites Professor Ira Robbins's November 2025 Harvard JOLT article, *Against an AI Privilege*, in support of the contrary position.
+
+*Heppner* establishes a clear floor: unsupervised, client-initiated AI research receives no protection. Whether attorney-directed AI analysis can qualify for *Kovel* extension will require a different factual record.
+
+### The Enterprise AI Question
+
+Heppner used the consumer-facing version of Claude. Law firms and corporate legal departments increasingly deploy enterprise AI with contractual confidentiality protections. Whether those arrangements alter the confidentiality analysis — particularly on the third element of attorney-client privilege — is a separate question that *Heppner* does not address, but that practitioners should raise now with their AI vendors.
+
+### Connection to ABA Formal Opinion 512
+
+This case connects directly to the ABA's 2023 guidance on AI competence. The competence obligation under Model Rule 1.1 requires attorneys to understand the limitations of AI tools they deploy. *Heppner* adds a confidentiality dimension under Rule 1.6: attorneys who recommend or permit clients to use commercial AI platforms for legal research may be inadvertently facilitating the exposure of client information to third-party platforms.
+
+---
+
+## What Comes Next
+
+Trial is set for April 6, 2026. Judge Jed Rakoff — one of the most influential federal judges on securities and white-collar law — will rule on the privilege motion before trial. His decision will be the first federal ruling directly addressing whether AI-generated documents can qualify for attorney-client or work product protection.
+
+Decision&Law will report on the ruling when it issues.
+
+---
+
+## Bottom Line
+
+*United States v. Heppner* establishes three independently sufficient reasons why unsupervised AI research is not privileged:
+
+1. AI tools are not attorneys — privilege requires an attorney-client relationship.
+2. Commercial AI platforms are not confidential — their terms contemplate government disclosure.
+3. Work product requires attorney direction — client-initiated AI research does not qualify.
+
+**The practical consequence:** advise clients that conversations with AI tools are no more private than conversations with friends, Google searches, or library borrowing records — and may be considerably less so.
+
+---
+
+<RelatedCases cases={[
+  { title: "Mata v. Avianca: AI Hallucinations and Attorney Sanctions", slug: "mata-v-avianca-ai-hallucinations" },
+  { title: "Thomson Reuters v. Ross Intelligence: AI and Copyright in Legal Research", slug: "thomson-reuters-v-ross-intelligence" }
+]} />
+
+---
+
+<CaseCitation
+  caseName="United States v. Heppner"
+  caseNumber="25 Cr. 503 (JSR)"
+  court="S.D.N.Y."
+  document="Government's Motion for Ruling on AI Privilege"
+  docket="Dkt. 22"
+  date="February 6, 2026"
+/>
+
+---
+
+*This analysis is based on publicly available court documents. It does not constitute legal advice. Attorneys should consult applicable professional responsibility rules and conduct independent legal research before advising clients on AI-related privilege questions.*

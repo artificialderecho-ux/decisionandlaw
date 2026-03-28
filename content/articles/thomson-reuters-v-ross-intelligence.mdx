@@ -1,0 +1,293 @@
+---
+title: "Thomson Reuters v. Ross Intelligence: Courts Rule AI Training on Copyrighted Legal Data Is Not Fair Use"
+slug: "thomson-reuters-v-ross-intelligence-ai-copyright"
+date: "2025-02-11"
+lastModified: "2026-03-05"
+
+seoTitle: "Thomson Reuters v. Ross Intelligence: AI Training & Copyright | Decision&Law"
+metaDescription: "Landmark February 2025 ruling: D. Del. holds AI training on Westlaw headnotes is copyright infringement, not fair use. Essential reading for legal tech lawyers."
+
+ogTitle: "The Case That Could Reshape How Every Legal AI Is Built"
+ogDescription: "Thomson Reuters wins: using Westlaw headnotes to train a competing AI legal research tool is copyright infringement. Fair use rejected. What this means for the legal tech industry."
+ogImage: "/images/articles/thomson-reuters-ross-og.jpg"
+
+category: "case-law"
+subcategory: "intellectual-property"
+topics:
+  - "copyright"
+  - "ai-training-data"
+  - "fair-use"
+  - "legal-tech"
+  - "intellectual-property"
+  - "westlaw"
+jurisdiction: "federal"
+court: "United States District Court, District of Delaware"
+status: "decided"
+
+author: "Decision & Law Editorial Team"
+authorSlug: "editorial-team"
+readingTime: 16
+wordCount: 3800
+
+caseName: "Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc."
+caseNumber: "1:20-cv-613-SB"
+judge: "Hon. Stephanos Bibas, Circuit Judge (sitting by designation)"
+filingDate: "2020-05-06"
+trialDate: "2025-02-11"
+aiTool: "Ross Intelligence AI legal search engine"
+keyIssue: "Whether using copyrighted legal headnotes to train an AI legal research tool constitutes fair use under 17 U.S.C. § 107"
+
+relatedCases:
+  - "usa-v-heppner-ai-privilege-attorney-client"
+relatedStates:
+  - "delaware"
+
+featured: true
+breaking: false
+premium: false
+newsletter: true
+---
+
+<CaseHeader
+  caseName="Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc."
+  caseNumber="1:20-cv-613-SB"
+  court="D. Del."
+  date="February 11, 2025"
+  status="decided"
+  aiTool="Ross Intelligence AI Legal Search"
+  keyIssue="AI training on copyrighted legal data — fair use rejected"
+/>
+
+<KeyTakeaways items={[
+  "West headnotes are copyrightable as original works — the 'sculptor' analogy: selecting what matters from a judicial opinion requires creative expression.",
+  "Using copyrighted legal content to train a competing AI tool is not transformative and fails the fair use defense.",
+  "The AI training data market is a cognizable market — copyright holders can license (or refuse to license) their content for AI training purposes.",
+  "The intermediate copying doctrine from software cases (Google v. Oracle, Sony, Sega) does not extend to training AI on written legal content.",
+  "Legal AI companies that built products using scraped Westlaw or LexisNexis data face significant copyright exposure after this ruling.",
+  "This decision explicitly reserves judgment on generative AI — only non-generative AI was at issue.",
+]} />
+
+## The Case That Defines the Legal Boundaries of AI Training Data
+
+In February 2025, Judge Stephanos Bibas — a Third Circuit judge sitting by designation in the District of Delaware — issued a revised summary judgment opinion in *Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc.* that fundamentally reshaped the legal landscape for AI training data.
+
+The core holding: **using Westlaw's copyrighted headnotes to train a competing AI legal research tool is copyright infringement, and the fair use defense fails.** The ruling resolves questions that had paralyzed the legal tech industry for years, and its implications extend far beyond one defunct AI startup.
+
+The opinion opens with characteristic candor from Judge Bibas: "A smart man knows when he is right; a wise man knows when he is wrong. Wisdom does not always find me, so I try to embrace it when it does — even if it comes late, as it did here." That self-correction — reversing significant portions of his own 2023 ruling — is the analytical engine of the entire decision.
+
+---
+
+## Background: How Ross Built Its AI on Westlaw's Foundation
+
+### The Parties
+
+**Thomson Reuters** owns Westlaw, one of the dominant legal research platforms in the United States. Westlaw's content includes case law, statutes, regulations, and critically for this case, **editorial headnotes** — short summaries of key legal points chiseled from judicial opinions by Thomson Reuters's attorney-editors. Westlaw organizes its content through the **Key Number System**, a proprietary numerical taxonomy of legal topics.
+
+**Ross Intelligence** was a legal AI startup that built an AI-powered legal research search engine. Unlike generative AI that produces new text, Ross's system was a **retrieval AI**: users entered a legal question and the system returned relevant judicial opinions. Ross needed a database of legal questions and answers to train its AI.
+
+### The Training Data Problem
+
+Ross approached Thomson Reuters to license Westlaw content for training. Thomson Reuters refused — Ross was a direct competitor. Undeterred, Ross made a deal with **LegalEase**, a legal services company, to obtain training data in the form of "Bulk Memos": compilations of legal questions paired with good and bad answers.
+
+LegalEase gave its lawyers a guide explaining how to create these questions **using Westlaw headnotes as a model**, while instructing them not to copy and paste headnotes directly. LegalEase sold Ross roughly **25,000 Bulk Memos**, which Ross used to train its AI search tool. In essence: Ross built a Westlaw competitor using training data that was itself built from Westlaw headnotes.
+
+Thomson Reuters sued for copyright infringement in 2020. In 2023, Judge Bibas largely denied Thomson Reuters's motions for summary judgment. Then, in the run-up to the August 2024 trial, the judge studied the case more closely, continued the trial, and invited renewed briefing. His February 2025 opinion represents his fully reconsidered view.
+
+---
+
+## ISSUE 1: Are Westlaw Headnotes Copyrightable?
+
+### Rule
+
+Copyright validity requires originality — the work must be "independently created" and possess "at least some minimal degree of creativity." *Feist Publications, Inc. v. Rural Tel. Serv. Co.*, 499 U.S. 340, 345 (1991). The threshold is "extremely low," requiring only "some creative spark." The text of judicial opinions itself is not copyrightable — it belongs to the public. *Banks v. Manchester*, 128 U.S. 244, 253–54 (1888). The question is whether headnotes derived from those opinions can nonetheless qualify.
+
+### Application
+
+In his 2023 opinion, Judge Bibas had held that originality was a jury question, focusing on how much the headnotes overlapped with the underlying opinions. He now explicitly reverses that conclusion.
+
+The turning point is what the judge calls the **sculptor analogy**:
+
+> "A block of raw marble, like a judicial opinion, is not copyrightable. Yet a sculptor creates a sculpture by choosing what to cut away and what to leave in place. That sculpture is copyrightable. So too, even a headnote taken verbatim from an opinion is a carefully chosen fraction of the whole. Identifying which words matter and chiseling away the surrounding mass expresses the editor's idea about what the important point of law from the opinion is."
+
+This reframing is significant. Prior analysis focused on how much headnote text resembled opinion text — if the headnote was close to verbatim from the opinion, originality seemed doubtful. Judge Bibas now holds that this framing was wrong. **The creative act is the selection itself** — the editorial judgment about which passage matters — not the novelty of the words chosen.
+
+Even verbatim headnotes qualify: the attorney-editor chose those words from potentially thousands of pages of judicial reasoning. That choice is the protected expression.
+
+The **Key Number System** — Westlaw's taxonomy for organizing legal topics — also clears the originality threshold. Even if a computer program makes most organizational decisions and the high-level topics mirror first-year law school courses, the system is original because Thomson Reuters independently chose a particular organizational framework from many possible alternatives.
+
+### Conclusion — Issue 1
+
+Both the individual headnotes and the Key Number System are original, copyrightable works. No genuine factual dispute requires jury resolution on this question. On the specific batch of 2,830 headnotes analyzed one-by-one by the court, **2,243 were actually copied**, with copying so obvious that no reasonable jury could find otherwise.
+
+---
+
+## ISSUE 2: Does the Fair Use Defense Save Ross?
+
+This is the heart of the case. Fair use under 17 U.S.C. § 107 requires balancing four statutory factors. Factors one and four are the most important. *Authors Guild v. Google, Inc.*, 804 F.3d 202, 220 (2d Cir. 2015).
+
+### Factor One: Purpose and Character of the Use
+
+#### Rule
+
+Factor one focuses on whether the use is commercial and whether it is **transformative** — whether it adds "new expression, meaning, or message" or serves "a further purpose or different character" from the original. *Andy Warhol Found. for the Visual Arts, Inc. v. Goldsmith*, 598 U.S. 508, 529–31 (2023). If two works share the same purpose and the secondary use is commercial, factor one disfavors fair use.
+
+#### Application — The Transformativeness Question
+
+Ross's central argument was that its use was transformative because the headnotes appeared only at an **intermediate step**: they were converted into numerical training data, never surfacing in the final product delivered to users. Ross cited three precedents for intermediate copying being permissible fair use: *Google LLC v. Oracle Am., Inc.*, 593 U.S. 1 (2021); *Sony Comput. Ent., Inc. v. Connectix Corp.*, 203 F.3d 596 (9th Cir. 2000); and *Sega Enters. Ltd. v. Accolade, Inc.*, 977 F.2d 1510 (9th Cir. 1992).
+
+Judge Bibas rejects this argument on two grounds.
+
+**First**, all three cases involved copying **computer code**, not written prose. The Supreme Court has recognized that computer programs "almost always serve functional purposes" that distinguish them from books, films, and literary works. *Google*, 593 U.S. at 21. Fair use considerations for software do not automatically transfer to written content.
+
+**Second**, and more fundamentally, those intermediate copying cases all involved copying that was **necessary** to reach non-copyrightable functional elements. In *Google*, copying the API was necessary for programs to communicate across platforms. In *Sony* and *Sega*, copying was necessary to reverse-engineer access to underlying unprotected functional elements. Here, by contrast, there was **no necessity**: nothing about the headnotes required Ross to copy them rather than create its own training data. Ross could have hired lawyers to create original legal Q&A pairs without referencing Westlaw.
+
+Applying *Warhol*'s framework, the question is the broad purpose and character of the use. Ross was using Thomson Reuters's headnotes to make it easier to develop a **competing legal research tool**. That is exactly the same purpose as Thomson Reuters's own use of headnotes. Factor one goes to Thomson Reuters.
+
+#### Conclusion — Factor One
+
+Ross's use is commercial and not transformative. Factor one strongly favors Thomson Reuters.
+
+### Factor Two: Nature of the Copyrighted Work
+
+The headnotes have more than minimal originality but less creativity than a novel or artwork. They required editorial judgment but are ultimately constrained by the underlying judicial opinions. The Key Number System is a factual compilation. Factor two favors Ross, though this factor "has rarely played a significant role in the determination of a fair use dispute." *Authors Guild*, 804 F.3d at 220.
+
+### Factor Three: Amount and Substantiality Used
+
+Ross did not make West headnotes available to end users — its output was a list of judicial opinions. Judge Bibas holds that what matters is "the amount and substantiality of what is thereby made accessible to a public for which it may serve as a competing substitute," not the amount used in intermediate processing. *Authors Guild*, 804 F.3d at 222. Because headnotes never reached the public, factor three favors Ross.
+
+### Factor Four: Effect on the Market — The AI Training Data Market
+
+#### Rule
+
+Factor four is "undoubtedly the single most important element of fair use." *Harper & Row, Publishers, Inc. v. Nation Enters.*, 471 U.S. 539, 566 (1985). Courts consider not only current markets but also **potential derivative markets** that copyright holders "would in general develop or license others to develop." *Campbell v. Acuff-Rose Music, Inc.*, 510 U.S. 569, 592 (1994).
+
+#### Application
+
+This is where the case has its most lasting impact. Judge Bibas identifies **two relevant markets**:
+
+1. The original market: legal research platforms (Westlaw competes directly with Ross)
+2. A potential derivative market: **data to train legal AIs**
+
+On the first market, there is no dispute — Ross meant to compete with Westlaw directly.
+
+On the second market — and this is the critical holding for the broader AI industry — Judge Bibas holds that **the AI training data market is a cognizable market for copyright purposes**. It does not matter whether Thomson Reuters has actually used its headnotes to train its own AI tools, or whether it has sold them as AI training data. The question is whether such a market **exists and would be affected** by Ross's copying. Ross, bearing the burden of proof on fair use, presented insufficient facts to show these markets do not exist.
+
+The public interest argument also fails. Yes, there is public interest in access to the law — but judicial opinions are freely available. The public has no right to Thomson Reuters's *parsing* of the law. And there is nothing Thomson Reuters created that Ross could not have created independently, without infringing.
+
+#### Conclusion — Factor Four
+
+Factor four strongly favors Thomson Reuters. The AI training data market is real, recognized, and harmed by unauthorized copying.
+
+### Overall Fair Use Balancing
+
+Factors one (most important) and four (most important) favor Thomson Reuters. Factors two and three favor Ross. Weighing them together, **fair use fails**. Summary judgment granted to Thomson Reuters.
+
+---
+
+## What This Decision Means for the Legal Tech Industry
+
+<PracticeNote title="Immediate Implications for Legal AI Companies">
+
+**1. The AI training data market is now legally recognized.** Any company that has built legal AI products using scraped Westlaw, LexisNexis, or similar proprietary content faces potential copyright liability. The training data market is real, and copyright holders can license — or refuse to license — their content for AI training purposes.
+
+**2. Intermediate copying does not save AI training.** The argument that "headnotes never appear in our product" failed. What matters is whether the copying affects the original and derivative markets, not whether the copyrighted material surfaces in the final user-facing product.
+
+**3. The necessity test matters.** The computer-code intermediate copying cases (Google, Sony, Sega) turned partly on necessity — those copies were required to reach underlying non-copyrightable functional elements. If an AI company could have created its training data without copying copyrighted material, that option will weigh heavily against fair use.
+
+**4. Generative AI remains an open question.** Judge Bibas explicitly notes: "Because the AI landscape is changing rapidly, I note for readers that only non-generative AI is before me today." The analysis may differ for systems that produce new content rather than retrieve existing documents.
+
+</PracticeNote>
+
+### The Sculptor Analogy and Its Broader Reach
+
+The court's sculptor analogy has implications well beyond legal headnotes. Any editorial curation — selecting, arranging, summarizing, annotating — that requires creative judgment may be copyrightable even when the underlying material is in the public domain. This will affect AI companies training on:
+
+- News article abstracts and summaries
+- Academic paper abstracts
+- Database annotations and metadata
+- Any curated dataset where humans exercised editorial judgment
+
+### The "Necessity" Limitation on Intermediate Copying
+
+The *Google v. Oracle* line of cases remains good law — but the court has now clarified its scope. Intermediate copying for AI training is not automatically protected because the original content doesn't appear in the final product. The copying must be **necessary** to reach otherwise inaccessible non-copyrightable material. Where alternatives exist — like creating original training data — the necessity argument collapses.
+
+### Practical Guidance for Law Firms Using Legal AI Tools
+
+<PracticeNote title="What This Means for Law Firm AI Adoption">
+
+**Due diligence on AI vendors.** Before deploying legal AI research tools, law firms should understand how those tools were trained. Vendors that trained on proprietary legal databases without licenses may face ongoing litigation exposure, which could affect product availability and firm liability under indemnification provisions.
+
+**Review vendor agreements.** AI legal research tool agreements should address: (1) training data provenance; (2) indemnification for copyright claims arising from training data; (3) what happens to the firm's use rights if the vendor faces copyright injunctions.
+
+**Thomson Reuters's position strengthens.** This ruling validates Thomson Reuters's refusal to license Westlaw content to competitors. It also signals that Thomson Reuters will aggressively protect its editorial content — headnotes, key numbers, annotations — against AI training uses.
+
+</PracticeNote>
+
+---
+
+## What Remains Undecided
+
+The February 2025 opinion resolves summary judgment but leaves several issues for trial:
+
+**1. Which headnote copyrights have expired.** Summary judgment on 2,243 headnotes is contingent on a jury finding that the relevant copyrights are still valid — some may have expired or been untimely created.
+
+**2. The remaining headnotes.** The court analyzed only the batch of 2,830 (yielding 2,243 granted). The remaining headnotes from the original 21,787 alleged still require trial.
+
+**3. The Key Number System's use by Ross.** Factual disputes about how Ross accessed and used the Key Number System were not resolved at summary judgment.
+
+**4. Damages.** The opinion grants liability but does not resolve damages — the measure of harm and any innocent infringement mitigation remain for trial.
+
+**5. Generative AI.** Explicitly reserved. The court's analysis applies to retrieval AI only.
+
+---
+
+## The Broader AI Copyright Landscape
+
+*Thomson Reuters v. Ross* does not stand alone. It is part of a rapidly developing body of AI copyright litigation:
+
+**Getty Images v. Stability AI** — pending in D. Del., challenging use of Getty's photo library to train Stable Diffusion image generation models. The *Ross* ruling on the AI training data market will be cited extensively.
+
+**Authors Guild v. OpenAI** — class action challenging use of books to train GPT models. The transformativeness analysis from *Ross* applies directly.
+
+**New York Times v. OpenAI/Microsoft** — challenging use of news articles for LLM training. The court's rejection of "intermediate copying" as an automatic fair use shield will feature prominently.
+
+The common thread: courts are recognizing that **the AI training data market is a real market**, that copyright holders have cognizable interests in licensing (or refusing to license) their content for AI training, and that the fair use defense faces serious headwinds when AI companies are building products that compete with the copyright holder's own market.
+
+---
+
+## Bottom Line
+
+*Thomson Reuters v. Ross Intelligence* establishes five principles that every legal tech lawyer and AI developer must understand:
+
+1. **Editorial legal content is copyrightable.** Westlaw headnotes — and by extension, any annotated, curated legal database — are protected by copyright. The creative act is selection and synthesis, not novelty of language.
+
+2. **AI training is not automatically transformative.** Using copyrighted content to train a competing AI product, even at an intermediate step, does not qualify as transformative use when the AI serves the same market as the original.
+
+3. **The AI training data market is legally cognizable.** Copyright holders can control whether their content is used to train AI systems. Refusing to license is a protected business decision, not misuse.
+
+4. **The necessity doctrine from software cases does not transfer.** *Google v. Oracle*, *Sony*, and *Sega* are limited to computer code where copying was necessary to reach underlying non-copyrightable functional elements.
+
+5. **Generative AI remains an open question.** This ruling applies to retrieval AI. The transformativeness analysis for systems that produce new content — GPT-4, Claude, Gemini — awaits a different court on a different record.
+
+The legal AI industry built on proprietary training data is now on notice.
+
+---
+
+<RelatedCases cases={[
+  { title: "USA v. Heppner: When Using Claude Became Evidence Against You", slug: "usa-v-heppner-ai-privilege-attorney-client" },
+]} />
+
+---
+
+<CaseCitation
+  caseName="Thomson Reuters Enterprise Centre GmbH v. Ross Intelligence Inc."
+  caseNumber="1:20-cv-613-SB"
+  court="D. Del."
+  document="Memorandum Opinion on Summary Judgment"
+  docket="D.I. 790"
+  date="February 11, 2025"
+/>
+
+---
+
+*This analysis is based on the publicly available court opinion. It does not constitute legal advice. Attorneys should conduct independent legal research before advising clients on copyright, AI training data, or related matters.*
