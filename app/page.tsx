@@ -86,7 +86,7 @@ export default function HomePage() {
 
             {/* Headline */}
             <h1 style={{
-              fontFamily: "'Georgia', serif",
+              fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
               fontSize: "clamp(42px, 6vw, 72px)",
               fontWeight: "700",
               lineHeight: "1.08",
@@ -160,7 +160,7 @@ export default function HomePage() {
           { num: "47", label: "Tools Reviewed" },
         ].map(({ num, label }) => (
           <div key={label} style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "28px", fontFamily: "Georgia, serif", fontWeight: "700", color: "#1a1a1a" }}>{num}</div>
+            <div style={{ fontSize: "28px", fontWeight: "700", color: "#1a1a1a" }}>{num}</div>
             <div style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#737373", marginTop: "2px" }}>{label}</div>
           </div>
         ))}
@@ -173,7 +173,7 @@ export default function HomePage() {
             <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", marginBottom: "8px" }}>
               Latest
             </div>
-            <h2 style={{ fontFamily: "Georgia, serif", fontSize: "32px", fontWeight: "700", color: "#1a1a1a", margin: 0 }}>
+            <h2 style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", margin: 0 }}>
               Recent Coverage
             </h2>
           </div>
@@ -215,7 +215,7 @@ export default function HomePage() {
               <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", marginBottom: "8px" }}>
                 Live
               </div>
-              <h2 style={{ fontFamily: "Georgia, serif", fontSize: "32px", fontWeight: "700", color: "#1a1a1a", margin: 0 }}>
+              <h2 style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", margin: 0 }}>
                 AI Regulation Tracker
               </h2>
               <p style={{ color: "#737373", fontSize: "14px", marginTop: "8px" }}>
@@ -245,7 +245,7 @@ export default function HomePage() {
                   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#ffffff")}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <span style={{ fontFamily: "Georgia, serif", fontSize: "16px", color: "#1a1a1a" }}>{item.state}</span>
+                    <span style={{ fontSize: "16px", color: "#1a1a1a" }}>{item.state}</span>
                     <span style={{
                       fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase",
                       padding: "3px 10px", backgroundColor: s.bg, color: s.text,
@@ -278,7 +278,7 @@ export default function HomePage() {
           <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", marginBottom: "20px" }}>
             Newsletter
           </div>
-          <h2 style={{ fontFamily: "Georgia, serif", fontSize: "30px", color: "#1a1a1a", marginBottom: "16px", lineHeight: "1.3" }}>
+              <h2 style={{ fontSize: "30px", color: "#1a1a1a", marginBottom: "16px", lineHeight: "1.3" }}>
             Stay Ahead of AI Law
           </h2>
           <p style={{ color: "#737373", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px" }}>
@@ -321,7 +321,6 @@ function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTI
         {article.category}{article.state ? ` — ${article.state}` : ""}
       </div>
       <h3 style={{
-        fontFamily: "Georgia, serif",
         fontSize: large ? "24px" : "17px",
         fontWeight: "700",
         color: "#1a1a1a",

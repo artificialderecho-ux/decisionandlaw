@@ -106,7 +106,7 @@ export default function Navbar() {
             }} />
             <div>
               <div style={{
-                fontFamily: "'Georgia', serif",
+                fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
                 fontSize: "18px",
                 fontWeight: "700",
                 color: "#1a1a1a",

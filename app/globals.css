@@ -23,10 +23,10 @@
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   
-  /* Typography */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-serif: 'Source Serif 4', Georgia, serif;
+  /* Typography - Apple SF Pro inspired */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-serif: Georgia, "Apple Garamond", Garamond, Times, serif;
   
   /* Spacing */
   --radius: 0rem;
