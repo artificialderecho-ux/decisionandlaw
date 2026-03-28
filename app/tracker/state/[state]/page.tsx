@@ -4,7 +4,6 @@ import { states } from '../../../lib/states';
 import { TRACKER_CONTENT } from '../../../lib/tracker-content';
 import { Metadata } from 'next';
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
   const { state: stateSlug } = await params;
   const state = states.find(s => s.slug === stateSlug);
@@ -28,12 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   };
 }
 
-// Make the component async to handle async params in Next.js 15
 export default async function StateDetailPage({ params }: { params: Promise<{ state: string }> }) {
-  // Await params as required in Next.js 15
   const { state: stateSlug } = await params;
   
-  // Find the state by slug
   const state = states.find(s => s.slug === stateSlug);
   
   if (!state) {
@@ -43,15 +39,15 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'enacted':
-        return 'bg-green-500/20 text-green-400 border-green-500/30';
+        return 'bg-green-100 text-green-800 border-green-200';
       case 'active-legislation':
-        return 'bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30';
+        return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'monitoring':
-        return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+        return 'bg-gray-100 text-gray-600 border-gray-200';
       case 'no-activity':
-        return 'bg-gray-800/20 text-gray-500 border-gray-700/30';
+        return 'bg-gray-100 text-gray-500 border-gray-200';
       default:
-        return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+        return 'bg-gray-100 text-gray-600 border-gray-200';
     }
   };
 
@@ -95,7 +91,6 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
       };
     }
     
-    // Fallback to generic content based on status
     switch (status) {
       case 'active-legislation':
         return {
@@ -155,44 +150,42 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
   const stateContent = getStateContent(state.slug);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white pt-[120px]">
+    <div className="min-h-screen bg-white text-[#1a1a1a] pt-[120px]">
       <div className="container mx-auto px-4 py-8">
-        {/* Breadcrumb */}
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm">
             <li>
-              <Link href="/" className="text-[#D4AF37] hover:text-[#B8941F] transition-colors">
+              <Link href="/" className="text-[#737373] hover:text-[#1a1a1a] transition-colors">
                 Home
               </Link>
             </li>
-            <li className="text-gray-400">/</li>
+            <li className="text-[#e5e5e5]">/</li>
             <li>
-              <Link href="/tracker" className="text-[#D4AF37] hover:text-[#B8941F] transition-colors">
+              <Link href="/tracker" className="text-[#737373] hover:text-[#1a1a1a] transition-colors">
                 Tracker
               </Link>
             </li>
-            <li className="text-gray-400">/</li>
+            <li className="text-[#e5e5e5]">/</li>
             <li>
-              <Link href="/tracker/state" className="text-[#D4AF37] hover:text-[#B8941F] transition-colors">
+              <Link href="/tracker/state" className="text-[#737373] hover:text-[#1a1a1a] transition-colors">
                 States
               </Link>
             </li>
-            <li className="text-gray-400">/</li>
-            <li className="text-white">{state.name}</li>
+            <li className="text-[#e5e5e5]">/</li>
+            <li className="text-[#1a1a1a]">{state.name}</li>
           </ol>
         </nav>
 
-        {/* Hero Section */}
         <div className="mb-12">
           <div className="flex items-start justify-between mb-6">
             <div className="flex-1">
-              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-[#D4AF37] to-[#F4E4C1] bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold mb-4 text-[#1a1a1a]">
                 {state.name} AI Law
               </h1>
-              <p className="text-xl text-gray-300 leading-relaxed mb-4">
+              <p className="text-xl text-[#737373] leading-relaxed mb-4">
                 {stateContent?.summary || getIntroductoryPhrase(state.name, state.aiLegalStatus)}
               </p>
-              <p className="text-gray-400">
+              <p className="text-[#737373]">
                 {state.abbreviation} • Capital: {state.capital} • {state.region} Region
               </p>
             </div>
@@ -202,44 +195,42 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </div>
         </div>
 
-        {/* What Lawyers Need to Know */}
-        <div className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold mb-8 text-[#D4AF37]">
+        <div className="bg-[#f4f4f5] border border-[#e5e5e5] p-8 mb-12">
+          <h2 className="text-3xl font-bold mb-8 text-[#1a1a1a]">
             {lawyersContent.title}
           </h2>
           
           <div className="space-y-6">
             {lawyersContent.paragraphs.map((paragraph, index) => (
-              <p key={index} className="text-gray-300 leading-relaxed text-lg">
+              <p key={index} className="text-[#737373] leading-relaxed text-lg">
                 {paragraph}
               </p>
             ))}
           </div>
         </div>
 
-        {/* Active Bills */}
         {stateContent?.activeBills && stateContent.activeBills.length > 0 && (
-          <div className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-8 mb-12">
-            <h2 className="text-3xl font-bold mb-8 text-[#D4AF37]">
+          <div className="bg-[#f4f4f5] border border-[#e5e5e5] p-8 mb-12">
+            <h2 className="text-3xl font-bold mb-8 text-[#1a1a1a]">
               Active AI Legislation
             </h2>
             
             <div className="space-y-6">
               {stateContent.activeBills.map((bill, index) => (
-                <div key={index} className="border-l-4 border-[#D4AF37] pl-6">
+                <div key={index} className="border-l-4 border-[#1a1a1a] pl-6">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-lg font-semibold text-[#1a1a1a]">
                       {bill.name}
                     </h3>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium border ${
-                      bill.status === 'Passed' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
-                      bill.status === 'In committee' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
-                      'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
+                      bill.status === 'Passed' ? 'bg-green-100 text-green-800 border-green-200' :
+                      bill.status === 'In committee' ? 'bg-blue-100 text-blue-800 border-blue-200' :
+                      'bg-gray-100 text-gray-600 border-gray-200'
                     }`}>
                       {bill.status}
                     </span>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-[#737373] leading-relaxed">
                     {bill.description}
                   </p>
                 </div>
@@ -248,92 +239,87 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </div>
         )}
 
-        {/* Key Resources */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-8 text-[#D4AF37]">
+          <h2 className="text-3xl font-bold mb-8 text-[#1a1a1a]">
             Key Resources
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* State Bar */}
             <a 
               href={state.barUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/50 hover:shadow-lg hover:shadow-[#D4AF37]/10 transition-all duration-300 group"
+              className="bg-white border border-[#e5e5e5] p-6 hover:border-[#1a1a1a] hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center group-hover:bg-[#D4AF37]/30 transition-colors">
-                  <svg className="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#e5e5e5] transition-colors">
+                  <svg className="w-6 h-6 text-[#1a1a1a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
-                <svg className="w-5 h-5 text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#737373] group-hover:text-[#1a1a1a] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors mb-2">
+              <h3 className="text-lg font-semibold text-[#1a1a1a] group-hover:text-[#737373] transition-colors mb-2">
                 {state.barAssociation}
               </h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-[#737373] text-sm">
                 State bar association for licensing, ethics guidance, and AI practice resources
               </p>
             </a>
 
-            {/* State Legislature */}
             <a 
               href={state.legislatureUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/50 hover:shadow-lg hover:shadow-[#D4AF37]/10 transition-all duration-300 group"
+              className="bg-white border border-[#e5e5e5] p-6 hover:border-[#1a1a1a] hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center group-hover:bg-[#D4AF37]/30 transition-colors">
-                  <svg className="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                <div className="w-12 h-12 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#e5e5e5] transition-colors">
+                  <svg className="w-6 h-6 text-[#1a1a1a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                   </svg>
                 </div>
-                <svg className="w-5 h-5 text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#737373] group-hover:text-[#1a1a1a] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors mb-2">
+              <h3 className="text-lg font-semibold text-[#1a1a1a] group-hover:text-[#737373] transition-colors mb-2">
                 {state.name} Legislature
               </h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-[#737373] text-sm">
                 Track AI legislation, bills, and regulatory updates in the state legislature
               </p>
             </a>
 
-            {/* ABA Ethics Opinions */}
             <a 
               href="/tracker/aba-opinions"
-              className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/50 hover:shadow-lg hover:shadow-[#D4AF37]/10 transition-all duration-300 group"
+              className="bg-white border border-[#e5e5e5] p-6 hover:border-[#1a1a1a] hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center group-hover:bg-[#D4AF37]/30 transition-colors">
-                  <svg className="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#e5e5e5] transition-colors">
+                  <svg className="w-6 h-6 text-[#1a1a1a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <svg className="w-5 h-5 text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#737373] group-hover:text-[#1a1a1a] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors mb-2">
+              <h3 className="text-lg font-semibold text-[#1a1a1a] group-hover:text-[#737373] transition-colors mb-2">
                 ABA Ethics Opinions
               </h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-[#737373] text-sm">
                 American Bar Association guidance on AI ethics and professional responsibility
               </p>
             </a>
           </div>
         </div>
 
-        {/* Related States */}
         {relatedStates.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-8 text-[#D4AF37]">
+            <h2 className="text-3xl font-bold mb-8 text-[#1a1a1a]">
               Related States ({state.region})
             </h2>
             
@@ -342,20 +328,20 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
                 <Link 
                   key={relatedState.slug}
                   href={`/tracker/state/${relatedState.slug}`}
-                  className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/50 hover:shadow-lg hover:shadow-[#D4AF37]/10 transition-all duration-300 group"
+                  className="bg-white border border-[#e5e5e5] p-6 hover:border-[#1a1a1a] hover:shadow-lg transition-all duration-300 group"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-white group-hover:text-[#D4AF37] transition-colors">
+                    <h3 className="text-lg font-semibold text-[#1a1a1a] group-hover:text-[#737373] transition-colors">
                       {relatedState.name}
                     </h3>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(relatedState.aiLegalStatus)}`}>
                       {getStatusText(relatedState.aiLegalStatus)}
                     </span>
                   </div>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-[#737373] text-sm mb-4">
                     {relatedState.abbreviation} • {relatedState.capital}
                   </p>
-                  <div className="flex items-center text-[#D4AF37] group-hover:text-[#F4E4C1] transition-colors">
+                  <div className="flex items-center text-[#1a1a1a] group-hover:text-[#737373] transition-colors">
                     <span className="text-sm">View Details</span>
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -367,11 +353,10 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </div>
         )}
 
-        {/* Back to States */}
         <div className="mt-12">
           <Link 
             href="/tracker/state" 
-            className="inline-flex items-center text-[#D4AF37] hover:text-[#B8941F] transition-colors text-lg"
+            className="inline-flex items-center text-[#737373] hover:text-[#1a1a1a] transition-colors text-lg"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -380,15 +365,14 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
           </Link>
         </div>
 
-        {/* Last Updated */}
         <div className="mt-16 mb-8">
-          <div className="bg-[#1A1A1A] border border-[#D4AF37]/20 rounded-lg p-6">
+          <div className="bg-[#f4f4f5] border border-[#e5e5e5] p-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-[#D4AF37] mb-2">
+                <h3 className="text-lg font-semibold text-[#1a1a1a] mb-2">
                   Last Updated
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className="text-[#737373] text-sm">
                   {stateContent?.lastUpdated || new Date().toLocaleDateString('en-US', { 
                     year: 'numeric', 
                     month: 'long', 
@@ -396,14 +380,14 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
                   })}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-[#e5e5e5] flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#737373]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m0 0V3m0 0h5.418M9 3h5.418a2 2 0 012 2v14a2 2 0 01-2 2H9a2 2 0 01-2-2V5a2 2 0 012-2z" />
                 </svg>
               </div>
             </div>
-            <div className="mt-4 pt-4 border-t border-gray-700">
-              <p className="text-gray-300 text-sm leading-relaxed">
+            <div className="mt-4 pt-4 border-t border-[#e5e5e5]">
+              <p className="text-[#737373] text-sm leading-relaxed">
                 This page is updated regularly as legislation evolves. Check back frequently for the latest developments in {state.name} AI regulations and compliance requirements.
               </p>
             </div>

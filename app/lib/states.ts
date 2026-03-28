@@ -242,7 +242,7 @@ export const states: State[] = [
     region: 'Southeast',
     barAssociation: 'Virginia State Bar',
     barUrl: 'https://www.vsb.org',
-    legislatureUrl: 'https://://lis.virginia.gov',
+    legislatureUrl: 'https://lis.virginia.gov',
     aiLegalStatus: 'enacted'
   },
   {
