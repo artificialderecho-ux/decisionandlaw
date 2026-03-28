@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 
 const FOOTER_LINKS = {
@@ -30,22 +31,34 @@ const FOOTER_LINKS = {
 }
 
 export default function Footer() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   return (
     <footer style={{
       backgroundColor: "#f4f4f5",
       borderTop: "1px solid #e5e5e5",
-      paddingTop: "64px",
+      paddingTop: isMobile ? "32px" : "64px",
       fontFamily: "var(--font-sans)",
       color: "#1a1a1a",
+      marginTop: "auto",
     }} aria-label="Site footer">
       {/* Main footer content */}
       <div style={{
         maxWidth: "1200px",
         margin: "0 auto",
-        padding: "0 32px",
+        padding: isMobile ? "0 16px" : "0 32px",
         display: "grid",
-        gridTemplateColumns: "2fr 1fr 1fr 1fr",
-        gap: "48px",
+        gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr 1fr",
+        gap: isMobile ? "24px" : "48px",
       }}>
         {/* Brand column */}
         <div>
@@ -98,7 +111,7 @@ export default function Footer() {
         </div>
 
         {/* Link columns */}
-        {Object.entries(FOOTER_LINKS).map(([section, links]) => (
+        {!isMobile && Object.entries(FOOTER_LINKS).map(([section, links]) => (
           <div key={section}>
             <h4 style={{
               fontSize: "11px",
@@ -122,8 +135,6 @@ export default function Footer() {
                       fontFamily: "var(--font-sans)",
                       transition: "color 0.2s",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#1a1a1a")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#737373")}
                   >
                     {link.label}
                   </Link>
@@ -132,23 +143,63 @@ export default function Footer() {
             </ul>
           </div>
         ))}
+
+        {/* Mobile links */}
+        {isMobile && (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
+            {Object.entries(FOOTER_LINKS).map(([section, links]) => (
+              <div key={section}>
+                <h4 style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  color: "#1a1a1a",
+                  marginBottom: "12px",
+                  fontFamily: "var(--font-sans)",
+                }}>
+                  {section}
+                </h4>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        style={{
+                          color: "#737373",
+                          textDecoration: "none",
+                          fontSize: "13px",
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Bottom bar */}
       <div style={{
         maxWidth: "1200px",
-        margin: "48px auto 0",
-        padding: "20px 32px",
+        margin: isMobile ? "32px auto 0" : "48px auto 0",
+        padding: isMobile ? "16px" : "20px 32px",
         borderTop: "1px solid #e5e5e5",
         display: "flex",
+        flexDirection: isMobile ? "column" : "row",
         justifyContent: "space-between",
         alignItems: "center",
-        fontSize: "11px",
+        gap: isMobile ? "12px" : "0",
+        fontSize: isMobile ? "10px" : "11px",
         color: "#737373",
         letterSpacing: "0.06em",
       }}>
-        <span>DECISIONANDLAW.COM — LEGAL INTELLIGENCE FOR THE AI ERA</span>
-        <div style={{ display: "flex", gap: "24px" }}>
+        <span style={{ textAlign: isMobile ? "center" : "left" }}>
+          DECISIONANDLAW.COM
+        </span>
+        <div style={{ display: "flex", gap: "16px" }}>
           <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy</Link>
           <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms</Link>
           <Link href="/advertise" style={{ color: "#737373", textDecoration: "none" }}>Advertise</Link>

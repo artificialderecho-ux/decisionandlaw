@@ -68,8 +68,23 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-size: 19px;
-  line-height: 1.75;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 19px;
+    line-height: 1.75;
+  }
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Focus Management */
@@ -112,11 +127,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3.1575rem;
+  font-size: 2rem;
 }
 
 h2, h3 {
-  font-size: 1.578rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.1575rem;
+  }
+  
+  h2, h3 {
+    font-size: 1.578rem;
+  }
 }
 
 p {
