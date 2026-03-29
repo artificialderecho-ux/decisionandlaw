@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import WebsiteStructuredData from "../components/StructuredData"
+import WebsiteStructuredData from "./components/StructuredData"
 
 const FEATURED_ARTICLES = [
   {

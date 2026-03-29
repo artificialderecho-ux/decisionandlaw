@@ -211,6 +211,7 @@ export default function ArticleClient({ article }: ArticleClientProps) {
           </Link>
         </div>
       </div>
+      </div>
     </>
   );
 }
