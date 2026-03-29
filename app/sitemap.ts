@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { allArticles } from 'contentlayer/generated';
 import { states } from './lib/states';
+import { TOOL_SLUGS } from './lib/tools';
 
 const BASE_URL = 'https://decisionandlaw.com';
 
@@ -13,16 +14,6 @@ const GUIDE_SLUGS = [
   'roi-legal-ai',
 ];
 
-const TOOL_SLUGS = [
-  'harvey',
-  'westlaw-ai-assist',
-  'clio-manage',
-  'relativity-ai',
-  'casetext',
-  'klarity',
-  'luminance',
-  'practice-platform',
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
