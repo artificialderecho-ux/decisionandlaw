@@ -244,7 +244,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
             Key Resources
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
             <a 
               href={state.barUrl}
               target="_blank"
@@ -252,7 +252,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
               className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3"
             >
               <div className="w-8 h-8 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#0066cc] group-hover:text-white transition-colors shrink-0 mt-1">
-                <svg className="w-4 h-4 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
@@ -278,7 +278,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
               className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3"
             >
               <div className="w-8 h-8 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#0066cc] group-hover:text-white transition-colors shrink-0 mt-1">
-                <svg className="w-4 h-4 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                 </svg>
               </div>
@@ -302,7 +302,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
               className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3"
             >
               <div className="w-8 h-8 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#0066cc] group-hover:text-white transition-colors shrink-0 mt-1">
-                <svg className="w-4 h-4 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3.5 h-3.5 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
