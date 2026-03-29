@@ -4,29 +4,29 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 
 const FOOTER_LINKS = {
-  News: [
-    { label: "Legislation", href: "/news/legislation" },
-    { label: "Case Law", href: "/news/case-law" },
-    { label: "Ethics", href: "/news/ethics" },
-    { label: "AI Regulation", href: "/news/legislation/ai-regulation" },
+  Coverage: [
+    { label: "News", href: "/news" },
+    { label: "Tools", href: "/tools" },
+    { label: "Tracker", href: "/tracker" },
+    { label: "Guides", href: "/guides" },
   ],
-  Tools: [
-    { label: "All Tools", href: "/tools" },
-    { label: "Solo Practitioners", href: "/tools/for-solo-practitioners" },
-    { label: "Small Firms", href: "/tools/for-small-firms" },
-    { label: "Compare", href: "/tools/compare" },
-  ],
-  Tracker: [
+  Resources: [
     { label: "50-State Index", href: "/tracker/state" },
     { label: "Federal AI Policy", href: "/tracker/federal-ai-policy" },
     { label: "ABA Opinions", href: "/tracker/aba-opinions" },
-    { label: "Malpractice Cases", href: "/tracker/malpractice-cases" },
+    { label: "Authors", href: "/authors" },
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Authors", href: "/authors" },
     { label: "Newsletter", href: "/newsletter" },
-    { label: "Guides", href: "/guides" },
+    { label: "Contact", href: "mailto:artificialderecho@gmail.com" },
+  ],
+  Legal: [
+    { label: "Terms of Use", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Disclaimer", href: "/disclaimer" },
+    { label: "IP Policy", href: "/ip-policy" },
+    { label: "Acceptable Use", href: "/acceptable-use" },
   ],
 }
 
@@ -42,167 +42,228 @@ export default function Footer() {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: "#fafafa",
+    borderTop: "1px solid rgba(0, 0, 0, 0.06)",
+    marginTop: "auto",
+  }
+
+  const containerStyle: React.CSSProperties = {
+    maxWidth: "1280px",
+    margin: "0 auto",
+    padding: isMobile ? "48px 20px 32px" : "80px 32px 40px",
+  }
+
+  const brandStyle: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  }
+
+  const logoStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+  }
+
+  const logoIconStyle: React.CSSProperties = {
+    width: "24px",
+    height: "24px",
+    background: "#1a1a1a",
+    clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+    flexShrink: 0,
+  }
+
+  const logoTextStyle: React.CSSProperties = {
+    fontSize: "15px",
+    fontWeight: "700",
+    color: "#1a1a1a",
+    letterSpacing: "0.01em",
+  }
+
+  const descriptionStyle: React.CSSProperties = {
+    color: "#6e6e73",
+    fontSize: "14px",
+    lineHeight: "1.7",
+    maxWidth: "320px",
+  }
+
+  const ctaStyle: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    padding: "12px 20px",
+    backgroundColor: "#0066cc",
+    color: "#ffffff",
+    textDecoration: "none",
+    fontSize: "13px",
+    fontWeight: "600",
+    borderRadius: "6px",
+    transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
+  }
+
+  const columnTitleStyle: React.CSSProperties = {
+    fontSize: "11px",
+    fontWeight: "600",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase" as const,
+    color: "#1a1a1a",
+    marginBottom: "16px",
+  }
+
+  const linkStyle: React.CSSProperties = {
+    color: "#6e6e73",
+    textDecoration: "none",
+    fontSize: "14px",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    transition: "color 0.15s cubic-bezier(0.25, 0.1, 0.25, 1)",
+  }
+
+  const copyrightStyle: React.CSSProperties = {
+    marginTop: "40px",
+    fontSize: "11px",
+    color: "#8e8e93",
+    letterSpacing: "0.02em",
+  }
+
+  const bottomBarStyle: React.CSSProperties = {
+    maxWidth: "1280px",
+    margin: "0 auto",
+    padding: isMobile ? "24px 20px" : "24px 32px",
+    borderTop: "1px solid rgba(0, 0, 0, 0.06)",
+    display: "flex",
+    flexDirection: isMobile ? "column" : "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "16px",
+  }
+
+  const bottomTextStyle: React.CSSProperties = {
+    fontSize: "11px",
+    color: "#8e8e93",
+    letterSpacing: "0.06em",
+  }
+
+  const legalLinkStyle: React.CSSProperties = {
+    color: "#6e6e73",
+    textDecoration: "none",
+    fontSize: "11px",
+    letterSpacing: "0.04em",
+  }
+
   return (
-    <footer style={{
-      backgroundColor: "#f4f4f5",
-      borderTop: "1px solid #e5e5e5",
-      paddingTop: isMobile ? "32px" : "64px",
-      fontFamily: "var(--font-sans)",
-      color: "#1a1a1a",
-      marginTop: "auto",
-    }} aria-label="Site footer">
-      {/* Main footer content */}
-      <div style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: isMobile ? "0 16px" : "0 32px",
-        display: "grid",
-        gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr 1fr",
-        gap: isMobile ? "24px" : "48px",
-      }}>
-        {/* Brand column */}
-        <div>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
-            <div style={{
-              width: "28px",
-              height: "28px",
-              background: "#1a1a1a",
-              clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-              flexShrink: 0,
-            }} />
-            <span style={{
-              fontSize: "17px",
-              fontWeight: "700",
-              color: "#1a1a1a",
-              letterSpacing: "0.02em",
-            }}>
-              Decision<span style={{ color: "#1a1a1a" }}>&</span>Law
-            </span>
+    <footer style={footerStyle} aria-label="Site footer">
+      <div style={containerStyle}>
+          <div style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1.5fr 1fr 1fr 1fr 1fr",
+          gap: isMobile ? "40px" : "48px",
+        }}>
+          {/* Brand column */}
+          <div style={brandStyle}>
+            <div style={logoStyle}>
+              <div style={logoIconStyle} />
+              <span style={logoTextStyle}>
+                Decision<span style={{ fontWeight: "400", opacity: 0.4 }}>&</span>Law
+              </span>
+            </div>
+            <p style={descriptionStyle}>
+              Legal intelligence for the AI era. Legislation tracking, tool reviews, and analysis for US legal professionals.
+            </p>
+            <Link
+              href="/newsletter"
+              style={ctaStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.9"
+                e.currentTarget.style.transform = "translateY(-1px)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1"
+                e.currentTarget.style.transform = "translateY(0)"
+              }}
+            >
+              Subscribe to Newsletter
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
-          <p style={{
-            color: "#737373",
-            fontSize: "14px",
-            lineHeight: "1.7",
-            marginBottom: "24px",
-            fontFamily: "var(--font-serif)",
-          }}>
-            Legal intelligence for AI era. Covering legislation, case law, and emerging tools for US legal professionals.
-          </p>
-          <Link
-            href="/newsletter"
-            style={{
-              display: "inline-block",
-              padding: "10px 24px",
-              border: "1px solid #1a1a1a",
-              color: "#1a1a1a",
-              textDecoration: "none",
-              fontSize: "12px",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              transition: "all 0.2s",
-            }}
-          >
-            Get Newsletter →
-          </Link>
-          <p style={{ marginTop: "32px", fontSize: "11px", color: "#a1a1aa", letterSpacing: "0.05em" }}>
-            &copy; {new Date().getFullYear()} decisionandlaw.com<br />
-            Not legal advice.
-          </p>
+
+          {/* Link columns */}
+          {!isMobile && Object.entries(FOOTER_LINKS).map(([section, links]) => (
+            <div key={section}>
+              <h4 style={columnTitleStyle}>{section}</h4>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      style={linkStyle}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#1a1a1a")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#6e6e73")}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Mobile links */}
+          {isMobile && (
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "32px",
+            }}>
+              {Object.entries(FOOTER_LINKS).map(([section, links]) => (
+                <div key={section}>
+                  <h4 style={columnTitleStyle}>{section}</h4>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+                    {links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          style={{ ...linkStyle, fontSize: "13px" }}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Link columns */}
-        {!isMobile && Object.entries(FOOTER_LINKS).map(([section, links]) => (
-          <div key={section}>
-            <h4 style={{
-              fontSize: "11px",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "#1a1a1a",
-              marginBottom: "20px",
-              fontFamily: "var(--font-sans)",
-            }}>
-              {section}
-            </h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    style={{
-                      color: "#737373",
-                      textDecoration: "none",
-                      fontSize: "13px",
-                      fontFamily: "var(--font-sans)",
-                      transition: "color 0.2s",
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-
-        {/* Mobile links */}
-        {isMobile && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
-            {Object.entries(FOOTER_LINKS).map(([section, links]) => (
-              <div key={section}>
-                <h4 style={{
-                  fontSize: "11px",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  color: "#1a1a1a",
-                  marginBottom: "12px",
-                  fontFamily: "var(--font-sans)",
-                }}>
-                  {section}
-                </h4>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                  {links.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        style={{
-                          color: "#737373",
-                          textDecoration: "none",
-                          fontSize: "13px",
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
+        <p style={copyrightStyle}>
+          © {new Date().getFullYear()} Decision&Law. Not legal advice.
+        </p>
       </div>
 
       {/* Bottom bar */}
-      <div style={{
-        maxWidth: "1200px",
-        margin: isMobile ? "32px auto 0" : "48px auto 0",
-        padding: isMobile ? "16px" : "20px 32px",
-        borderTop: "1px solid #e5e5e5",
-        display: "flex",
-        flexDirection: isMobile ? "column" : "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        gap: isMobile ? "12px" : "0",
-        fontSize: isMobile ? "10px" : "11px",
-        color: "#737373",
-        letterSpacing: "0.06em",
-      }}>
-        <span style={{ textAlign: isMobile ? "center" : "left" }}>
-          DECISIONANDLAW.COM
-        </span>
-        <div style={{ display: "flex", gap: "16px" }}>
-          <Link href="/privacy" style={{ color: "#737373", textDecoration: "none" }}>Privacy</Link>
-          <Link href="/terms" style={{ color: "#737373", textDecoration: "none" }}>Terms</Link>
-          <Link href="/advertise" style={{ color: "#737373", textDecoration: "none" }}>Advertise</Link>
+      <div style={bottomBarStyle}>
+        <span style={bottomTextStyle}>DECISIONANDLAW.COM</span>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+          <Link href="/terms" style={legalLinkStyle}>Terms</Link>
+          <Link href="/privacy" style={legalLinkStyle}>Privacy</Link>
+          <Link href="/disclaimer" style={legalLinkStyle}>Disclaimer</Link>
+          <Link href="/ip-policy" style={legalLinkStyle}>IP Policy</Link>
+          <Link href="/acceptable-use" style={legalLinkStyle}>Acceptable Use</Link>
+          <button 
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).CookieConsent?.show) {
+                (window as any).CookieConsent.show();
+              }
+            }}
+            style={{ ...legalLinkStyle, background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit", letterSpacing: "0.04em" }}
+          >
+            Cookie Settings
+          </button>
         </div>
       </div>
     </footer>

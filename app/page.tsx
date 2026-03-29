@@ -1,8 +1,8 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 
-// Mock data - later will come from MDX/CMS
 const FEATURED_ARTICLES = [
   {
     slug: "california-sb-1047-ai-liability-lawyers",
@@ -41,193 +41,219 @@ const TRACKER_HIGHLIGHTS = [
 ]
 
 const STATUS_COLORS: Record<string, { bg: string; text: string; label: string }> = {
-  enacted: { bg: "rgba(34,197,94,0.1)", text: "#22c55e", label: "Enacted" },
-  "active-legislation": { bg: "rgba(26,26,26,0.1)", text: "#1a1a1a", label: "Active Legislation" },
-  monitoring: { bg: "rgba(115,115,115,0.1)", text: "#737373", label: "Monitoring" },
-  "no-activity": { bg: "rgba(115,115,115,0.1)", text: "#737373", label: "No Activity" },
+  enacted: { bg: "rgba(34,197,94,0.1)", text: "#16a34a", label: "Enacted" },
+  "active-legislation": { bg: "rgba(0,102,204,0.08)", text: "#0066cc", label: "Active" },
+  monitoring: { bg: "rgba(0,0,0,0.04)", text: "#6e6e73", label: "Monitoring" },
+  "no-activity": { bg: "rgba(0,0,0,0.04)", text: "#8e8e93", label: "No Activity" },
 }
 
 export default function HomePage() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
   return (
     <main style={{ backgroundColor: "#ffffff", minHeight: "100vh", color: "#1a1a1a" }}>
-
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
+      {/* Hero */}
       <section style={{
         position: "relative",
-        minHeight: "85vh",
+        minHeight: "88vh",
         display: "flex",
         alignItems: "center",
-        overflow: "hidden",
-        paddingTop: "120px",
+        paddingTop: "80px",
+        paddingBottom: "80px",
       }}>
-        {/* Background texture */}
         <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: `
-            radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,26,26,0.03) 0%, transparent 60%)
-          `,
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(ellipse 70% 50% at 50% -5%, rgba(0,102,204,0.06) 0%, transparent 60%)",
         }} />
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 32px", position: "relative", width: "100%" }}>
-          <div style={{ maxWidth: "760px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 clamp(16px, 4vw, 48px)", position: "relative", width: "100%" }}>
+          <div style={{ maxWidth: "800px" }}>
             {/* Eyebrow */}
             <div style={{
-              display: "inline-flex", alignItems: "center", gap: "10px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
               marginBottom: "32px",
-              padding: "6px 16px",
-              border: "1px solid #e5e5e5",
-              backgroundColor: "#f4f4f5",
+              padding: "6px 14px",
+              border: "1px solid rgba(0,0,0,0.08)",
+              backgroundColor: "rgba(0,0,0,0.02)",
+              borderRadius: "9999px",
             }}>
-              <div style={{ width: "6px", height: "6px", backgroundColor: "#1a1a1a", borderRadius: "50%", animation: "pulse 2s infinite" }} />
-              <span style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a" }}>
-                AI & Law — Latest Intelligence
+              <div style={{ width: "6px", height: "6px", backgroundColor: "#0066cc", borderRadius: "50%" }} />
+              <span style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "#6e6e73" }}>
+                AI & Law — Legal Intelligence
               </span>
             </div>
 
             {/* Headline */}
             <h1 style={{
               fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
-              fontSize: "clamp(42px, 6vw, 72px)",
+              fontSize: "clamp(48px, 7vw, 80px)",
               fontWeight: "700",
-              lineHeight: "1.08",
-              letterSpacing: "-0.02em",
+              lineHeight: "1.03",
+              letterSpacing: "-0.035em",
               color: "#1a1a1a",
               marginBottom: "28px",
             }}>
               Where Law Meets<br />
-              <span style={{ color: "#1a1a1a" }}>
-                Artificial Intelligence
-              </span>
+              <span style={{ color: "#0066cc" }}>Artificial Intelligence</span>
             </h1>
 
             <p style={{
-              fontSize: "19px",
-              lineHeight: "1.75",
-              color: "#737373",
+              fontSize: "clamp(17px, 2vw, 20px)",
+              lineHeight: "1.7",
+              color: "#6e6e73",
               marginBottom: "48px",
-              maxWidth: "580px",
+              maxWidth: "540px",
             }}>
               Legislation tracking, tool reviews, and case law analysis for US legal professionals navigating the AI transformation.
             </p>
 
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <Link href="/tracker" style={{
-                padding: "14px 32px",
-                backgroundColor: "#1a1a1a",
-                color: "#ffffff",
-                textDecoration: "none",
-                fontSize: "13px",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                fontWeight: "600",
-                transition: "all 0.2s",
-              }}>
-                View 50-State Tracker →
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const }}>
+              <Link
+                href="/tracker"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "14px 28px",
+                  backgroundColor: "#1a1a1a",
+                  color: "#ffffff",
+                  textDecoration: "none",
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  letterSpacing: "0.04em",
+                  borderRadius: "8px",
+                  transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                }}
+              >
+                View 50-State Tracker
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </Link>
-              <Link href="/newsletter" style={{
-                padding: "14px 32px",
-                backgroundColor: "transparent",
-                border: "1px solid #1a1a1a",
-                color: "#1a1a1a",
-                textDecoration: "none",
-                fontSize: "13px",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                transition: "all 0.2s",
-              }}>
-                Get the Newsletter
+              <Link
+                href="/newsletter"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "14px 28px",
+                  backgroundColor: "transparent",
+                  border: "1px solid rgba(0,0,0,0.15)",
+                  color: "#1a1a1a",
+                  textDecoration: "none",
+                  fontSize: "13px",
+                  fontWeight: "500",
+                  borderRadius: "8px",
+                  transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                }}
+              >
+                Get Newsletter
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── TICKER / STATS BAR ───────────────────────────────────────── */}
+      {/* Stats */}
       <div style={{
-        borderTop: "1px solid #e5e5e5",
-        borderBottom: "1px solid #e5e5e5",
-        backgroundColor: "#f4f4f5",
-        padding: "20px 32px",
+        borderTop: "1px solid rgba(0,0,0,0.06)",
+        borderBottom: "1px solid rgba(0,0,0,0.06)",
+        backgroundColor: "#fafafa",
+        padding: "32px clamp(16px, 4vw, 48px)",
         display: "flex",
         justifyContent: "center",
-        gap: "64px",
-        flexWrap: "wrap",
+        gap: "clamp(32px, 8vw, 96px)",
+        flexWrap: "wrap" as const,
       }}>
         {[
           { num: "50", label: "States Tracked" },
-          { num: "12", label: "Enacted AI Laws" },
+          { num: "12", label: "AI Laws Enacted" },
           { num: "23", label: "Bills in Progress" },
           { num: "47", label: "Tools Reviewed" },
         ].map(({ num, label }) => (
           <div key={label} style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "28px", fontWeight: "700", color: "#1a1a1a" }}>{num}</div>
-            <div style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#737373", marginTop: "2px" }}>{label}</div>
+            <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
+            <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
           </div>
         ))}
       </div>
 
-      {/* ── FEATURED ARTICLES ────────────────────────────────────────── */}
-      <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 32px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px" }}>
-          <div>
-            <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", marginBottom: "8px" }}>
-              Latest
-            </div>
-            <h2 style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", margin: 0 }}>
-              Recent Coverage
-            </h2>
-          </div>
-          <Link href="/news" style={{ color: "#1a1a1a", textDecoration: "none", fontSize: "13px", letterSpacing: "0.08em" }}>
-            All News →
-          </Link>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "1px", backgroundColor: "#e5e5e5" }}>
-          {/* Hero article */}
-          <div style={{ backgroundColor: "#ffffff", padding: "40px", borderRight: "1px solid #e5e5e5" }}>
-            <ArticleCard article={FEATURED_ARTICLES[0]} large />
-          </div>
-          {/* Secondary articles */}
-          <div style={{ backgroundColor: "#ffffff", display: "flex", flexDirection: "column" }}>
-            {FEATURED_ARTICLES.slice(1).map((article, i) => (
-              <div key={article.slug} style={{
-                padding: "32px",
-                borderBottom: i === 0 ? "1px solid #e5e5e5" : "none",
-                flex: 1,
-              }}>
-                <ArticleCard article={article} />
+      {/* Featured Articles */}
+      <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
+            <div>
+              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+                Latest Coverage
               </div>
-            ))}
+              <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
+                Recent Articles
+              </h2>
+            </div>
+            <Link href="/news" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
+              View all
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr", gap: "16px" }}>
+            <div style={{ backgroundColor: "#ffffff", padding: "40px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)", borderRight: isMobile ? "1px solid rgba(0,0,0,0.08)" : "1px solid rgba(0,0,0,0.08)" }}>
+              <ArticleCard article={FEATURED_ARTICLES[0]} large />
+            </div>
+            <div style={{ backgroundColor: "#ffffff", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)", display: "flex", flexDirection: "column" as const, overflow: "hidden" }}>
+              {FEATURED_ARTICLES.slice(1).map((article, i) => (
+                <div key={article.slug} style={{
+                  padding: "32px",
+                  borderBottom: i === 0 ? "1px solid rgba(0,0,0,0.06)" : "none",
+                  flex: 1,
+                }}>
+                  <ArticleCard article={article} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── TRACKER PREVIEW ──────────────────────────────────────────── */}
+      {/* Tracker Preview */}
       <section style={{
-        backgroundColor: "#f4f4f5",
-        borderTop: "1px solid #e5e5e5",
-        borderBottom: "1px solid #e5e5e5",
-        padding: "80px 32px",
+        backgroundColor: "#ffffff",
+        padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)",
       }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
             <div>
-              <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", marginBottom: "8px" }}>
-                Live
+              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+                Live Tracker
               </div>
-              <h2 style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", margin: 0 }}>
+              <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
                 AI Regulation Tracker
               </h2>
-              <p style={{ color: "#737373", fontSize: "14px", marginTop: "8px" }}>
+              <p style={{ color: "#6e6e73", fontSize: "15px", marginTop: "8px" }}>
                 Real-time status across all 50 US states
               </p>
             </div>
-            <Link href="/tracker/state" style={{ color: "#1a1a1a", textDecoration: "none", fontSize: "13px", letterSpacing: "0.08em" }}>
-              Full 50-State Index →
+            <Link href="/tracker/state" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
+              Full Index
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", backgroundColor: "#e5e5e5" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "12px" }}>
             {TRACKER_HIGHLIGHTS.map((item) => {
               const s = STATUS_COLORS[item.status]
               return (
@@ -235,24 +261,38 @@ export default function HomePage() {
                   key={item.slug}
                   href={`/tracker/state/${item.slug}`}
                   style={{
-                    display: "block",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
                     backgroundColor: "#ffffff",
-                    padding: "24px 28px",
+                    border: "1px solid rgba(0,0,0,0.08)",
+                    borderRadius: "10px",
+                    padding: "16px 20px",
                     textDecoration: "none",
-                    transition: "background 0.2s",
+                    transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f4f4f5")}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#ffffff")}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#0066cc";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,102,204,0.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <span style={{ fontSize: "16px", color: "#1a1a1a" }}>{item.state}</span>
-                    <span style={{
-                      fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase",
-                      padding: "3px 10px", backgroundColor: s.bg, color: s.text,
-                    }}>
-                      {s.label}
-                    </span>
-                  </div>
+                  <span style={{ fontSize: "14px", fontWeight: "600", color: "#1a1a1a" }}>{item.state}</span>
+                  <span style={{
+                    fontSize: "10px",
+                    fontWeight: "600",
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase" as const,
+                    padding: "4px 10px",
+                    backgroundColor: s.bg,
+                    color: s.text,
+                    borderRadius: "9999px",
+                  }}>
+                    {s.label}
+                  </span>
                 </Link>
               )
             })}
@@ -260,85 +300,97 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── NEWSLETTER CTA ───────────────────────────────────────────── */}
+      {/* Newsletter CTA */}
       <section style={{
-        maxWidth: "1200px", margin: "0 auto", padding: "100px 32px",
-        display: "flex", justifyContent: "center",
+        backgroundColor: "#fafafa",
+        borderTop: "1px solid rgba(0,0,0,0.06)",
       }}>
         <div style={{
-          maxWidth: "600px", textAlign: "center",
-          padding: "60px",
-          border: "1px solid #e5e5e5",
-          position: "relative",
+          maxWidth: "560px",
+          margin: "0 auto",
+          padding: "clamp(80px, 12vw, 140px) clamp(16px, 4vw, 48px)",
+          textAlign: "center",
         }}>
-          <div style={{
-            position: "absolute", top: "-1px", left: "50%", transform: "translateX(-50%)",
-            width: "60px", height: "2px", backgroundColor: "#1a1a1a",
-          }} />
-          <div style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#1a1a1a", marginBottom: "20px" }}>
+          <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "16px" }}>
             Newsletter
           </div>
-              <h2 style={{ fontSize: "30px", color: "#1a1a1a", marginBottom: "16px", lineHeight: "1.3" }}>
+          <h2 style={{ fontSize: "clamp(26px, 4vw, 36px)", fontWeight: "700", color: "#1a1a1a", marginBottom: "16px", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
             Stay Ahead of AI Law
           </h2>
-          <p style={{ color: "#737373", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px" }}>
-            Weekly briefings on legislation, case law, and tool reviews — written for legal professionals, not technologists.
+          <p style={{ color: "#6e6e73", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px" }}>
+            Weekly briefings on legislation, case law, and tool reviews — written for legal professionals.
           </p>
-          <Link href="/newsletter" style={{
-            display: "inline-block",
-            padding: "14px 40px",
-            backgroundColor: "#1a1a1a",
-            color: "#ffffff",
-            textDecoration: "none",
-            fontSize: "13px",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            fontWeight: "600",
-          }}>
-            Subscribe Free →
+          <Link
+            href="/newsletter"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "14px 32px",
+              backgroundColor: "#0066cc",
+              color: "#ffffff",
+              textDecoration: "none",
+              fontSize: "13px",
+              fontWeight: "600",
+              letterSpacing: "0.04em",
+              borderRadius: "8px",
+              transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
+            }}
+          >
+            Subscribe Free
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </Link>
-          <p style={{ marginTop: "16px", fontSize: "11px", color: "#a1a1aa" }}>No spam. Unsubscribe anytime.</p>
+          <p style={{ marginTop: "16px", fontSize: "12px", color: "#8e8e93" }}>No spam. Unsubscribe anytime.</p>
         </div>
       </section>
-
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
     </main>
   )
 }
 
 function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTICLES[0]; large?: boolean }) {
   return (
-    <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}>
+    <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}
+      onMouseEnter={(e) => {
+        const h3 = e.currentTarget.querySelector('h3') as HTMLElement;
+        if (h3) h3.style.color = "#0066cc";
+      }}
+      onMouseLeave={(e) => {
+        const h3 = e.currentTarget.querySelector('h3') as HTMLElement;
+        if (h3) h3.style.color = "#1a1a1a";
+      }}
+    >
       <div style={{
-        fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase",
-        color: "#1a1a1a", marginBottom: "12px",
+        fontSize: "10px",
+        fontWeight: "600",
+        letterSpacing: "0.1em",
+        textTransform: "uppercase" as const,
+        color: "#0066cc",
+        marginBottom: "12px",
       }}>
         {article.category}{article.state ? ` — ${article.state}` : ""}
       </div>
       <h3 style={{
-        fontSize: large ? "24px" : "17px",
-        fontWeight: "700",
+        fontSize: large ? "clamp(20px, 3vw, 26px)" : "17px",
+        fontWeight: "600",
         color: "#1a1a1a",
         lineHeight: "1.3",
         marginBottom: "12px",
+        letterSpacing: "-0.015em",
         transition: "color 0.2s",
       }}>
         {article.title}
       </h3>
       <p style={{
-        color: "#737373",
+        color: "#6e6e73",
         fontSize: large ? "15px" : "13px",
-        lineHeight: "1.6",
+        lineHeight: "1.65",
         marginBottom: "16px",
       }}>
         {article.description}
       </p>
-      <div style={{ fontSize: "11px", color: "#a1a1aa", letterSpacing: "0.06em" }}>
+      <div style={{ fontSize: "11px", color: "#8e8e93", letterSpacing: "0.04em" }}>
         {article.date} · {article.readingTime} min read
       </div>
     </Link>

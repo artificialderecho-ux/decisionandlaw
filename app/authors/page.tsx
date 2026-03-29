@@ -1,9 +1,96 @@
+'use client';
+
+import { useState } from 'react';
 import AuthorAvatar from '@/app/components/AuthorAvatar';
 
-export const metadata = {
-  title: 'Authors | Decision&Law',
-  description: 'Voices shaping the conversation at the intersection of law, technology, and decision intelligence.',
-};
+export default function AuthorsPage() {
+  const [hoveredAuthor, setHoveredAuthor] = useState<string | null>(null);
+
+  return (
+    <main style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#1a1a1a' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: 'clamp(48px, 8vw, 96px) clamp(16px, 4vw, 48px) clamp(48px, 8vw, 80px)' }}>
+        <div style={{ marginBottom: 'clamp(32px, 6vw, 48px)' }}>
+          <div style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0066cc', marginBottom: '12px' }}>
+            Our Authors
+          </div>
+          <h1 style={{
+            fontSize: 'clamp(32px, 5vw, 48px)',
+            fontWeight: '700',
+            lineHeight: 1.05,
+            letterSpacing: '-0.025em',
+            color: '#1a1a1a',
+            marginBottom: '16px',
+          }}>
+            Authors
+          </h1>
+          <p style={{
+            fontSize: '15px',
+            lineHeight: '1.6',
+            color: '#6e6e73',
+            maxWidth: '560px',
+          }}>
+            Voices shaping the conversation at the intersection of law, technology, and decision intelligence.
+          </p>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '16px',
+        }}>
+          {AUTHORS.map((author) => (
+            <div
+              key={author.name}
+              style={{
+                backgroundColor: '#ffffff',
+                border: hoveredAuthor === author.name ? '1px solid #0066cc' : '1px solid rgba(0,0,0,0.08)',
+                borderRadius: '12px',
+                padding: '28px 24px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                boxShadow: hoveredAuthor === author.name ? '0 4px 12px rgba(0,102,204,0.1)' : 'none',
+              }}
+              onMouseEnter={() => setHoveredAuthor(author.name)}
+              onMouseLeave={() => setHoveredAuthor(null)}
+            >
+              <AuthorAvatar initials={author.initials} size="lg" />
+
+              <div>
+                <h2 style={{
+                  fontSize: '17px',
+                  fontWeight: '600',
+                  color: '#1a1a1a',
+                  marginBottom: '6px',
+                  lineHeight: 1.2,
+                }}>
+                  {author.name}
+                </h2>
+                <p style={{
+                  fontSize: '11px',
+                  fontWeight: '500',
+                  lineHeight: '1.5',
+                  color: '#0066cc',
+                  marginBottom: '10px',
+                }}>
+                  {author.title}
+                </p>
+                <p style={{
+                  fontSize: '13px',
+                  lineHeight: '1.6',
+                  color: '#6e6e73',
+                }}>
+                  {author.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
 
 const AUTHORS = [
   {
@@ -55,86 +142,3 @@ const AUTHORS = [
     description: 'Open source tool builder for small law practices. He advocates for accessible legal technology that lowers barriers to justice.',
   },
 ];
-
-export default function AuthorsPage() {
-  return (
-    <main style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#1a1a1a', paddingTop: '120px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px 100px' }}>
-        <div style={{ marginBottom: '64px' }}>
-          <div style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#1a1a1a', marginBottom: '12px' }}>
-            Our Authors
-          </div>
-          <h1 style={{
-            fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
-            fontSize: 'clamp(36px, 5vw, 52px)',
-            fontWeight: '700',
-            lineHeight: '1.1',
-            letterSpacing: '-0.02em',
-            color: '#1a1a1a',
-            marginBottom: '24px',
-          }}>
-            Authors
-          </h1>
-          <p style={{
-            fontSize: '17px',
-            lineHeight: '1.7',
-            color: '#737373',
-            maxWidth: '560px',
-          }}>
-            Voices shaping the conversation at the intersection of law, technology, and decision intelligence.
-          </p>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-          gap: '1px',
-          backgroundColor: '#e5e5e5',
-        }}>
-          {AUTHORS.map((author) => (
-            <div
-              key={author.name}
-              style={{
-                backgroundColor: '#ffffff',
-                padding: '40px 36px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '20px',
-              }}
-            >
-              <AuthorAvatar initials={author.initials} size="lg" />
-
-              <div>
-                <h2 style={{
-                  fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
-                  fontSize: '20px',
-                  fontWeight: '600',
-                  color: '#1a1a1a',
-                  marginBottom: '8px',
-                  lineHeight: '1.3',
-                }}>
-                  {author.name}
-                </h2>
-                <p style={{
-                  fontSize: '14px',
-                  lineHeight: '1.5',
-                  color: '#737373',
-                  marginBottom: '16px',
-                }}>
-                  {author.title}
-                </p>
-                <p style={{
-                  fontSize: '14px',
-                  lineHeight: '1.7',
-                  color: '#737373',
-                }}>
-                  {author.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
-  );
-}
