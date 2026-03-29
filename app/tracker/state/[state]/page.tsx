@@ -329,7 +329,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
               Related States ({state.region})
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-h-0">
               {relatedStates.map((relatedState) => (
                 <Link 
                   key={relatedState.slug}
