@@ -4,6 +4,64 @@ import { states } from '../../../lib/states';
 import { TRACKER_CONTENT } from '../../../lib/tracker-content';
 import { Metadata } from 'next';
 
+const BASE_URL = 'decisionandlaw.com';
+
+function getStateJsonLd(state: any, baseUrl: string) {
+  const statusText = state.aiLegalStatus === 'enacted' 
+    ? 'Comprehensive AI legislation enacted' 
+    : state.aiLegalStatus === 'active-legislation' 
+    ? 'Active AI legislation pending' 
+    : state.aiLegalStatus === 'monitoring' 
+    ? 'Monitoring AI developments' 
+    : 'No specific AI legislation';
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `https://${baseUrl}/tracker/state/${state.slug}#webpage`,
+    'url': `https://${baseUrl}/tracker/state/${state.slug}`,
+    'name': `${state.name} AI Law for Lawyers 2025`,
+    'description': `Complete guide to AI regulations and legal requirements for lawyers in ${state.name}. Current status: ${statusText}.`,
+    'inLanguage': 'en-US',
+    'isPartOf': {
+      '@type': 'WebSite',
+      '@id': `https://${baseUrl}#website`,
+      'url': `https://${baseUrl}`,
+      'name': 'Decision&Law',
+      'description': 'AI Legal Intelligence for US Professionals',
+    },
+    'breadcrumb': {
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': `https://${baseUrl}`
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Tracker',
+          'item': `https://${baseUrl}/tracker`
+        },
+        {
+          '@type': 'ListItem',
+          'position': 3,
+          'name': 'States',
+          'item': `https://${baseUrl}/tracker/state`
+        },
+        {
+          '@type': 'ListItem',
+          'position': 4,
+          'name': state.name,
+          'item': `https://${baseUrl}/tracker/state/${state.slug}`
+        }
+      ]
+    },
+  };
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
   const { state: stateSlug } = await params;
   const state = states.find(s => s.slug === stateSlug);
@@ -11,8 +69,82 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!state) {
     return {
       title: 'State Not Found | Decision&Law',
-      description: 'The requested state information could not be found.',
+      description: 'The requested article could not be found.',
     };
+  }
+
+  return {
+    title: `${state.name} AI Law for Lawyers 2025 | Decision&Law`,
+    description: `Complete guide to AI regulations and legal requirements for lawyers in ${state.name}. Current status: ${state.aiLegalStatus === 'enacted' ? 'Comprehensive AI legislation enacted' : state.aiLegalStatus === 'active-legislation' ? 'Active AI legislation pending' : state.aiLegalStatus === 'monitoring' ? 'Monitoring AI developments' : 'No specific AI legislation'}.`,
+    keywords: `${state.name} AI law, ${state.name} artificial intelligence regulations, ${state.name} legal AI requirements, ${state.abbreviation} AI compliance, ${state.name} bar association AI guidance`,
+    alternates: {
+      canonical: `https://${BASE_URL}/tracker/state/${stateSlug}`,
+    },
+    openGraph: {
+      title: `${state.name} AI Law for Lawyers 2025 | Decision&Law`,
+      description: `AI regulations and legal framework for legal professionals in ${state.name}`,
+      url: `https://${BASE_URL}/tracker/state/${stateSlug}`,
+      type: 'article',
+      siteName: 'Decision&Law',
+    },
+  };
+}
+
+export default async function StateDetailPage({ params }: { params: Promise<{ state: string }> }) {
+  const { state: stateSlug } = await params;
+  
+  const state = states.find(s => s.slug === stateSlug);
+  
+  if (!state) {
+    notFound();
+  }
+
+  const jsonLd = getStateJsonLd(state, BASE_URL);
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'enacted':
+        return 'bg-green-100 text-green-800 border-green-200';
+      case 'active-legislation':
+        return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'monitoring':
+        return 'bg-gray-100 text-gray-600 border-gray-200';
+      case 'no-activity':
+        return 'bg-gray-100 text-gray-500 border-gray-200';
+      default:
+        return 'bg-gray-100 text-gray-600 border-gray-200';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'enacted':
+        return 'Enacted';
+      case 'active-legislation':
+        return 'Active Legislation';
+      case 'monitoring':
+        return 'Monitoring';
+      case 'no-activity':
+        return 'No Activity';
+      default:
+        return 'Unknown';
+    }
+  };
+
+  const getIntroductoryPhrase = (name: string, status: string) => {
+    switch (status) {
+      case 'enacted':
+        return `${name} has enacted comprehensive AI legislation affecting legal professionals statewide.`;
+      case 'active-legislation':
+        return `${name} is currently considering AI legislation that will impact legal practice and client services.`;
+      case 'monitoring':
+        return `${name} is actively monitoring AI developments while federal regulations continue to evolve.`;
+      case 'no-activity':
+        return `${name} has not yet enacted specific AI legislation, but federal rules still apply to legal practitioners.`;
+      default:
+        return `${name} AI regulatory landscape continues to evolve.`;
+    }
+  };
   }
 
   return {
@@ -151,6 +283,10 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
 
   return (
     <div className="min-h-screen bg-white text-[#1a1a1a] pt-[120px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container mx-auto px-4 py-8">
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm">

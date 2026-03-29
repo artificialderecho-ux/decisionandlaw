@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   authors: [{ name: "Decision&Law Editorial Team", url: BASE_URL }],
   creator: "Decision&Law",
   publisher: "Decision&Law",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    minimumScale: 1,
+    userScalable: true,
+  },
   robots: {
     index: true,
     follow: true,

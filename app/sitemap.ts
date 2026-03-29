@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { allArticles } from 'contentlayer/generated';
+import { states } from './lib/states';
 
 const BASE_URL = 'https://decisionandlaw.com';
 
@@ -105,6 +106,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const stateRoutes: MetadataRoute.Sitemap = states.map((state) => ({
+    url: `${BASE_URL}/tracker/state/${state.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
   const articleRoutes: MetadataRoute.Sitemap = allArticles.map((article) => ({
     url: `${BASE_URL}/news/${article.slug}`,
     lastModified: article.lastModified ? new Date(article.lastModified) : new Date(article.date),
@@ -126,5 +134,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...guideRoutes, ...toolRoutes];
+  return [...staticRoutes, ...stateRoutes, ...articleRoutes, ...guideRoutes, ...toolRoutes];
 }
