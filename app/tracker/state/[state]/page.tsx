@@ -100,6 +100,10 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     keywords: `${state.name} AI law, ${state.name} artificial intelligence regulations, ${state.name} legal AI requirements, ${state.abbreviation} AI compliance, ${state.name} bar association AI guidance`,
     alternates: {
       canonical: `https://${BASE_URL}/tracker/state/${stateSlug}`,
+      languages: {
+        'en-US': `https://${BASE_URL}/tracker/state/${stateSlug}`,
+        'x-default': `https://${BASE_URL}/tracker/state/${stateSlug}`,
+      },
     },
     openGraph: {
       title: `${state.name} AI Law for Lawyers 2025 | Decision&Law`,

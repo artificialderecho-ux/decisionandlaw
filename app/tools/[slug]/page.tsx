@@ -31,6 +31,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `${tool.description} Best for: ${tool.bestFor}`,
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        'en-US': canonicalUrl,
+        'x-default': canonicalUrl,
+      },
     },
     openGraph: {
       title: `${tool.name} Review for Legal Teams | Decision&Law`,
