@@ -140,25 +140,6 @@ export default function HomePage() {
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </Link>
-              <Link
-                href="/newsletter"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "14px 28px",
-                  backgroundColor: "transparent",
-                  border: "1px solid rgba(0,0,0,0.15)",
-                  color: "#1a1a1a",
-                  textDecoration: "none",
-                  fontSize: "13px",
-                  fontWeight: "500",
-                  borderRadius: "8px",
-                  transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                }}
-              >
-                Get Newsletter
-              </Link>
             </div>
           </div>
         </div>
@@ -300,51 +281,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section style={{
-        backgroundColor: "#fafafa",
-        borderTop: "1px solid rgba(0,0,0,0.06)",
-      }}>
-        <div style={{
-          maxWidth: "560px",
-          margin: "0 auto",
-          padding: "clamp(80px, 12vw, 140px) clamp(16px, 4vw, 48px)",
-          textAlign: "center",
-        }}>
-          <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "16px" }}>
-            Newsletter
-          </div>
-          <h2 style={{ fontSize: "clamp(26px, 4vw, 36px)", fontWeight: "700", color: "#1a1a1a", marginBottom: "16px", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-            Stay Ahead of AI Law
-          </h2>
-          <p style={{ color: "#6e6e73", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px" }}>
-            Weekly briefings on legislation, case law, and tool reviews — written for legal professionals.
-          </p>
-          <Link
-            href="/newsletter"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "14px 32px",
-              backgroundColor: "#0066cc",
-              color: "#ffffff",
-              textDecoration: "none",
-              fontSize: "13px",
-              fontWeight: "600",
-              letterSpacing: "0.04em",
-              borderRadius: "8px",
-              transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
-            }}
-          >
-            Subscribe Free
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <p style={{ marginTop: "16px", fontSize: "12px", color: "#8e8e93" }}>No spam. Unsubscribe anytime.</p>
-        </div>
-      </section>
     </main>
   )
 }

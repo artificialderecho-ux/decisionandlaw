@@ -189,52 +189,6 @@ export default function NewsPageClient({ articles }: { articles: Article[] }) {
             ))}
           </div>
         </div>
-
-        <div style={{
-          backgroundColor: '#fafafa',
-          borderRadius: '16px',
-          padding: 'clamp(32px, 5vw, 48px)',
-          border: '1px solid rgba(0,0,0,0.06)',
-        }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '32px',
-            alignItems: 'center',
-          }}>
-            <div>
-              <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '12px', color: '#1a1a1a', letterSpacing: '-0.02em' }}>
-                Stay Updated
-              </h2>
-              <p style={{ fontSize: '15px', lineHeight: '1.7', color: '#6e6e73' }}>
-                Get weekly updates on AI legal developments delivered to your inbox.
-              </p>
-            </div>
-            <div>
-              <Link
-                href="/newsletter"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '14px 28px',
-                  backgroundColor: '#0066cc',
-                  color: '#ffffff',
-                  textDecoration: 'none',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  borderRadius: '8px',
-                  transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
-                }}
-              >
-                Subscribe to Newsletter
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
       </div>
     </main>
   );

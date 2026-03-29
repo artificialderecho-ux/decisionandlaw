@@ -14,8 +14,7 @@ export default function UnderConstruction({ section }: { section?: string }) {
           {section || 'This Section'} Is Coming Soon
         </h1>
         <p style={{ color: '#737373', marginBottom: '32px' }}>
-          We're building something worth reading. 
-          Check back soon or subscribe to be notified.
+          We're building something worth reading. Check back soon.
         </p>
         <div className="flex gap-4 justify-center">
           <a href="/" 

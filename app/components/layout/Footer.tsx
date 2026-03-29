@@ -18,7 +18,6 @@ const FOOTER_LINKS = {
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Newsletter", href: "/newsletter" },
     { label: "Contact", href: "mailto:artificialderecho@gmail.com" },
   ],
   Legal: [
@@ -172,23 +171,6 @@ export default function Footer() {
             <p style={descriptionStyle}>
               Legal intelligence for the AI era. Legislation tracking, tool reviews, and analysis for US legal professionals.
             </p>
-            <Link
-              href="/newsletter"
-              style={ctaStyle}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.opacity = "0.9"
-                e.currentTarget.style.transform = "translateY(-1px)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.opacity = "1"
-                e.currentTarget.style.transform = "translateY(0)"
-              }}
-            >
-              Subscribe to Newsletter
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
 
           {/* Link columns */}

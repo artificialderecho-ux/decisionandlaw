@@ -219,21 +219,6 @@ export default function Navbar() {
                   </Link>
                 ))}
               </nav>
-
-              <Link
-                href="/newsletter"
-                style={ctaStyle}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = "0.85"
-                  e.currentTarget.style.transform = "scale(1.02)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = "1"
-                  e.currentTarget.style.transform = "scale(1)"
-                }}
-              >
-                Subscribe
-              </Link>
             </>
           )}
 
@@ -271,13 +256,6 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/newsletter"
-              onClick={() => setMobileOpen(false)}
-              style={mobileCtaStyle}
-            >
-              Subscribe to Newsletter
-            </Link>
           </nav>
         )}
       </header>
