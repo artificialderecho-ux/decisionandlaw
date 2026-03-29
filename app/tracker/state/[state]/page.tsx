@@ -249,7 +249,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
               href={state.barUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3 self-start"
+              className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3 h-auto"
             >
               <div className="w-8 h-8 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#0066cc] group-hover:text-white transition-colors shrink-0 mt-1">
                 <svg className="w-3.5 h-3.5 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -275,7 +275,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
               href={state.legislatureUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3 self-start"
+              className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3 h-auto"
             >
               <div className="w-8 h-8 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#0066cc] group-hover:text-white transition-colors shrink-0 mt-1">
                 <svg className="w-3.5 h-3.5 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -299,7 +299,7 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
 
             <a 
               href="/tracker/aba-opinions"
-              className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3 self-start"
+              className="bg-white border border-[#e5e5e5] p-4 hover:border-[#0066cc] hover:shadow-md transition-all duration-200 group flex items-start gap-3 h-auto"
             >
               <div className="w-8 h-8 bg-[#f4f4f5] flex items-center justify-center group-hover:bg-[#0066cc] group-hover:text-white transition-colors shrink-0 mt-1">
                 <svg className="w-3.5 h-3.5 text-[#1a1a1a] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
