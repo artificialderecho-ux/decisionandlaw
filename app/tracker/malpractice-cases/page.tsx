@@ -5,6 +5,15 @@ import MalpracticeCasesClient from './MalpracticeCasesClient';
 export const metadata: Metadata = {
   title: 'AI Malpractice Cases | Decision&Law',
   description: 'Track legal malpractice cases involving artificial intelligence, including AI research errors, confidentiality breaches, and competence issues affecting legal professionals.',
+  alternates: {
+    canonical: 'https://decisionandlaw.com/tracker/malpractice-cases',
+  },
+  openGraph: {
+    title: 'AI Malpractice Cases | Decision&Law',
+    description: 'Track legal malpractice cases involving artificial intelligence.',
+    url: 'https://decisionandlaw.com/tracker/malpractice-cases',
+    siteName: 'Decision&Law',
+  },
 };
 
 export default function MalpracticeCasesPage() {

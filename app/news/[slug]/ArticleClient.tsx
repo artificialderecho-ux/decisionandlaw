@@ -10,6 +10,7 @@ import {
   RelatedCases 
 } from '../../components/article';
 import ArticleDisclaimer from '../../components/article/ArticleDisclaimer';
+import { NewsArticleStructuredData } from '../../components/StructuredData';
 
 interface ArticleClientProps {
   article: any;
@@ -34,7 +35,16 @@ export default function ArticleClient({ article }: ArticleClientProps) {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#ffffff', color: '#1a1a1a' }}>
+    <>
+      <NewsArticleStructuredData
+        headline={article.title}
+        datePublished={article.date}
+        dateModified={article.lastModified || article.date}
+        author={article.author}
+        slug={article.slug}
+        description={article.metaDescription || article.ogDescription || ''}
+      />
+      <div className="min-h-screen" style={{ backgroundColor: '#ffffff', color: '#1a1a1a' }}>
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="mb-8">
@@ -201,6 +211,6 @@ export default function ArticleClient({ article }: ArticleClientProps) {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }

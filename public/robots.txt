@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://decisionandlaw.com/sitemap.xml

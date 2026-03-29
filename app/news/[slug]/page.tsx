@@ -26,18 +26,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const canonicalUrl = `https://decisionandlaw.com/news/${slug}`;
+
   return {
     title: article.seoTitle || article.title,
     description: article.metaDescription || article.ogDescription || '',
     keywords: article.topics?.join(', '),
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: article.ogTitle || article.seoTitle || article.title,
       description: article.ogDescription || article.metaDescription || '',
+      url: canonicalUrl,
       type: 'article',
       publishedTime: new Date(article.date).toISOString(),
       modifiedTime: article.lastModified ? new Date(article.lastModified).toISOString() : undefined,
       authors: [article.author],
-      images: article.ogImage ? [article.ogImage] : [],
+      images: article.ogImage ? [{ url: article.ogImage, alt: article.title }] : [],
+      siteName: 'Decision&Law',
     },
     twitter: {
       card: 'summary_large_image',

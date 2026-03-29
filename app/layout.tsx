@@ -10,9 +10,46 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const BASE_URL = 'https://decisionandlaw.com';
+
 export const metadata: Metadata = {
-  title: "Decision & Law — Legal Intelligence for the AI Era",
-  description: "Legislation tracking, tool reviews, and case law analysis for US legal professionals navigating the AI transformation.",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Decision&Law — AI Legal Intelligence for US Professionals",
+    template: "%s | Decision&Law",
+  },
+  description: "Legislation tracking, AI malpractice cases, tool reviews, and practice guides for legal experts navigating artificial intelligence.",
+  keywords: ["AI law", "artificial intelligence legal", "legal AI", "AI regulation", "AI legislation", "legal technology", "AI malpractice", "law firm AI", "AI tools legal"],
+  authors: [{ name: "Decision&Law Editorial Team", url: BASE_URL }],
+  creator: "Decision&Law",
+  publisher: "Decision&Law",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Decision&Law",
+    title: "Decision&Law — AI Legal Intelligence for US Professionals",
+    description: "Legislation tracking, AI malpractice cases, tool reviews, and practice guides for legal experts navigating artificial intelligence.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@decisionandlaw",
+    creator: "@decisionandlaw",
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +59,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="canonical" href={BASE_URL} />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+      </head>
       <body className={`${geistSans.variable} antialiased`}>
         <a 
           href="#main-content" 

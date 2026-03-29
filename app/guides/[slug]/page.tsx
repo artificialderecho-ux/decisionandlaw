@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { HowToStructuredData } from '../../components/StructuredData';
 
 export async function generateStaticParams() {
   return [
@@ -12,42 +13,50 @@ export async function generateStaticParams() {
   ];
 }
 
+const GUIDE_META: Record<string, { title: string; description: string }> = {
+  'ai-adoption-law-firms': {
+    title: 'AI Adoption in Law Firms: A Practical Framework | Decision&Law',
+    description: 'A step-by-step framework for evaluating, selecting, and implementing AI tools in legal practice. Includes a 12-month adoption roadmap.',
+  },
+  'contract-review-ai': {
+    title: 'Contract Review with AI: From Pilot to Production | Decision&Law',
+    description: 'How to move from testing AI contract review tools to enterprise-scale deployment. Covers data preparation, playbook configuration, and ROI measurement.',
+  },
+  'ai-governance-ethics-legal-teams': {
+    title: 'AI Governance & Ethics for Legal Teams | Decision&Law',
+    description: 'Establishing responsible AI policies, evaluating bias in legal AI tools, and navigating emerging regulations like the EU AI Act.',
+  },
+  'e-discovery-generative-ai-era': {
+    title: 'E-Discovery in the Generative AI Era | Decision&Law',
+    description: 'How generative AI is transforming document review, managing AI-generated data, and preserving chain of custody in AI environments.',
+  },
+  'ai-powered-legal-research-workflow': {
+    title: 'Building an AI-Powered Legal Research Workflow | Decision&Law',
+    description: 'Moving beyond Boolean search to semantic retrieval. Best practices for combining AI research tools with primary source validation.',
+  },
+  'roi-legal-ai': {
+    title: 'ROI of Legal AI: Metrics That Matter | Decision&Law',
+    description: 'Beyond billable hours — measuring quality, consistency, and time-to-value. Frameworks for building the business case to leadership.',
+  },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const meta: Record<string, { title: string; description: string }> = {
-    'ai-adoption-law-firms': {
-      title: 'AI Adoption in Law Firms: A Practical Framework | Decision&Law',
-      description: 'A step-by-step framework for evaluating, selecting, and implementing AI tools in legal practice. Includes a 12-month adoption roadmap.',
-    },
-    'contract-review-ai': {
-      title: 'Contract Review with AI: From Pilot to Production | Decision&Law',
-      description: 'How to move from testing AI contract review tools to enterprise-scale deployment. Covers data preparation, playbook configuration, and ROI measurement.',
-    },
-    'ai-governance-ethics-legal-teams': {
-      title: 'AI Governance & Ethics for Legal Teams | Decision&Law',
-      description: 'Establishing responsible AI policies, evaluating bias in legal AI tools, and navigating emerging regulations like the EU AI Act.',
-    },
-    'e-discovery-generative-ai-era': {
-      title: 'E-Discovery in the Generative AI Era | Decision&Law',
-      description: 'How generative AI is transforming document review, managing AI-generated data, and preserving chain of custody in AI environments.',
-    },
-    'ai-powered-legal-research-workflow': {
-      title: 'Building an AI-Powered Legal Research Workflow | Decision&Law',
-      description: 'Moving beyond Boolean search to semantic retrieval. Best practices for combining AI research tools with primary source validation.',
-    },
-    'roi-legal-ai': {
-      title: 'ROI of Legal AI: Metrics That Matter | Decision&Law',
-      description: 'Beyond billable hours — measuring quality, consistency, and time-to-value. Frameworks for building the business case to leadership.',
+  const page = GUIDE_META[slug];
+  if (!page) return { title: 'Guide Not Found | Decision&Law' };
+  
+  return {
+    title: page.title,
+    description: page.description,
+    alternates: {
+      canonical: `https://decisionandlaw.com/guides/${slug}`,
     },
   };
-
-  const page = meta[slug];
-  if (!page) return { title: 'Guide Not Found | Decision&Law' };
-  return { title: page.title, description: page.description };
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const meta = GUIDE_META[slug];
 
   const guides: Record<string, React.ReactNode> = {
     'ai-adoption-law-firms': <Guide1 />,
@@ -61,7 +70,18 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const guide = guides[slug];
   if (!guide) notFound();
 
-  return guide;
+  return (
+    <>
+      {meta && (
+        <HowToStructuredData
+          name={meta.title.replace(' | Decision&Law', '')}
+          description={meta.description}
+          slug={slug}
+        />
+      )}
+      {guide}
+    </>
+  );
 }
 
 function Guide1() {
