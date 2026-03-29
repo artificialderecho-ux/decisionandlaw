@@ -6,6 +6,10 @@ import { Metadata } from 'next';
 
 const BASE_URL = 'decisionandlaw.com';
 
+export function generateStaticParams() {
+  return states.map((state) => ({ state: state.slug }));
+}
+
 function getStatusTextForSeo(status: State['aiLegalStatus']) {
   switch (status) {
     case 'enacted':
