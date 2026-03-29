@@ -59,7 +59,7 @@ export default function AcceptableUsePage() {
           <li>Paid courses or training materials</li>
           <li>Paid consulting deliverables</li>
           <li>Paid APIs or data products</li>
-          <li>Paid newsletters (even with attribution)</li>
+          
         </ul>
         <p style={{ fontSize: '16px', lineHeight: 1.7, color: '#6e6e73', marginBottom: '24px' }}>
           Attribution does not cure commercial use. Contact us for licensing: <strong>artificialderecho@gmail.com</strong>

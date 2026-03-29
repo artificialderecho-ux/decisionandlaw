@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         </p>
         <ul style={{ fontSize: '16px', lineHeight: 1.8, color: '#6e6e73', marginBottom: '24px', paddingLeft: '24px' }}>
           <li>User registration</li>
-          <li>Email subscriptions or newsletters</li>
+          
           <li>Account profiles</li>
           <li>Mandatory login systems</li>
         </ul>

@@ -884,7 +884,7 @@ function Guide5() {
           <ul style={bulletList}>
             <li><strong>Key case alerts:</strong> Set up notifications for cited and related cases</li>
             <li><strong>Legislation tracking:</strong> Monitor bills and regulations in relevant areas</li>
-            <li><strong>Topic alerts:</strong> Subscribe to developments in practice areas</li>
+            
             <li><strong>Opposing party monitoring:</strong> Track cases involving opposing counsel or parties</li>
           </ul>
         </section>
