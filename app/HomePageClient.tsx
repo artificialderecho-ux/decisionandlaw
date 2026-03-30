@@ -45,6 +45,18 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
   )
   const latestArticle = sortedArticles[0]
   const remainingArticles = sortedArticles.slice(1, 5)
+  const toolsArticles = sortedArticles
+    .filter((article) => {
+      const haystack = `${article.title} ${article.metaDescription || ''} ${article.ogDescription || ''} ${article.category} ${article.subcategory || ''} ${(article.topics || []).join(' ')}`.toLowerCase()
+      return haystack.includes('tool') || haystack.includes('audit') || haystack.includes('review')
+    })
+    .slice(0, 5)
+  const guidesArticles = sortedArticles
+    .filter((article) => article.category === 'practice-guide' || article.category === 'guidance' || article.title.toLowerCase().includes('guide'))
+    .slice(0, 5)
+  const authorsArticles = sortedArticles
+    .filter((article) => article.authorSlug !== 'editorial-team')
+    .slice(0, 5)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -154,10 +166,10 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
 
         {/* Tools */}
         <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-          <SectionPreview
+          <SectionArticles
             eyebrow="Tools"
             title="Tools"
-            description="Independent reviews and practical evaluations of legal AI tools for research, drafting, compliance, and workflow automation."
+            articles={toolsArticles}
             href="/tools"
             cta="View Tools"
           />
@@ -251,10 +263,10 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
 
         {/* Guides */}
         <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-          <SectionPreview
+          <SectionArticles
             eyebrow="Guides"
             title="Guides"
-            description="Step-by-step practical guides for legal professionals implementing AI responsibly across matters, teams, and compliance programs."
+            articles={guidesArticles}
             href="/guides"
             cta="View Guides"
           />
@@ -262,10 +274,10 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
 
         {/* Authors */}
         <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-          <SectionPreview
+          <SectionArticles
             eyebrow="Authors"
             title="Authors"
-            description="Meet the analysts and contributors behind Decision&Law coverage across news, case analysis, governance, and legal operations."
+            articles={authorsArticles}
             href="/authors"
             cta="View Authors"
           />
@@ -310,32 +322,32 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
   )
 }
 
-function SectionPreview({
+function SectionArticles({
   eyebrow,
   title,
-  description,
+  articles,
   href,
   cta,
 }: {
   eyebrow: string
   title: string
-  description: string
+  articles: Article[]
   href: string
   cta: string
 }) {
+  const featured = articles[0]
+  const list = articles.slice(1)
+
   return (
     <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(52px, 8vw, 72px) clamp(16px, 4vw, 48px)" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", flexWrap: "wrap" as const }}>
-        <div style={{ maxWidth: "760px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", flexWrap: "wrap" as const, marginBottom: "28px" }}>
+        <div>
           <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
             {eyebrow}
           </div>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: "0 0 10px 0", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
             {title}
           </h2>
-          <p style={{ color: "#6e6e73", fontSize: "15px", lineHeight: "1.7", margin: 0 }}>
-            {description}
-          </p>
         </div>
         <Link
           href={href}
@@ -355,6 +367,20 @@ function SectionPreview({
           </svg>
         </Link>
       </div>
+
+      {featured && (
+        <div style={{ marginBottom: "20px" }}>
+          <HomeHorizontalArticle article={featured} />
+        </div>
+      )}
+
+      {list.length > 0 && (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
+          {list.map((article) => (
+            <HomeArticleCard key={`${title}-${article.slug}`} article={article} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
