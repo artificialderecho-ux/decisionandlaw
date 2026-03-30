@@ -2,35 +2,9 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { type Article } from "contentlayer/generated"
+import AuthorAvatar from "./components/AuthorAvatar"
 import { WebsiteStructuredData } from "./components/StructuredData"
-
-const FEATURED_ARTICLES = [
-  {
-    slug: "california-sb-1047-ai-liability-lawyers",
-    title: "California's SB-1047 and What It Means for Law Firm Liability",
-    description: "The landmark AI safety bill creates new exposure for firms deploying AI in client-facing workflows. Here's what you need to know.",
-    category: "Legislation",
-    state: "California",
-    date: "Mar 1, 2025",
-    readingTime: 8,
-  },
-  {
-    slug: "harvey-ai-review-2025",
-    title: "Harvey AI Review 2025: Is It Worth the Enterprise Price?",
-    description: "We put Harvey through its paces across research, drafting, and deposition prep. The results are nuanced.",
-    category: "Tool Review",
-    date: "Feb 28, 2025",
-    readingTime: 12,
-  },
-  {
-    slug: "aba-formal-opinion-512-ai",
-    title: "ABA Formal Opinion 512: Competence in the Age of AI",
-    description: "The ABA has spoken. Every attorney using AI tools must now meet a new standard of technological competence.",
-    category: "ABA Ethics",
-    date: "Feb 25, 2025",
-    readingTime: 6,
-  },
-]
 
 const TRACKER_HIGHLIGHTS = [
   { state: "California", status: "enacted", slug: "california" },
@@ -48,8 +22,29 @@ const STATUS_COLORS: Record<string, { bg: string; text: string; label: string }>
   "no-activity": { bg: "rgba(0,0,0,0.04)", text: "#8e8e93", label: "No Activity" },
 }
 
-export default function HomePageClient() {
+const AUTHOR_INITIALS: Record<string, string> = {
+  'Elena Markov': 'EM',
+  'James Okafor': 'JO',
+  'Sofia Chen': 'SC',
+  'Rafael Morales': 'RM',
+  'Anya Volkov': 'AV',
+  'Kwame Asante': 'KA',
+  'Isla Vinter': 'IV',
+  'Hiro Tanaka': 'HT',
+  'Decision & Law Editorial Team': 'DL',
+}
+
+function getInitials(authorName: string): string {
+  return AUTHOR_INITIALS[authorName] || authorName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+}
+
+export default function HomePageClient({ articles }: { articles: Article[] }) {
   const [isMobile, setIsMobile] = useState(false)
+  const sortedArticles = [...articles].sort((a, b) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+  const latestArticle = sortedArticles[0]
+  const remainingArticles = sortedArticles.slice(1, 5)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -146,9 +141,44 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* Latest News */}
+        <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
+              <div>
+                <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+                  Latest Coverage
+                </div>
+                <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
+                  Latest News
+                </h2>
+              </div>
+              <Link href="/news" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
+                View all
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+
+            {latestArticle && (
+              <div style={{ marginBottom: "20px" }}>
+                <HomeHorizontalArticle article={latestArticle} />
+              </div>
+            )}
+
+            {remainingArticles.length > 0 && (
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
+                {remainingArticles.map((article) => (
+                  <HomeArticleCard key={article.slug} article={article} />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* Stats */}
         <div style={{
-          borderTop: "1px solid rgba(0,0,0,0.06)",
           borderBottom: "1px solid rgba(0,0,0,0.06)",
           backgroundColor: "#fafafa",
           padding: "32px clamp(16px, 4vw, 48px)",
@@ -169,45 +199,6 @@ export default function HomePageClient() {
             </div>
           ))}
         </div>
-
-        {/* Featured Articles */}
-        <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
-              <div>
-                <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
-                  Latest Coverage
-                </div>
-                <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-                  Recent Articles
-                </h2>
-              </div>
-              <Link href="/news" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
-                View all
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr", gap: "16px" }}>
-              <div style={{ backgroundColor: "#ffffff", padding: "40px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)" }}>
-                <ArticleCard article={FEATURED_ARTICLES[0]} large />
-              </div>
-              <div style={{ backgroundColor: "#ffffff", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)", display: "flex", flexDirection: "column" as const, overflow: "hidden" }}>
-                {FEATURED_ARTICLES.slice(1).map((article, i) => (
-                  <div key={article.slug} style={{
-                    padding: "32px",
-                    borderBottom: i === 0 ? "1px solid rgba(0,0,0,0.06)" : "none",
-                    flex: 1,
-                  }}>
-                    <ArticleCard article={article} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Tracker Preview */}
         <section style={{
@@ -286,7 +277,55 @@ export default function HomePageClient() {
   )
 }
 
-function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTICLES[0]; large?: boolean }) {
+function HomeHorizontalArticle({ article }: { article: Article }) {
+  const initials = getInitials(article.author)
+
+  return (
+    <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}>
+      <div style={{
+        backgroundColor: "#ffffff",
+        border: "1px solid rgba(0,0,0,0.08)",
+        borderRadius: "14px",
+        padding: "24px",
+        display: "grid",
+        gridTemplateColumns: "minmax(0, 1fr) auto",
+        gap: "20px",
+        alignItems: "center",
+      }}>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "10px" }}>
+            {article.category}
+          </div>
+          <h3 style={{
+            fontSize: "clamp(20px, 3vw, 28px)",
+            fontWeight: "700",
+            color: "#1a1a1a",
+            lineHeight: "1.25",
+            marginBottom: "10px",
+            letterSpacing: "-0.02em",
+          }}>
+            {article.title}
+          </h3>
+          <p style={{ color: "#6e6e73", fontSize: "14px", lineHeight: "1.65", margin: 0 }}>
+            {article.metaDescription || article.ogDescription || ""}
+          </p>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", justifySelf: "end" }}>
+          <AuthorAvatar initials={initials} size="sm" />
+          <div style={{ fontSize: "12px", color: "#8e8e93", whiteSpace: "nowrap" }}>
+            <div style={{ color: "#1a1a1a", fontWeight: "500", marginBottom: "2px" }}>{article.author}</div>
+            <div>
+              {new Date(article.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              {article.readingTime ? ` · ${article.readingTime} min read` : ""}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+function HomeArticleCard({ article }: { article: Article }) {
   return (
     <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}
       onMouseEnter={(e) => {
@@ -306,10 +345,10 @@ function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTI
         color: "#0066cc",
         marginBottom: "12px",
       }}>
-        {article.category}{article.state ? ` — ${article.state}` : ""}
+        {article.category}
       </div>
       <h3 style={{
-        fontSize: large ? "clamp(20px, 3vw, 26px)" : "17px",
+        fontSize: "17px",
         fontWeight: "600",
         color: "#1a1a1a",
         lineHeight: "1.3",
@@ -321,14 +360,15 @@ function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTI
       </h3>
       <p style={{
         color: "#6e6e73",
-        fontSize: large ? "15px" : "13px",
+        fontSize: "13px",
         lineHeight: "1.65",
         marginBottom: "16px",
       }}>
-        {article.description}
+        {article.metaDescription || article.ogDescription || ""}
       </p>
       <div style={{ fontSize: "11px", color: "#8e8e93", letterSpacing: "0.04em" }}>
-        {article.date} · {article.readingTime} min read
+        {new Date(article.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+        {article.readingTime ? ` · ${article.readingTime} min read` : ""}
       </div>
     </Link>
   )

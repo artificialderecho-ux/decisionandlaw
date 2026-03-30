@@ -112,14 +112,89 @@ function ArticleCard({ article }: { article: Article }) {
   );
 }
 
+function FeaturedHorizontalArticle({ article }: { article: Article }) {
+  const initials = getInitials(article.author);
+
+  return (
+    <Link href={`/news/${article.slug}`} style={{ textDecoration: 'none' }}>
+      <div
+        style={{
+          backgroundColor: '#ffffff',
+          border: '1px solid rgba(0,0,0,0.08)',
+          borderRadius: '14px',
+          padding: '24px',
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1fr) auto',
+          gap: '20px',
+          alignItems: 'center',
+          transition: 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = '#0066cc';
+          e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,102,204,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+      >
+        <div style={{ minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px', flexWrap: 'wrap' }}>
+            <span
+              style={{
+                padding: '4px 10px',
+                fontSize: '10px',
+                fontWeight: '600',
+                letterSpacing: '0.04em',
+                backgroundColor: 'rgba(0,102,204,0.08)',
+                color: '#0066cc',
+                borderRadius: '9999px',
+                textTransform: 'uppercase',
+              }}
+            >
+              {article.category}
+            </span>
+            <span style={{ fontSize: '12px', color: '#8e8e93' }}>
+              {new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+            </span>
+          </div>
+          <h2
+            style={{
+              fontSize: 'clamp(22px, 3.5vw, 30px)',
+              fontWeight: '700',
+              color: '#1a1a1a',
+              marginBottom: '10px',
+              lineHeight: '1.25',
+              letterSpacing: '-0.02em',
+            }}
+          >
+            {article.title}
+          </h2>
+          <p style={{ fontSize: '14px', color: '#6e6e73', lineHeight: '1.7', margin: 0 }}>
+            {article.metaDescription || article.ogDescription || ''}
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', justifySelf: 'end' }}>
+          <AuthorAvatar initials={initials} size="sm" />
+          <div style={{ fontSize: '12px', color: '#8e8e93', whiteSpace: 'nowrap' }}>
+            <div style={{ color: '#1a1a1a', fontWeight: '500', marginBottom: '2px' }}>{article.author}</div>
+            {article.readingTime ? <div>{article.readingTime} min read</div> : null}
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function NewsPageClient({ articles }: { articles: Article[] }) {
   const sortedArticles = [...articles].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   const categories = ['All', ...Array.from(new Set(articles.map(article => article.category)))];
-  const featuredArticles = sortedArticles.filter(article => article.featured);
-  const regularArticles = sortedArticles.filter(article => !article.featured);
+  const latestArticle = sortedArticles[0];
+  const remainingArticles = sortedArticles.slice(1);
 
   return (
     <main style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#1a1a1a' }}>
@@ -158,37 +233,33 @@ export default function NewsPageClient({ articles }: { articles: Article[] }) {
           ))}
         </div>
 
-        {featuredArticles.length > 0 && (
+        {latestArticle && (
+          <div style={{ marginBottom: 'clamp(36px, 6vw, 56px)' }}>
+            <h2 style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8e8e93', marginBottom: '18px' }}>
+              Latest Article
+            </h2>
+            <FeaturedHorizontalArticle article={latestArticle} />
+          </div>
+        )}
+
+        {remainingArticles.length > 0 && (
           <div style={{ marginBottom: 'clamp(48px, 8vw, 80px)' }}>
             <h2 style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8e8e93', marginBottom: '24px' }}>
-              Featured Stories
+              More News
             </h2>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-              gap: '20px',
-            }}>
-              {featuredArticles.map((article) => (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: '16px',
+              }}
+            >
+              {remainingArticles.map((article) => (
                 <ArticleCard key={article.slug} article={article} />
               ))}
             </div>
           </div>
         )}
-
-        <div style={{ marginBottom: 'clamp(48px, 8vw, 80px)' }}>
-          <h2 style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8e8e93', marginBottom: '24px' }}>
-            Latest Articles
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '16px',
-          }}>
-            {regularArticles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        </div>
       </div>
     </main>
   );
