@@ -6,22 +6,6 @@ import { type Article } from "contentlayer/generated"
 import AuthorAvatar from "./components/AuthorAvatar"
 import { WebsiteStructuredData } from "./components/StructuredData"
 
-const TRACKER_HIGHLIGHTS = [
-  { state: "California", status: "enacted", slug: "california" },
-  { state: "New York", status: "enacted", slug: "new-york" },
-  { state: "Texas", status: "active-legislation", slug: "texas" },
-  { state: "Florida", status: "active-legislation", slug: "florida" },
-  { state: "Colorado", status: "enacted", slug: "colorado" },
-  { state: "Illinois", status: "active-legislation", slug: "illinois" },
-]
-
-const STATUS_COLORS: Record<string, { bg: string; text: string; label: string }> = {
-  enacted: { bg: "rgba(34,197,94,0.1)", text: "#16a34a", label: "Enacted" },
-  "active-legislation": { bg: "rgba(0,102,204,0.08)", text: "#0066cc", label: "Active" },
-  monitoring: { bg: "rgba(0,0,0,0.04)", text: "#6e6e73", label: "Monitoring" },
-  "no-activity": { bg: "rgba(0,0,0,0.04)", text: "#8e8e93", label: "No Activity" },
-}
-
 const AUTHOR_INITIALS: Record<string, string> = {
   'Elena Markov': 'EM',
   'James Okafor': 'JO',
@@ -43,20 +27,49 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
   const sortedArticles = [...articles].sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   )
-  const latestArticle = sortedArticles[0]
-  const remainingArticles = sortedArticles.slice(1, 5)
-  const toolsArticles = sortedArticles
-    .filter((article) => {
-      const haystack = `${article.title} ${article.metaDescription || ''} ${article.ogDescription || ''} ${article.category} ${article.subcategory || ''} ${(article.topics || []).join(' ')}`.toLowerCase()
-      return haystack.includes('tool') || haystack.includes('audit') || haystack.includes('review')
-    })
-    .slice(0, 5)
-  const guidesArticles = sortedArticles
-    .filter((article) => article.category === 'practice-guide' || article.category === 'guidance' || article.title.toLowerCase().includes('guide'))
-    .slice(0, 5)
-  const authorsArticles = sortedArticles
-    .filter((article) => article.authorSlug !== 'editorial-team')
-    .slice(0, 5)
+  const sectionBuckets: Record<"news" | "tools" | "tracker" | "guides" | "authors", Article[]> = {
+    news: [],
+    tools: [],
+    tracker: [],
+    guides: [],
+    authors: [],
+  }
+
+  sortedArticles.forEach((article) => {
+    const haystack = `${article.title} ${article.metaDescription || ''} ${article.ogDescription || ''} ${article.category} ${article.subcategory || ''} ${(article.topics || []).join(' ')}`.toLowerCase()
+    const isGuide = article.category === 'practice-guide' || article.category === 'guidance' || haystack.includes('guide')
+    const isTracker = article.category === 'legislation' || article.category === 'regulation' || haystack.includes('regulation') || haystack.includes('policy') || haystack.includes('framework')
+    const isTool = haystack.includes('tool') || haystack.includes('audit') || haystack.includes('review')
+    const isAuthorArticle = article.authorSlug !== 'editorial-team'
+
+    if (isGuide) {
+      sectionBuckets.guides.push(article)
+      return
+    }
+
+    if (isTracker) {
+      sectionBuckets.tracker.push(article)
+      return
+    }
+
+    if (isTool) {
+      sectionBuckets.tools.push(article)
+      return
+    }
+
+    if (isAuthorArticle) {
+      sectionBuckets.authors.push(article)
+      return
+    }
+
+    sectionBuckets.news.push(article)
+  })
+
+  const newsArticles = sectionBuckets.news.slice(0, 5)
+  const toolsArticles = sectionBuckets.tools.slice(0, 5)
+  const trackerArticles = sectionBuckets.tracker.slice(0, 5)
+  const guidesArticles = sectionBuckets.guides.slice(0, 5)
+  const authorsArticles = sectionBuckets.authors.slice(0, 5)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -128,10 +141,10 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
           </div>
         </section>
 
-        {/* Latest News */}
+        {/* Latest Coverage */}
         <section style={{ backgroundColor: "#ffffff", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
+            <div style={{ marginBottom: "40px" }}>
               <div>
                 <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
                   Latest Coverage
@@ -140,146 +153,53 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
                   Latest Coverage
                 </h2>
               </div>
-              <Link href="/news" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
-                View all
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
-            {latestArticle && (
-              <div style={{ marginBottom: "20px" }}>
-                <HomeHorizontalArticle article={latestArticle} />
-              </div>
-            )}
-
-            {remainingArticles.length > 0 && (
-              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
-                {remainingArticles.map((article) => (
-                  <HomeArticleCard key={article.slug} article={article} />
-                ))}
-              </div>
-            )}
+            <SectionArticles
+              title="AI Legal News"
+              articles={newsArticles}
+              isMobile={isMobile}
+              compact
+            />
           </div>
         </section>
 
         {/* Tools */}
         <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <SectionArticles
-            eyebrow="Tools"
-            title="Tools"
+            title="AI Legal Tools"
             articles={toolsArticles}
-            href="/tools"
-            cta="View Tools"
+            isMobile={isMobile}
           />
         </section>
 
-        {/* Tracker Preview */}
+        {/* Tracker */}
         <section style={{
           backgroundColor: "#ffffff",
           borderBottom: "1px solid rgba(0,0,0,0.06)",
         }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
-              <div>
-                <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
-                  Tracker Preview
-                </div>
-                <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-                  Tracker Preview
-                </h2>
-                <p style={{ color: "#6e6e73", fontSize: "15px", marginTop: "8px" }}>
-                  Real-time status across all 50 US states
-                </p>
-              </div>
-              <Link href="/tracker" style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 20px",
-                backgroundColor: "#1a1a1a",
-                color: "#ffffff",
-                textDecoration: "none",
-                fontSize: "12px",
-                fontWeight: "600",
-                letterSpacing: "0.04em",
-                borderRadius: "8px",
-                textTransform: "uppercase",
-              }}>
-                View 50-State Tracker
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "12px" }}>
-              {TRACKER_HIGHLIGHTS.map((item) => {
-                const s = STATUS_COLORS[item.status]
-                return (
-                  <Link
-                    key={item.slug}
-                    href={`/tracker/state/${item.slug}`}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      backgroundColor: "#ffffff",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      borderRadius: "10px",
-                      padding: "16px 20px",
-                      textDecoration: "none",
-                      transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "#0066cc";
-                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,102,204,0.1)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    <span style={{ fontSize: "14px", fontWeight: "600", color: "#1a1a1a" }}>{item.state}</span>
-                    <span style={{
-                      fontSize: "10px",
-                      fontWeight: "600",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase" as const,
-                      padding: "4px 10px",
-                      backgroundColor: s.bg,
-                      color: s.text,
-                      borderRadius: "9999px",
-                    }}>
-                      {s.label}
-                    </span>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
+          <SectionArticles
+            title="AI Regulation Tracker"
+            articles={trackerArticles}
+            isMobile={isMobile}
+          />
         </section>
 
         {/* Guides */}
         <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <SectionArticles
-            eyebrow="Guides"
-            title="Guides"
+            title="Practice Guides"
             articles={guidesArticles}
-            href="/guides"
-            cta="View Guides"
+            isMobile={isMobile}
           />
         </section>
 
         {/* Authors */}
         <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <SectionArticles
-            eyebrow="Authors"
             title="Authors"
             articles={authorsArticles}
-            href="/authors"
-            cta="View Authors"
+            isMobile={isMobile}
           />
         </section>
 
@@ -323,49 +243,25 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
 }
 
 function SectionArticles({
-  eyebrow,
   title,
   articles,
-  href,
-  cta,
+  isMobile,
+  compact = false,
 }: {
-  eyebrow: string
   title: string
   articles: Article[]
-  href: string
-  cta: string
+  isMobile: boolean
+  compact?: boolean
 }) {
   const featured = articles[0]
   const list = articles.slice(1)
 
   return (
-    <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(52px, 8vw, 72px) clamp(16px, 4vw, 48px)" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", flexWrap: "wrap" as const, marginBottom: "28px" }}>
-        <div>
-          <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
-            {eyebrow}
-          </div>
-          <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: "0 0 10px 0", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-            {title}
-          </h2>
-        </div>
-        <Link
-          href={href}
-          style={{
-            color: "#0066cc",
-            textDecoration: "none",
-            fontSize: "13px",
-            fontWeight: "500",
-            display: "flex",
-            alignItems: "center",
-            gap: "4px",
-          }}
-        >
-          {cta}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </Link>
+    <div style={compact ? undefined : { maxWidth: "1280px", margin: "0 auto", padding: "clamp(52px, 8vw, 72px) clamp(16px, 4vw, 48px)" }}>
+      <div style={{ marginBottom: "28px" }}>
+        <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: "0 0 10px 0", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
+          {title}
+        </h2>
       </div>
 
       {featured && (
@@ -375,7 +271,7 @@ function SectionArticles({
       )}
 
       {list.length > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
           {list.map((article) => (
             <HomeArticleCard key={`${title}-${article.slug}`} article={article} />
           ))}
@@ -396,7 +292,7 @@ function HomeHorizontalArticle({ article }: { article: Article }) {
         borderRadius: "14px",
         padding: "24px",
         display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) auto",
+        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
         gap: "20px",
         alignItems: "center",
       }}>
