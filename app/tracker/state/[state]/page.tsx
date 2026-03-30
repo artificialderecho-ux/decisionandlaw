@@ -145,7 +145,6 @@ export default async function StateDetailPage({ params }: { params: Promise<{ st
         return `${name} AI regulatory landscape continues to evolve.`;
     }
   };
-  }
 
   const getLawyersContent = (name: string, status: string, slug: string) => {
     const trackerData = TRACKER_CONTENT[slug];
