@@ -107,42 +107,17 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
                 fontSize: "clamp(17px, 2vw, 20px)",
                 lineHeight: "1.7",
                 color: "#6e6e73",
-                marginBottom: "48px",
+                marginBottom: "0",
                 maxWidth: "540px",
               }}>
                 Legislation tracking, tool reviews, and case law analysis for US legal professionals navigating the AI transformation.
               </p>
-
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const }}>
-                <Link
-                  href="/tracker"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "14px 28px",
-                    backgroundColor: "#1a1a1a",
-                    color: "#ffffff",
-                    textDecoration: "none",
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    letterSpacing: "0.04em",
-                    borderRadius: "8px",
-                    transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                  }}
-                >
-                  View 50-State Tracker
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
             </div>
           </div>
         </section>
 
         {/* Latest News */}
-        <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+        <section style={{ backgroundColor: "#ffffff", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
               <div>
@@ -150,7 +125,7 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
                   Latest Coverage
                 </div>
                 <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-                  Latest News
+                  Latest Coverage
                 </h2>
               </div>
               <Link href="/news" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
@@ -180,24 +155,37 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
         {/* Stats */}
         <div style={{
           borderBottom: "1px solid rgba(0,0,0,0.06)",
-          backgroundColor: "#fafafa",
-          padding: "32px clamp(16px, 4vw, 48px)",
-          display: "flex",
-          justifyContent: "center",
-          gap: "clamp(32px, 8vw, 96px)",
-          flexWrap: "wrap" as const,
+          backgroundColor: "#ffffff",
+          padding: "clamp(56px, 8vw, 80px) clamp(16px, 4vw, 48px)",
         }}>
-          {[
-            { num: "50", label: "States Tracked" },
-            { num: "12", label: "AI Laws Enacted" },
-            { num: "23", label: "Bills in Progress" },
-            { num: "47", label: "Tools Reviewed" },
-          ].map(({ num, label }) => (
-            <div key={label} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
-              <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
+          <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+            <div style={{ marginBottom: "28px" }}>
+              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+                Key Metrics
+              </div>
+              <h2 style={{ fontSize: "clamp(24px, 3.5vw, 34px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>
+                Key Metrics
+              </h2>
             </div>
-          ))}
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "clamp(32px, 8vw, 96px)",
+              flexWrap: "wrap" as const,
+            }}>
+              {[
+                { num: "50", label: "States Tracked" },
+                { num: "12", label: "AI Laws Enacted" },
+                { num: "23", label: "Bills in Progress" },
+                { num: "47", label: "Tools Reviewed" },
+              ].map(({ num, label }) => (
+                <div key={label} style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
+                  <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Tracker Preview */}
@@ -209,17 +197,30 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
               <div>
                 <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
-                  Live Tracker
+                  Tracker Preview
                 </div>
                 <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-                  AI Regulation Tracker
+                  Tracker Preview
                 </h2>
                 <p style={{ color: "#6e6e73", fontSize: "15px", marginTop: "8px" }}>
                   Real-time status across all 50 US states
                 </p>
               </div>
-              <Link href="/tracker/state" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
-                Full Index
+              <Link href="/tracker" style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 20px",
+                backgroundColor: "#1a1a1a",
+                color: "#ffffff",
+                textDecoration: "none",
+                fontSize: "12px",
+                fontWeight: "600",
+                letterSpacing: "0.04em",
+                borderRadius: "8px",
+                textTransform: "uppercase",
+              }}>
+                View 50-State Tracker
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
