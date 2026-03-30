@@ -37,15 +37,13 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
 
   sortedArticles.forEach((article) => {
     const haystack = `${article.title} ${article.metaDescription || ''} ${article.ogDescription || ''} ${article.category} ${article.subcategory || ''} ${(article.topics || []).join(' ')}`.toLowerCase()
+    const category = (article.category || '').toLowerCase()
+    const subcategory = (article.subcategory || '').toLowerCase()
     const isAuthorArticle = article.authorSlug !== 'editorial-team'
-    const isGuide = article.category === 'practice-guide' || article.category === 'guidance' || haystack.includes('guide')
-    const isTracker = article.category === 'legislation' || article.category === 'regulation' || haystack.includes('regulation') || haystack.includes('policy') || haystack.includes('framework')
-    const isTool = haystack.includes('tool') || haystack.includes('audit') || haystack.includes('review')
-
-    if (isAuthorArticle) {
-      sectionBuckets.authors.push(article)
-      return
-    }
+    const isGuide = category === 'practice-guide' || category === 'guidance'
+    const isTracker = category === 'legislation' || category === 'regulation'
+    const isTool = category === 'tool-review' || subcategory.includes('procurement') || haystack.includes('tool review')
+    const isNews = ['case-law', 'jurisprudence', 'case-analysis', 'malpractice'].includes(category)
 
     if (isGuide) {
       sectionBuckets.guides.push(article)
@@ -59,6 +57,16 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
 
     if (isTool) {
       sectionBuckets.tools.push(article)
+      return
+    }
+
+    if (isNews) {
+      sectionBuckets.news.push(article)
+      return
+    }
+
+    if (isAuthorArticle) {
+      sectionBuckets.authors.push(article)
       return
     }
 
