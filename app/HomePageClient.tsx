@@ -152,48 +152,23 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
           </div>
         </section>
 
-        {/* Stats */}
-        <div style={{
-          borderBottom: "1px solid rgba(0,0,0,0.06)",
-          backgroundColor: "#ffffff",
-          padding: "clamp(56px, 8vw, 80px) clamp(16px, 4vw, 48px)",
-        }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-            <div style={{ marginBottom: "28px" }}>
-              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
-                Key Metrics
-              </div>
-              <h2 style={{ fontSize: "clamp(24px, 3.5vw, 34px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>
-                Key Metrics
-              </h2>
-            </div>
-            <div style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "clamp(32px, 8vw, 96px)",
-              flexWrap: "wrap" as const,
-            }}>
-              {[
-                { num: "50", label: "States Tracked" },
-                { num: "12", label: "AI Laws Enacted" },
-                { num: "23", label: "Bills in Progress" },
-                { num: "47", label: "Tools Reviewed" },
-              ].map(({ num, label }) => (
-                <div key={label} style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
-                  <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Tools */}
+        <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <SectionPreview
+            eyebrow="Tools"
+            title="Tools"
+            description="Independent reviews and practical evaluations of legal AI tools for research, drafting, compliance, and workflow automation."
+            href="/tools"
+            cta="View Tools"
+          />
+        </section>
 
         {/* Tracker Preview */}
         <section style={{
           backgroundColor: "#ffffff",
-          padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)",
+          borderBottom: "1px solid rgba(0,0,0,0.06)",
         }}>
-          <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
               <div>
                 <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
@@ -273,8 +248,114 @@ export default function HomePageClient({ articles }: { articles: Article[] }) {
             </div>
           </div>
         </section>
+
+        {/* Guides */}
+        <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <SectionPreview
+            eyebrow="Guides"
+            title="Guides"
+            description="Step-by-step practical guides for legal professionals implementing AI responsibly across matters, teams, and compliance programs."
+            href="/guides"
+            cta="View Guides"
+          />
+        </section>
+
+        {/* Authors */}
+        <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <SectionPreview
+            eyebrow="Authors"
+            title="Authors"
+            description="Meet the analysts and contributors behind Decision&Law coverage across news, case analysis, governance, and legal operations."
+            href="/authors"
+            cta="View Authors"
+          />
+        </section>
+
+        {/* Key Metrics */}
+        <section style={{
+          backgroundColor: "#ffffff",
+          padding: "clamp(56px, 8vw, 80px) clamp(16px, 4vw, 48px)",
+        }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+            <div style={{ marginBottom: "28px" }}>
+              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+                Key Metrics
+              </div>
+              <h2 style={{ fontSize: "clamp(24px, 3.5vw, 34px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>
+                Key Metrics
+              </h2>
+            </div>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "clamp(32px, 8vw, 96px)",
+              flexWrap: "wrap" as const,
+            }}>
+              {[
+                { num: "50", label: "States Tracked" },
+                { num: "12", label: "AI Laws Enacted" },
+                { num: "23", label: "Bills in Progress" },
+                { num: "47", label: "Tools Reviewed" },
+              ].map(({ num, label }) => (
+                <div key={label} style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
+                  <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </>
+  )
+}
+
+function SectionPreview({
+  eyebrow,
+  title,
+  description,
+  href,
+  cta,
+}: {
+  eyebrow: string
+  title: string
+  description: string
+  href: string
+  cta: string
+}) {
+  return (
+    <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(52px, 8vw, 72px) clamp(16px, 4vw, 48px)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", flexWrap: "wrap" as const }}>
+        <div style={{ maxWidth: "760px" }}>
+          <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+            {eyebrow}
+          </div>
+          <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: "0 0 10px 0", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
+            {title}
+          </h2>
+          <p style={{ color: "#6e6e73", fontSize: "15px", lineHeight: "1.7", margin: 0 }}>
+            {description}
+          </p>
+        </div>
+        <Link
+          href={href}
+          style={{
+            color: "#0066cc",
+            textDecoration: "none",
+            fontSize: "13px",
+            fontWeight: "500",
+            display: "flex",
+            alignItems: "center",
+            gap: "4px",
+          }}
+        >
+          {cta}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
+    </div>
   )
 }
 
