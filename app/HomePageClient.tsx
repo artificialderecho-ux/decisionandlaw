@@ -2,54 +2,71 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { type Article } from "contentlayer/generated"
+import AuthorAvatar from "./components/AuthorAvatar"
 import { WebsiteStructuredData } from "./components/StructuredData"
 
-const FEATURED_ARTICLES = [
-  {
-    slug: "california-sb-1047-ai-liability-lawyers",
-    title: "California's SB-1047 and What It Means for Law Firm Liability",
-    description: "The landmark AI safety bill creates new exposure for firms deploying AI in client-facing workflows. Here's what you need to know.",
-    category: "Legislation",
-    state: "California",
-    date: "Mar 1, 2025",
-    readingTime: 8,
-  },
-  {
-    slug: "harvey-ai-review-2025",
-    title: "Harvey AI Review 2025: Is It Worth the Enterprise Price?",
-    description: "We put Harvey through its paces across research, drafting, and deposition prep. The results are nuanced.",
-    category: "Tool Review",
-    date: "Feb 28, 2025",
-    readingTime: 12,
-  },
-  {
-    slug: "aba-formal-opinion-512-ai",
-    title: "ABA Formal Opinion 512: Competence in the Age of AI",
-    description: "The ABA has spoken. Every attorney using AI tools must now meet a new standard of technological competence.",
-    category: "ABA Ethics",
-    date: "Feb 25, 2025",
-    readingTime: 6,
-  },
-]
-
-const TRACKER_HIGHLIGHTS = [
-  { state: "California", status: "enacted", slug: "california" },
-  { state: "New York", status: "enacted", slug: "new-york" },
-  { state: "Texas", status: "active-legislation", slug: "texas" },
-  { state: "Florida", status: "active-legislation", slug: "florida" },
-  { state: "Colorado", status: "enacted", slug: "colorado" },
-  { state: "Illinois", status: "active-legislation", slug: "illinois" },
-]
-
-const STATUS_COLORS: Record<string, { bg: string; text: string; label: string }> = {
-  enacted: { bg: "rgba(34,197,94,0.1)", text: "#16a34a", label: "Enacted" },
-  "active-legislation": { bg: "rgba(0,102,204,0.08)", text: "#0066cc", label: "Active" },
-  monitoring: { bg: "rgba(0,0,0,0.04)", text: "#6e6e73", label: "Monitoring" },
-  "no-activity": { bg: "rgba(0,0,0,0.04)", text: "#8e8e93", label: "No Activity" },
+const AUTHOR_INITIALS: Record<string, string> = {
+  'Elena Markov': 'EM',
+  'James Okafor': 'JO',
+  'Sofia Chen': 'SC',
+  'Rafael Morales': 'RM',
+  'Anya Volkov': 'AV',
+  'Kwame Asante': 'KA',
+  'Isla Vinter': 'IV',
+  'Hiro Tanaka': 'HT',
+  'Decision & Law Editorial Team': 'DL',
 }
 
-export default function HomePageClient() {
+type SectionEntry = {
+  id: string
+  title: string
+  description: string
+  href: string
+  meta: string
+}
+
+const TOOLS_ENTRIES: SectionEntry[] = [
+  { id: 'cocounsel', title: 'Casetext (CoCounsel)', description: 'AI legal assistant for research, document review, and deposition preparation.', href: '/tools', meta: 'Research Tool' },
+  { id: 'harvey', title: 'Harvey', description: 'Custom AI trained on legal practice areas including tax, corporate, and international law.', href: '/tools', meta: 'Research Tool' },
+  { id: 'vlex', title: 'vLex', description: 'Global legal intelligence platform with AI-powered search and analytics across jurisdictions.', href: '/tools', meta: 'Research Tool' },
+  { id: 'ironclad', title: 'Ironclad', description: 'Contract lifecycle management with AI for drafting, negotiation, and compliance workflows.', href: '/tools', meta: 'Contracts' },
+  { id: 'relativity', title: 'Relativity', description: 'Industry-standard platform for e-discovery with generative AI capabilities.', href: '/tools', meta: 'E-Discovery' },
+]
+
+const TRACKER_ENTRIES: SectionEntry[] = [
+  { id: 'state-index', title: '50-State Index', description: 'Complete coverage of AI legislation and regulations across all 50 states.', href: '/tracker/state', meta: 'Tracker Module' },
+  { id: 'federal-policy', title: 'Federal AI Policy', description: 'Executive orders, agency guidance, and federal regulatory frameworks.', href: '/tracker/federal-ai-policy', meta: 'Tracker Module' },
+  { id: 'aba-opinions', title: 'ABA Opinions', description: 'Ethics opinions and formal guidance on AI in legal practice.', href: '/tracker/aba-opinions', meta: 'Tracker Module' },
+  { id: 'malpractice-cases', title: 'Malpractice Cases', description: 'Legal malpractice cases involving AI research errors and confidentiality issues.', href: '/tracker/malpractice-cases', meta: 'Tracker Module' },
+]
+
+const GUIDE_ENTRIES: SectionEntry[] = [
+  { id: 'ai-adoption', title: 'AI Adoption in Law Firms: A Practical Framework', description: 'Step-by-step framework for evaluating and implementing AI tools in legal practice.', href: '/guides/ai-adoption-law-firms', meta: 'Practice Guide · 20 min' },
+  { id: 'contract-review', title: 'Contract Review with AI: From Pilot to Production', description: 'How to move from testing AI contract review tools to enterprise deployment.', href: '/guides/contract-review-ai', meta: 'Practice Guide · 18 min' },
+  { id: 'ai-governance', title: 'AI Governance & Ethics for Legal Teams', description: 'Responsible AI policies, bias evaluation, and regulation-readiness for legal teams.', href: '/guides/ai-governance-ethics-legal-teams', meta: 'Practice Guide · 25 min' },
+  { id: 'ediscovery', title: 'E-Discovery in the Generative AI Era', description: 'How generative AI transforms document review and evidence workflows.', href: '/guides/e-discovery-generative-ai-era', meta: 'Practice Guide · 22 min' },
+  { id: 'roi-legal-ai', title: 'ROI of Legal AI: Metrics That Matter', description: 'Frameworks for measuring impact and building a business case for AI adoption.', href: '/guides/roi-legal-ai', meta: 'Practice Guide · 20 min' },
+]
+
+const AUTHOR_ENTRIES: SectionEntry[] = [
+  { id: 'elena', title: 'Elena Markov', description: 'Specialist in algorithmic decision systems and computational ethics.', href: '/authors', meta: 'Author' },
+  { id: 'james', title: 'James Okafor', description: 'Specialist in regulatory risk analysis and automated compliance.', href: '/authors', meta: 'Author' },
+  { id: 'sofia', title: 'Sofia Chen', description: 'Focused on legal data visualization and computational argumentation.', href: '/authors', meta: 'Author' },
+  { id: 'rafael', title: 'Rafael Morales', description: 'Specialist in legal system interoperability and open standards.', href: '/authors', meta: 'Author' },
+  { id: 'anya', title: 'Anya Volkov', description: 'Specialist in cognitive accessibility of automated legal documents.', href: '/authors', meta: 'Author' },
+]
+
+function getInitials(authorName: string): string {
+  return AUTHOR_INITIALS[authorName] || authorName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
+}
+
+export default function HomePageClient({ articles }: { articles: Article[] }) {
   const [isMobile, setIsMobile] = useState(false)
+  const sortedArticles = [...articles].sort((a, b) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+  const newsArticles = sortedArticles.slice(0, 5)
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -112,172 +129,108 @@ export default function HomePageClient() {
                 fontSize: "clamp(17px, 2vw, 20px)",
                 lineHeight: "1.7",
                 color: "#6e6e73",
-                marginBottom: "48px",
+                marginBottom: "0",
                 maxWidth: "540px",
               }}>
                 Legislation tracking, tool reviews, and case law analysis for US legal professionals navigating the AI transformation.
               </p>
-
-              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const }}>
-                <Link
-                  href="/tracker"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "14px 28px",
-                    backgroundColor: "#1a1a1a",
-                    color: "#ffffff",
-                    textDecoration: "none",
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    letterSpacing: "0.04em",
-                    borderRadius: "8px",
-                    transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                  }}
-                >
-                  View 50-State Tracker
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Stats */}
-        <div style={{
-          borderTop: "1px solid rgba(0,0,0,0.06)",
-          borderBottom: "1px solid rgba(0,0,0,0.06)",
-          backgroundColor: "#fafafa",
-          padding: "32px clamp(16px, 4vw, 48px)",
-          display: "flex",
-          justifyContent: "center",
-          gap: "clamp(32px, 8vw, 96px)",
-          flexWrap: "wrap" as const,
-        }}>
-          {[
-            { num: "50", label: "States Tracked" },
-            { num: "12", label: "AI Laws Enacted" },
-            { num: "23", label: "Bills in Progress" },
-            { num: "47", label: "Tools Reviewed" },
-          ].map(({ num, label }) => (
-            <div key={label} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
-              <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Featured Articles */}
-        <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+        {/* Latest Coverage */}
+        <section style={{ backgroundColor: "#ffffff", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
+            <div style={{ marginBottom: "40px" }}>
               <div>
                 <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
                   Latest Coverage
                 </div>
                 <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-                  Recent Articles
+                  Latest Coverage
                 </h2>
               </div>
-              <Link href="/news" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
-                View all
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr", gap: "16px" }}>
-              <div style={{ backgroundColor: "#ffffff", padding: "40px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)" }}>
-                <ArticleCard article={FEATURED_ARTICLES[0]} large />
-              </div>
-              <div style={{ backgroundColor: "#ffffff", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)", display: "flex", flexDirection: "column" as const, overflow: "hidden" }}>
-                {FEATURED_ARTICLES.slice(1).map((article, i) => (
-                  <div key={article.slug} style={{
-                    padding: "32px",
-                    borderBottom: i === 0 ? "1px solid rgba(0,0,0,0.06)" : "none",
-                    flex: 1,
-                  }}>
-                    <ArticleCard article={article} />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <SectionArticles
+              title="AI Legal News"
+              articles={newsArticles}
+              isMobile={isMobile}
+              compact
+            />
           </div>
         </section>
 
-        {/* Tracker Preview */}
+        {/* Tools */}
+        <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <SectionEntries
+            title="AI Legal Tools"
+            entries={TOOLS_ENTRIES}
+            isMobile={isMobile}
+          />
+        </section>
+
+        {/* Tracker */}
         <section style={{
           backgroundColor: "#ffffff",
-          padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)",
+          borderBottom: "1px solid rgba(0,0,0,0.06)",
+        }}>
+          <SectionEntries
+            title="AI Regulation Tracker"
+            entries={TRACKER_ENTRIES}
+            isMobile={isMobile}
+          />
+        </section>
+
+        {/* Guides */}
+        <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <SectionEntries
+            title="Practice Guides"
+            entries={GUIDE_ENTRIES}
+            isMobile={isMobile}
+          />
+        </section>
+
+        {/* Authors */}
+        <section style={{ backgroundColor: "#ffffff", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <SectionEntries
+            title="Authors"
+            entries={AUTHOR_ENTRIES}
+            isMobile={isMobile}
+          />
+        </section>
+
+        {/* Key Metrics */}
+        <section style={{
+          backgroundColor: "#ffffff",
+          padding: "clamp(56px, 8vw, 80px) clamp(16px, 4vw, 48px)",
         }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
-              <div>
-                <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
-                  Live Tracker
-                </div>
-                <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-                  AI Regulation Tracker
-                </h2>
-                <p style={{ color: "#6e6e73", fontSize: "15px", marginTop: "8px" }}>
-                  Real-time status across all 50 US states
-                </p>
+            <div style={{ marginBottom: "28px" }}>
+              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "8px" }}>
+                Key Metrics
               </div>
-              <Link href="/tracker/state" style={{ color: "#0066cc", textDecoration: "none", fontSize: "13px", fontWeight: "500", display: "flex", alignItems: "center", gap: "4px" }}>
-                Full Index
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <h2 style={{ fontSize: "clamp(24px, 3.5vw, 34px)", fontWeight: "700", color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>
+                Key Metrics
+              </h2>
             </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "12px" }}>
-              {TRACKER_HIGHLIGHTS.map((item) => {
-                const s = STATUS_COLORS[item.status]
-                return (
-                  <Link
-                    key={item.slug}
-                    href={`/tracker/state/${item.slug}`}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      backgroundColor: "#ffffff",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      borderRadius: "10px",
-                      padding: "16px 20px",
-                      textDecoration: "none",
-                      transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "#0066cc";
-                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,102,204,0.1)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    <span style={{ fontSize: "14px", fontWeight: "600", color: "#1a1a1a" }}>{item.state}</span>
-                    <span style={{
-                      fontSize: "10px",
-                      fontWeight: "600",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase" as const,
-                      padding: "4px 10px",
-                      backgroundColor: s.bg,
-                      color: s.text,
-                      borderRadius: "9999px",
-                    }}>
-                      {s.label}
-                    </span>
-                  </Link>
-                )
-              })}
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "clamp(32px, 8vw, 96px)",
+              flexWrap: "wrap" as const,
+            }}>
+              {[
+                { num: "50", label: "States Tracked" },
+                { num: "12", label: "AI Laws Enacted" },
+                { num: "23", label: "Bills in Progress" },
+                { num: "47", label: "Tools Reviewed" },
+              ].map(({ num, label }) => (
+                <div key={label} style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "32px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "-0.02em" }}>{num}</div>
+                  <div style={{ fontSize: "11px", fontWeight: "500", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#8e8e93", marginTop: "4px" }}>{label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -286,7 +239,162 @@ export default function HomePageClient() {
   )
 }
 
-function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTICLES[0]; large?: boolean }) {
+function SectionEntries({
+  title,
+  entries,
+  isMobile,
+}: {
+  title: string
+  entries: SectionEntry[]
+  isMobile: boolean
+}) {
+  const featured = entries[0]
+  const list = entries.slice(1)
+
+  return (
+    <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(52px, 8vw, 72px) clamp(16px, 4vw, 48px)" }}>
+      <div style={{ marginBottom: "28px" }}>
+        <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: "0 0 10px 0", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
+          {title}
+        </h2>
+      </div>
+
+      {featured && (
+        <Link href={featured.href} style={{ textDecoration: "none", display: "block", marginBottom: "20px" }}>
+          <div style={{
+            backgroundColor: "#ffffff",
+            border: "1px solid rgba(0,0,0,0.08)",
+            borderRadius: "14px",
+            padding: "24px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: "20px",
+            alignItems: "center",
+          }}>
+            <div>
+              <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.1em", textTransform: "uppercase", color: "#0066cc", marginBottom: "10px" }}>
+                {featured.meta}
+              </div>
+              <h3 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: "700", color: "#1a1a1a", lineHeight: "1.25", marginBottom: "10px", letterSpacing: "-0.02em" }}>
+                {featured.title}
+              </h3>
+              <p style={{ color: "#6e6e73", fontSize: "14px", lineHeight: "1.65", margin: 0 }}>
+                {featured.description}
+              </p>
+            </div>
+          </div>
+        </Link>
+      )}
+
+      {list.length > 0 && (
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
+          {list.map((entry) => (
+            <Link key={entry.id} href={entry.href} style={{ textDecoration: "none", display: "block" }}>
+              <div style={{ fontSize: "10px", fontWeight: "600", letterSpacing: "0.1em", textTransform: "uppercase", color: "#0066cc", marginBottom: "12px" }}>
+                {entry.meta}
+              </div>
+              <h3 style={{ fontSize: "17px", fontWeight: "600", color: "#1a1a1a", lineHeight: "1.3", marginBottom: "12px", letterSpacing: "-0.015em" }}>
+                {entry.title}
+              </h3>
+              <p style={{ color: "#6e6e73", fontSize: "13px", lineHeight: "1.65", marginBottom: "16px" }}>
+                {entry.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SectionArticles({
+  title,
+  articles,
+  isMobile,
+  compact = false,
+}: {
+  title: string
+  articles: Article[]
+  isMobile: boolean
+  compact?: boolean
+}) {
+  const featured = articles[0]
+  const list = articles.slice(1)
+
+  return (
+    <div style={compact ? undefined : { maxWidth: "1280px", margin: "0 auto", padding: "clamp(52px, 8vw, 72px) clamp(16px, 4vw, 48px)" }}>
+      <div style={{ marginBottom: "28px" }}>
+        <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: "700", color: "#1a1a1a", margin: "0 0 10px 0", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
+          {title}
+        </h2>
+      </div>
+
+      {featured && (
+        <div style={{ marginBottom: "20px" }}>
+          <HomeHorizontalArticle article={featured} />
+        </div>
+      )}
+
+      {list.length > 0 && (
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))", gap: "16px" }}>
+          {list.map((article) => (
+            <HomeArticleCard key={`${title}-${article.slug}`} article={article} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function HomeHorizontalArticle({ article }: { article: Article }) {
+  const initials = getInitials(article.author)
+
+  return (
+    <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}>
+      <div style={{
+        backgroundColor: "#ffffff",
+        border: "1px solid rgba(0,0,0,0.08)",
+        borderRadius: "14px",
+        padding: "24px",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+        gap: "20px",
+        alignItems: "center",
+      }}>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: "11px", fontWeight: "600", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#0066cc", marginBottom: "10px" }}>
+            {article.category}
+          </div>
+          <h3 style={{
+            fontSize: "clamp(20px, 3vw, 28px)",
+            fontWeight: "700",
+            color: "#1a1a1a",
+            lineHeight: "1.25",
+            marginBottom: "10px",
+            letterSpacing: "-0.02em",
+          }}>
+            {article.title}
+          </h3>
+          <p style={{ color: "#6e6e73", fontSize: "14px", lineHeight: "1.65", margin: 0 }}>
+            {article.metaDescription || article.ogDescription || ""}
+          </p>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", justifySelf: "end" }}>
+          <AuthorAvatar initials={initials} size="sm" />
+          <div style={{ fontSize: "12px", color: "#8e8e93", whiteSpace: "nowrap" }}>
+            <div style={{ color: "#1a1a1a", fontWeight: "500", marginBottom: "2px" }}>{article.author}</div>
+            <div>
+              {new Date(article.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              {article.readingTime ? ` · ${article.readingTime} min read` : ""}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+function HomeArticleCard({ article }: { article: Article }) {
   return (
     <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}
       onMouseEnter={(e) => {
@@ -306,10 +414,10 @@ function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTI
         color: "#0066cc",
         marginBottom: "12px",
       }}>
-        {article.category}{article.state ? ` — ${article.state}` : ""}
+        {article.category}
       </div>
       <h3 style={{
-        fontSize: large ? "clamp(20px, 3vw, 26px)" : "17px",
+        fontSize: "17px",
         fontWeight: "600",
         color: "#1a1a1a",
         lineHeight: "1.3",
@@ -321,14 +429,15 @@ function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTI
       </h3>
       <p style={{
         color: "#6e6e73",
-        fontSize: large ? "15px" : "13px",
+        fontSize: "13px",
         lineHeight: "1.65",
         marginBottom: "16px",
       }}>
-        {article.description}
+        {article.metaDescription || article.ogDescription || ""}
       </p>
       <div style={{ fontSize: "11px", color: "#8e8e93", letterSpacing: "0.04em" }}>
-        {article.date} · {article.readingTime} min read
+        {new Date(article.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+        {article.readingTime ? ` · ${article.readingTime} min read` : ""}
       </div>
     </Link>
   )

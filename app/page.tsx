@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { allArticles } from 'contentlayer/generated';
 import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
@@ -17,5 +18,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomePageClient />;
+  return <HomePageClient articles={allArticles} />;
 }
