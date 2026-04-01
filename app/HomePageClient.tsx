@@ -170,8 +170,8 @@ export default function HomePageClient() {
           ))}
         </div>
 
-        {/* Featured Articles */}
-        <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+        {/* Recent Articles */}
+        <section style={{ backgroundColor: "#fafafa", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "clamp(64px, 10vw, 120px) clamp(16px, 4vw, 48px)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap" as const, gap: "16px" }}>
               <div>
@@ -190,21 +190,64 @@ export default function HomePageClient() {
               </Link>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr", gap: "16px" }}>
-              <div style={{ backgroundColor: "#ffffff", padding: "40px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)" }}>
-                <ArticleCard article={FEATURED_ARTICLES[0]} large />
-              </div>
-              <div style={{ backgroundColor: "#ffffff", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)", display: "flex", flexDirection: "column" as const, overflow: "hidden" }}>
-                {FEATURED_ARTICLES.slice(1).map((article, i) => (
-                  <div key={article.slug} style={{
-                    padding: "32px",
-                    borderBottom: i === 0 ? "1px solid rgba(0,0,0,0.06)" : "none",
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "16px" }}>
+              {FEATURED_ARTICLES.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/news/${article.slug}`}
+                  style={{
+                    backgroundColor: "#ffffff",
+                    padding: "28px 24px",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(0,0,0,0.08)",
+                    textDecoration: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    transition: "all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#0066cc";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,102,204,0.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(0,0,0,0.08)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  <div style={{
+                    fontSize: "10px",
+                    fontWeight: "600",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase" as const,
+                    color: "#0066cc",
+                    marginBottom: "12px",
+                  }}>
+                    {article.category}{article.state ? ` — ${article.state}` : ""}
+                  </div>
+                  <h3 style={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "#1a1a1a",
+                    lineHeight: "1.3",
+                    marginBottom: "12px",
+                    letterSpacing: "-0.015em",
+                  }}>
+                    {article.title}
+                  </h3>
+                  <p style={{
+                    color: "#6e6e73",
+                    fontSize: "13px",
+                    lineHeight: "1.65",
+                    marginBottom: "16px",
                     flex: 1,
                   }}>
-                    <ArticleCard article={article} />
+                    {article.description}
+                  </p>
+                  <div style={{ fontSize: "11px", color: "#8e8e93", letterSpacing: "0.04em" }}>
+                    {article.date} · {article.readingTime} min read
                   </div>
-                ))}
-              </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -283,53 +326,5 @@ export default function HomePageClient() {
         </section>
       </main>
     </>
-  )
-}
-
-function ArticleCard({ article, large = false }: { article: typeof FEATURED_ARTICLES[0]; large?: boolean }) {
-  return (
-    <Link href={`/news/${article.slug}`} style={{ textDecoration: "none", display: "block" }}
-      onMouseEnter={(e) => {
-        const h3 = e.currentTarget.querySelector('h3') as HTMLElement;
-        if (h3) h3.style.color = "#0066cc";
-      }}
-      onMouseLeave={(e) => {
-        const h3 = e.currentTarget.querySelector('h3') as HTMLElement;
-        if (h3) h3.style.color = "#1a1a1a";
-      }}
-    >
-      <div style={{
-        fontSize: "10px",
-        fontWeight: "600",
-        letterSpacing: "0.1em",
-        textTransform: "uppercase" as const,
-        color: "#0066cc",
-        marginBottom: "12px",
-      }}>
-        {article.category}{article.state ? ` — ${article.state}` : ""}
-      </div>
-      <h3 style={{
-        fontSize: large ? "clamp(20px, 3vw, 26px)" : "17px",
-        fontWeight: "600",
-        color: "#1a1a1a",
-        lineHeight: "1.3",
-        marginBottom: "12px",
-        letterSpacing: "-0.015em",
-        transition: "color 0.2s",
-      }}>
-        {article.title}
-      </h3>
-      <p style={{
-        color: "#6e6e73",
-        fontSize: large ? "15px" : "13px",
-        lineHeight: "1.65",
-        marginBottom: "16px",
-      }}>
-        {article.description}
-      </p>
-      <div style={{ fontSize: "11px", color: "#8e8e93", letterSpacing: "0.04em" }}>
-        {article.date} · {article.readingTime} min read
-      </div>
-    </Link>
   )
 }
