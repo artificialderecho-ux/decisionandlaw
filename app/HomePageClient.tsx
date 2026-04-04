@@ -48,8 +48,24 @@ const STATUS_COLORS: Record<string, { bg: string; text: string; label: string }>
   "no-activity": { bg: "rgba(0,0,0,0.04)", text: "#8e8e93", label: "No Activity" },
 }
 
-export default function HomePageClient() {
+interface HomePageProps {
+  articles?: any[];
+}
+
+export default function HomePageClient({ articles }: HomePageProps) {
   const [isMobile, setIsMobile] = useState(false)
+
+  const displayArticles = articles && articles.length > 0
+    ? [...articles].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4).map(a => ({
+        slug: a.slug,
+        title: a.title,
+        description: a.summary || a.description || "",
+        category: a.category || "News",
+        state: "",
+        date: new Date(a.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+        readingTime: a.readingTime ? Math.ceil(a.readingTime.minutes) : 5,
+      }))
+    : FEATURED_ARTICLES;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -167,8 +183,9 @@ export default function HomePageClient() {
             </div>
 
             {/* Latest News Entry - Horizontal */}
+            {displayArticles.length > 0 && (
             <Link
-              href={`/news/${FEATURED_ARTICLES[0].slug}`}
+              href={`/news/${displayArticles[0].slug}`}
               style={{
                 backgroundColor: "#ffffff",
                 padding: "32px",
@@ -199,7 +216,7 @@ export default function HomePageClient() {
                   color: "#0066cc",
                   marginBottom: "12px",
                 }}>
-                  {FEATURED_ARTICLES[0].category}{FEATURED_ARTICLES[0].state ? ` — ${FEATURED_ARTICLES[0].state}` : ""}
+                  {displayArticles[0].category}{displayArticles[0].state ? ` — ${displayArticles[0].state}` : ""}
                 </div>
                 <h3 style={{
                   fontSize: "clamp(20px, 3vw, 28px)",
@@ -209,7 +226,7 @@ export default function HomePageClient() {
                   marginBottom: "16px",
                   letterSpacing: "-0.02em",
                 }}>
-                  {FEATURED_ARTICLES[0].title}
+                  {displayArticles[0].title}
                 </h3>
                 <p style={{
                   color: "#6e6e73",
@@ -217,17 +234,18 @@ export default function HomePageClient() {
                   lineHeight: "1.65",
                   marginBottom: "16px",
                 }}>
-                  {FEATURED_ARTICLES[0].description}
+                  {displayArticles[0].description}
                 </p>
                 <div style={{ fontSize: "11px", color: "#8e8e93", letterSpacing: "0.04em" }}>
-                  {FEATURED_ARTICLES[0].date} · {FEATURED_ARTICLES[0].readingTime} min read
+                  {displayArticles[0].date} · {displayArticles[0].readingTime} min read
                 </div>
               </div>
             </Link>
+            )}
 
             {/* Next Three News Entries */}
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "16px" }}>
-              {FEATURED_ARTICLES.slice(1, 4).map((article) => (
+              {displayArticles.slice(1, 4).map((article: any) => (
                 <Link
                   key={article.slug}
                   href={`/news/${article.slug}`}
