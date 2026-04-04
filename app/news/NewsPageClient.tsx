@@ -158,6 +158,21 @@ export default function NewsPageClient({ articles }: { articles: Article[] }) {
           ))}
         </div>
 
+        <div style={{ marginBottom: 'clamp(48px, 8vw, 80px)' }}>
+          <h2 style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8e8e93', marginBottom: '24px' }}>
+            Latest Articles
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: '16px',
+          }}>
+            {regularArticles.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </div>
+        </div>
+
         {featuredArticles.length > 0 && (
           <div style={{ marginBottom: 'clamp(48px, 8vw, 80px)' }}>
             <h2 style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8e8e93', marginBottom: '24px' }}>
@@ -174,21 +189,6 @@ export default function NewsPageClient({ articles }: { articles: Article[] }) {
             </div>
           </div>
         )}
-
-        <div style={{ marginBottom: 'clamp(48px, 8vw, 80px)' }}>
-          <h2 style={{ fontSize: '14px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#8e8e93', marginBottom: '24px' }}>
-            Latest Articles
-          </h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '16px',
-          }}>
-            {regularArticles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-        </div>
       </div>
     </main>
   );
