@@ -156,7 +156,7 @@ export default function ArticleClient({ article }: ArticleClientProps) {
               h1: ({ children }: any) => <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: '700', color: '#1a1a1a', marginBottom: '20px', marginTop: '40px', lineHeight: 1.2 }}>{children}</h1>,
               h2: ({ children }: any) => <h2 style={{ fontSize: 'clamp(1.25rem, 3vw, 1.5rem)', fontWeight: '700', color: '#1a1a1a', marginBottom: '16px', marginTop: '32px', lineHeight: 1.3 }}>{children}</h2>,
               h3: ({ children }: any) => <h3 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', fontWeight: '600', color: '#1a1a1a', marginBottom: '12px', marginTop: '24px', lineHeight: 1.4 }}>{children}</h3>,
-              p: ({ children }: any) => <p style={{ fontSize: 'clamp(0.9375rem, 2vw, 1.0625rem)', color: '#1a1a1a', lineHeight: 1.75, marginBottom: '20px' }}>{children}</p>,
+              p: ({ children }: any) => <p style={{ fontSize: 'clamp(0.9375rem, 2vw, 1.0625rem)', color: '#1a1a1a', lineHeight: 1.75, marginBottom: '20px', textAlign: 'justify' }}>{children}</p>,
               a: ({ href, children }: any) => (
                 <a 
                   href={href} 

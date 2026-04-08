@@ -71,6 +71,7 @@ function ArticleCard({ article }: { article: Article }) {
             lineHeight: '1.35',
             letterSpacing: '-0.01em',
             flex: 1,
+            textAlign: 'justify',
           }}>
             {article.title}
           </h3>
@@ -84,6 +85,7 @@ function ArticleCard({ article }: { article: Article }) {
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
+            textAlign: 'justify',
           }}>
             {article.metaDescription || article.ogDescription || ''}
           </p>
@@ -128,10 +130,10 @@ export default function NewsPageClient({ articles }: { articles: Article[] }) {
           <div style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0066cc', marginBottom: '12px' }}>
             Coverage
           </div>
-          <h1 style={{ fontSize: 'clamp(36px, 5vw, 52px)', fontWeight: '700', marginBottom: '16px', color: '#1a1a1a', letterSpacing: '-0.025em' }}>
+          <h1 style={{ fontSize: 'clamp(36px, 5vw, 52px)', fontWeight: '700', marginBottom: '16px', color: '#1a1a1a', letterSpacing: '-0.025em', textAlign: 'left' }}>
             AI Legal News
           </h1>
-          <p style={{ fontSize: '17px', lineHeight: '1.7', color: '#6e6e73', maxWidth: '560px' }}>
+          <p style={{ fontSize: '17px', lineHeight: '1.7', color: '#6e6e73', maxWidth: '560px', textAlign: 'left' }}>
             Stay informed about the latest developments in artificial intelligence legislation, case law, ethics, and regulatory changes affecting legal professionals.
           </p>
         </div>
