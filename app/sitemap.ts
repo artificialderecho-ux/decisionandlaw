@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { allArticles } from 'contentlayer/generated';
 import { states } from './lib/states';
+import { TOOL_SLUGS } from './lib/tools';
 
 const BASE_URL = 'https://decisionandlaw.com';
 
@@ -13,16 +14,6 @@ const GUIDE_SLUGS = [
   'roi-legal-ai',
 ];
 
-const TOOL_SLUGS = [
-  'harvey',
-  'westlaw-ai-assist',
-  'clio-manage',
-  'relativity-ai',
-  'casetext',
-  'klarity',
-  'luminance',
-  'practice-platform',
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -63,6 +54,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/tracker/federal-ai-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/tracker/aba-opinions`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/authors`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -73,6 +76,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/glossary`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
     },
     {
       url: `${BASE_URL}/terms`,

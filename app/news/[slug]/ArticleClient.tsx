@@ -10,7 +10,7 @@ import {
   RelatedCases 
 } from '../../components/article';
 import ArticleDisclaimer from '../../components/article/ArticleDisclaimer';
-import { NewsArticleStructuredData } from '../../components/StructuredData';
+import { BreadcrumbStructuredData, NewsArticleStructuredData } from '../../components/StructuredData';
 
 interface ArticleClientProps {
   article: any;
@@ -43,6 +43,13 @@ export default function ArticleClient({ article }: ArticleClientProps) {
         author={article.author}
         slug={article.slug}
         description={article.metaDescription || article.ogDescription || ''}
+      />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: 'https://decisionandlaw.com' },
+          { name: 'News', url: 'https://decisionandlaw.com/news' },
+          { name: article.title, url: `https://decisionandlaw.com/news/${article.slug}` },
+        ]}
       />
       <div className="min-h-screen" style={{ backgroundColor: '#ffffff', color: '#1a1a1a' }}>
       <div className="container mx-auto px-4 py-8">
