@@ -126,6 +126,18 @@ export default function ArticleClient({ article }: ArticleClientProps) {
                 <span>{article.wordCount.toLocaleString()} words</span>
               </div>
             )}
+            
+            {article.pdf && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 15.75a2.25 2.25 0 012.25-2.25h6a2.25 2.25 0 012.25 2.25v2.25a2.25 2.25 0 01-2.25 2.25h-6a2.25 2.25 0 01-2.25-2.25v-2.25z" />
+                </svg>
+                <a href={article.pdf} target="_blank" rel="noopener noreferrer" style={{ color: '#0066cc', fontWeight: '500', textDecoration: 'none' }}>
+                  Download PDF
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Topics */}

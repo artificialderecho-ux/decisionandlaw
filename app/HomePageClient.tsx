@@ -6,6 +6,14 @@ import { WebsiteStructuredData } from "./components/StructuredData"
 
 const FEATURED_ARTICLES = [
   {
+    slug: "fbi-ic3-2025-legal-implications-cybercrime",
+    title: "A Quarter-Century of Cyber Losses: Legal Implications of the 2025 FBI IC3 Report",
+    description: "Comprehensive legal analysis of the FBI IC3 2025 Annual Report—$20.8B in cyber losses, cryptocurrency fraud, ransomware, and AI-enabled schemes.",
+    category: "Regulatory Analysis",
+    date: "Apr 8, 2026",
+    readingTime: 42,
+  },
+  {
     slug: "california-sb-1047-ai-liability-lawyers",
     title: "California's SB-1047 and What It Means for Law Firm Liability",
     description: "The landmark AI safety bill creates new exposure for firms deploying AI in client-facing workflows. Here's what you need to know.",
