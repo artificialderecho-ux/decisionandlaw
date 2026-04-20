@@ -319,27 +319,95 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
 }
 
-/* Tables */
+/* Tables - Professional styling */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: var(--text-sm);
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
 }
 
-th, td {
-  padding: var(--space-3) var(--space-4);
-  text-align: left;
-  border-bottom: 1px solid var(--border-subtle);
+/* Header row - Blue background like the image */
+thead {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
 }
 
 th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
   font-weight: 600;
-  background: var(--muted);
-  color: var(--foreground);
+  color: #ffffff;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
 }
 
-tr:hover td {
+th:first-child {
+  border-top-left-radius: var(--radius-lg);
+}
+
+th:last-child {
+  border-top-right-radius: var(--radius-lg);
+}
+
+/* Data cells */
+td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--background);
+  vertical-align: top;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) td {
   background: var(--muted);
+}
+
+/* Hover effect */
+tr:hover td {
+  background: rgba(0, 102, 204, 0.05);
+  transition: background var(--duration-fast) var(--ease-apple);
+}
+
+/* Last row - remove bottom border and add border radius */
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+/* Table caption styling */
+table + em,
+table + p em {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+  margin-top: var(--space-3);
+  font-style: italic;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+  table {
+    font-size: var(--text-xs);
+  }
+  
+  th, td {
+    padding: var(--space-2) var(--space-3);
+  }
 }
 
 /* Code */
