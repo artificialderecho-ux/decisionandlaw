@@ -1,0 +1,367 @@
+---
+seoTitle: "Cybersecurity Risks in the Era of Agentic AI: The Mythos-Ready Programme"
+seoDescription: "Comprehensive analysis of cybersecurity risks posed by agentic AI systems, including HACCAs, Claude Mythos, and the EU AI Act compliance framework for CISOs."
+title: "Cybersecurity Risks in the Era of Agentic AI: Towards a «Mythos-Ready» Programme"
+date: "2026-04-20"
+slug: "cybersecurity-risks-agentic-ai-mythos-ready"
+author: "Elena Markov"
+authorSlug: "elena-markov"
+category: "regulatory-analysis"
+subcategory: "algorithmic-accountability"
+topics:
+  - "agentic-AI"
+  - "cybersecurity"
+  - "algorithmic-accountability"
+  - "AI-liability"
+  - "regulatory-compliance"
+ogTitle: "Cybersecurity Risks in the Era of Agentic AI: The Mythos-Ready Programme"
+ogDescription: "Comprehensive analysis of cybersecurity risks posed by agentic AI systems, including HACCAs, Claude Mythos, and EU AI Act compliance for CISOs."
+---
+
+## 1. Introduction
+
+### 1.1. Context: The Convergence of Generative AI and Cybersecurity
+
+In April 2026, the information security ecosystem experienced what the technical community has described as a «discontinuous leap». The announcement by Anthropic of Claude Mythos Preview and the simultaneous launch of Project Glasswing represented not merely an incremental improvement in natural language processing, but the materialisation of frontier agentic capabilities applicable to offensive and defensive cybersecurity tasks.[^2]
+
+Mythos has demonstrated, in controlled yet realistic environments, advanced capabilities for the automated discovery of zero-day vulnerabilities in major operating systems and modern browsers, transitioning from single-turn interactions to multi-step workflows in which the model autonomously collects information, reasons over intermediate results, and generates functional exploits with minimal human intervention.[^3] This paradigm shift compels a reconceptualisation of cybersecurity not as a static equilibrium, but as a dynamic of constant adaptation in the face of capabilities that evolve at machine speed.[^4]
+
+The Cloud Security Alliance strategic report has noted that this convergence represents the first wave of technological disruptions challenging the operational foundations of traditional defence, particularly the premise that code extensively audited over decades possesses intrinsic superior security.[^5]
+
+### 1.2. Problem Definition: Structural Asymmetry and the Collapse of Exploitation Time
+
+The fundamental challenge facing organisations in 2026 is the structural asymmetry in speed and scale between automated offensive capabilities and human defensive processes. Threat actors employ AI agents to automate vulnerability discovery, exploit development, and attack chain orchestration at marginal costs, thereby democratising capabilities that traditionally required specialised teams of state actors.[^6][^7]
+
+By contrast, the majority of security teams operate at «human speed», constrained by manual triage processes and vulnerability backlogs exceeding 100,000 entries in critical open-source projects.[^8] This structural disparity generates a collapse of the response time horizon: traditional risk models have become obsolete in the face of disclosure-to-exploitation cycles reduced from 756 days in 2018 to under 24 hours in 2026.[^9]
+
+The CVE/NVD infrastructure, designed to process tens of critical vulnerabilities monthly, now confronts hundreds weekly, saturating existing prioritisation workflows.[^10] The proliferation of coding agents accessible to users without technical expertise further fragments visibility over information technology assets, creating attack surfaces not covered by traditional controls.[^11]
+
+### 1.3. Study Objectives: Towards an Operational Resilience Model
+
+This study proposes a cybersecurity management framework adapted to the era of agentic AI, termed the «Mythos-ready» programme, which integrates Autonomous Vulnerability Operations (hereinafter VulnOps) with accelerated governance and dynamic risk metrics.[^12] Four specific objectives are pursued: analysing the evolution of offensive AI and Highly Autonomous Cyber Capability Agents (HACCAs) at OC3+ operational level;[^13] evaluating the impact of Regulation (EU) 2024/1689[^14] (hereinafter the AI Act) on high-risk cybersecurity systems;[^15] defining a 90-day action plan for Chief Information Security Officers (CISOs);[^16] and proposing agentic success metrics to replace static MTTD/MTTR models.[^17]
+
+---
+
+## 2. Theoretical Framework: The Evolution of Offensive AI and the Mythos Phenomenon
+
+### 2.1. From Simple Automation to Highly Autonomous Cyber Capability Agents (HACCAs)
+
+Automation in cybersecurity is not a novel concept; tools such as fuzzing programmes (AFL, libFuzzer) and post-exploitation frameworks (Metasploit) have constituted operational pillars for decades. The landscape has nonetheless shifted from «discrete payloads» to systems capable of independently executing complete campaigns.[^18]
+
+This context gives rise to the HACCA category: AI systems that conduct cyber operations at the level of sophisticated criminal organisations or intelligence agencies, operating for weeks or months without continuous human supervision.[^19] For an agent to be classified as a HACCA, it must reach OC3 operational level, equivalent to ten expert analysts with budgets of up to one million dollars.[^20] These agents manage their own technical infrastructure, acquire resources through illicit activities, and employ adaptive evasion tactics against active defences.
+
+**Table 1. Capability Comparison: HACCAs vs. Conventional Malware**
+
+| **Attribute** | **Conventional Malware** | **HACCA Agent** |
+|---|---|---|
+| Autonomy | Requires constant manual instructions | Strategic autonomy: interprets high-level objectives |
+| Adaptability | Static code; ineffective after signature detection | Changes tactics in real time; learns from failed exploits |
+| Identity | Fixed signature | Malleable identity: cloning and restart |
+| Communication | Predictable C2 channels | Polymorphic channels; encoding in synthetic media |
+
+*Note: Compiled from Cloud Security Alliance (2026) and RAND Corporation (2025).*
+
+Recent research projects that, should current capability doubling trends every eight months persist, HACCA agents will be technically viable in the 2028–2030 period.[^21]
+
+### 2.2. Technical Analysis of Claude Mythos: Vulnerability Discovery and One-Shot Exploit Generation
+
+The release of Claude Mythos Preview represents a qualitative leap in AI capabilities applied to offensive security, transitioning from models that required complex scaffolding to a one-shot capability: with a single instruction, Mythos identifies critical vulnerabilities composed of multiple chained primitives and generates functional exploits.[^22]
+
+The demonstrated technical capabilities span three areas. Regarding scale and autonomy, Mythos has achieved the mass identification of zero-day vulnerabilities in major operating systems and browsers, with a 72% success rate in generating functional exploits in controlled environments.
+
+The Firefox 147 benchmark revealed that Claude Opus 4.6 generated 2 successful exploits, while Mythos generated 181 on the same vulnerabilities — a 90x improvement.[^23][^24] In advanced reverse engineering, Mythos has demonstrated exceptional capability on stripped binaries, enabling the analysis of firmware and proprietary systems.
+
+A singular finding is the identification of CVE-2026-4747, a remote code execution (RCE) vulnerability in FreeBSD that had survived 17 years of human audits, discovered by Mythos within a matter of hours.[^25] This case invalidates the premise of «security by code longevity». Furthermore, in the Linux kernel, Mythos autonomously chained multiple vulnerabilities to escalate from an unprivileged user to superuser without human intervention.
+
+### 2.3. Project Glasswing as a Milestone in Coordinated Vulnerability Disclosure (CVD)
+
+In response to the risks posed by a model with Mythos' capabilities, Anthropic articulated a restricted access model called Project Glasswing, designed to determine whether AI can confer a structural advantage to defence before adversarial actors develop equivalent capabilities.[^26]
+
+The defensive coalition comprises 12 launch partners and 40 critical infrastructure organisations, backed by $100 million in usage credits and $4 million in donations to open-source projects. From a European Union law perspective, Project Glasswing operates within the framework of Article 12 of Directive (EU) 2022/2555 (NIS2),[^27] which assigns to ENISA the function of central European repository for coordinated vulnerability disclosure. The articulation between the private programme and NIS2 obligations ultimately falls to competent national authorities and ENISA.
+
+The structural limitations of the programme are significant: the coalition covers less than 1% of the global attack surface, and open-weight models will reach equivalent capabilities within a horizon of under twelve months, diminishing the temporal advantage of the initiative.[^28]
+
+### 2.4. The State of the Art in Defence: Neuro-Symbolic AI and the G-I-A Framework
+
+While offensive AI scales through massive language models, defence is evolving towards Neuro-Symbolic AI (NeSy), a paradigm integrating the pattern recognition speed of neural networks with the logical transparency of symbolic methods.[^29]
+
+The G-I-A (Grounding–Instructibility–Alignment) framework operationalises three pillars. Grounding links system predictions to formalised cybersecurity ontologies (MITRE ATT&CK, CWE),[^30] reducing fragility against adversarial attacks. Instructibility enables the guidance of system adaptation without extensive retraining, through logical rules or natural language feedback.[^31] Alignment ensures that agent actions serve exclusively defensive objectives, respecting ethical and operational constraints.[^32]
+
+Empirical validation is notable: systems such as KnowGraph have demonstrated 1,200x improvements in inductive precision over purely neural models.[^33] The integration of causal reasoning[^34] enables a transition from reactive detection to proactive prevention through the simulation of causal attack chains. The same reasoning capabilities that enable zero-day discovery can be applied to formal patch verification and continuous adversarial simulation.[^35]
+
+---
+
+## 3. Analytical Methodology
+
+### 3.1. Systematic Literature Review and Selection Criteria
+
+For the development of this monograph, a Systematic Literature Review (SLR) was conducted following the SPAR-4-SLR protocol (Scientific Procedures and Rationales for Systematic Literature Reviews), ensuring methodological transparency and reproducibility in rapidly evolving fields such as the convergence of AI and cybersecurity.[^36]
+
+The temporal scope spans from January 2019 to April 2026, with critical emphasis on the last 18 months. Databases consulted include arXiv, IEEE Xplore, ACM Digital Library and Google Scholar, as well as institutional repositories of Anthropic, NIST, MITRE and ENISA. Inclusion criteria required, jointly: (i) specific application of AI systems to operational cybersecurity; (ii) quantitative technical data or real-environment validation; and (iii) affiliation with first-tier institutions.
+
+The final corpus comprises 127 documents distributed among industry strategic reports (45%), technical documentation of frontier models (35%), and peer-reviewed academic literature (20%). The SLR identified a paradigmatic shift: AI evaluation moved from isolated tasks to multi-stage attack chains, requiring second-generation benchmarks that measure zero-shot reasoning over CVEs ported to synthetic code bases.[^37]
+
+### 3.2. Analysis of Frontier Benchmarks: CyberGym, Cybench and ZeroDayBench
+
+First-generation benchmarks have become saturated, with frontier models exceeding 93% accuracy on CTF (Capture the Flag) tasks, rendering them methodologically obsolete for evaluating current agentic capabilities.[^38]
+
+CyberGym operates in realistic network environments with complete enterprise topologies, with Mythos achieving a rate of 83.1% versus 66.6% for Claude Opus 4.6.[^39] ZeroDayBench ports CVEs with CVSS score ≥7.0 to functionally equivalent but syntactically distinct code bases, measuring zero-shot reasoning and eliminating memorisation bias from training.
+
+**Table 2. Performance Comparison in Security Benchmarks 2025–2026**
+
+| **Benchmark** | **Claude Opus 4.6** | **Claude Mythos Preview** | **Key Attribute Measured** |
+|---|---|---|---|
+| CyberGym | 66.6% | 83.1% | Real vulnerability reproduction in enterprise environments |
+| Firefox 147 (exploits) | 2 exploits | 181 exploits (×90) | Memory layouts, JIT, ASLR |
+| ZeroDayBench (autonomous patching) | N/A | 56.0% | Zero-shot reasoning over ported CVEs |
+| SWE-bench (software engineering) | 80.8% | 93.9% | Issue resolution in real repositories |
+
+*Source: Anthropic (2026a, 2026b).*
+
+### 3.3. Risk Taxonomy Based on Industrial Frameworks (NIST CSF 2.0, MITRE ATLAS, OWASP)
+
+The classification of identified risks was conducted according to three reference frameworks. The NIST Cybersecurity Framework version 2.0 (NIST CSF 2.0)[^40] structured the analysis around the GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND and RECOVER functions. MITRE ATLAS[^41] provided the taxonomy of adversarial tactics, techniques and procedures (TTPs) specific to AI systems. The OWASP Top 10 for Language Model Applications[^42] complemented the analysis with the most prevalent application vulnerabilities in generative AI systems, including prompt injection and training data leakage.
+
+---
+
+## 4. Results and Key Findings
+
+### 4.1. Asymmetry Analysis: The Impact of Mythos on Legacy Systems and Open-Source Code
+
+The results confirm that the premise of «security by code longevity» no longer holds empirical validity. Mythos has identified vulnerabilities in systems with decades of accumulated audits: a vulnerability concealed for 27 years in OpenBSD, CVE-2026-4747 (17 years in FreeBSD), and a family of vulnerabilities in FFmpeg with a 16-year history and more than five million prior fuzzing executions.[^43] These findings demonstrate that temporal coverage is not a substitute for the depth of reasoning provided by frontier agentic systems.
+
+The impact on open-source code is of particular severity given its ubiquity in the software supply chain. Critical repositories accumulate backlogs in excess of 100,000 unpatched vulnerabilities.[^44] Mythos' ability to process this scale of analysis within hours structurally transforms the balance of forces between attackers and defenders.
+
+### 4.2. Results in Test Environments: From Browser Exploits to Linux Kernel Privilege Escalation
+
+In «The Last Ones» scenario — 32 steps of data exfiltration including Windows reverse engineering and cryptographic key recovery — Claude Opus 4.6 completed 22 of the 32 steps, equivalent to the output of an expert human analyst in approximately six hours. The «Cooling Tower» environment, simulating seven attack steps against ICS/SCADA systems with active defences, evidenced Mythos' capacity to recover from errors without human intervention.[^45]
+
+Linux kernel privilege escalation merits separate consideration for its systemic scope. The autonomous chaining of multiple vulnerabilities to transition from an unprivileged user to superuser demonstrates multi-step reasoning that qualitatively surpasses conventional attack models, with direct implications for risk assessment in critical infrastructures.
+
+### 4.3. The Economic Factor: Cost Reduction and the Democratisation of Elite Hacking
+
+The economic analysis reveals a structural transformation of the vulnerability market. The estimated cost of developing a zero-day exploit using AI amounts to $24.40, compared to the $15,000–$50,000 range required by a specialised human team.[^46] This 99.8% reduction in the economic barrier to entry democratises access to attack capabilities that, until 2025, were reserved for state actors or highly capitalised criminal groups.
+
+Threat models that assumed the scarcity of actors capable of developing functional exploits for complex vulnerabilities have lost their validity. From 2026 onward, the proliferation of agents with OC2+ capabilities renders functional exploit availability for any CVSS ≥7.0 vulnerability within hours of public disclosure a baseline hypothesis.
+
+---
+
+## 5. Discussion: Strategic Implications for Cybersecurity Management
+
+### 5.1. The New CISO Paradigm: AI-Risk-Based Prioritisation and Operational Burnout Management
+
+The collapse of exploitation time demands a reconfiguration of the vulnerability prioritisation model. Traditional scoring systems (CVSS) were designed for an environment in which functional exploit availability was scarce. Under the Mythos paradigm, CVSS scores must be complemented by the probability of autonomous agentic exploitation: an indicator reflecting whether the vulnerability can be leveraged by an AI agent without human intervention and within what timeframe.[^47]
+
+Operational burnout among security teams constitutes an underlying systemic risk of the first order. Teams operating with backlogs of tens of thousands of alerts experience compromised judgement in critical decision-making. Agentic automation of routine triage tasks is not an efficiency option but a functional requirement to preserve the quality of human analysis in the highest-impact scenarios.
+
+### 5.2. Governance and Agility: The Need to Accelerate the Adoption of Defensive Technologies
+
+Corporate approval timelines of weeks or months are incompatible with an environment in which disclosure-to-exploitation time is measured in hours. Cybersecurity management literature suggests the adoption of governance models analogous to DevSecOps, with accelerated approval circuits for low-abuse-risk defensive technologies.[^48]
+
+Participation in CISA JCDC.AI or in ENISA's coordinated CVD mechanisms[^49] enables organisations to access threat intelligence on emerging threats with sufficient lead time to activate responses before public disclosure. The institutionalisation of these channels constitutes, alongside internal technical capacity, the second pillar of the «Mythos-ready» programme.
+
+### 5.3. Navigating Regulation: The Impact of the AI Act and Civil Liability
+
+Regulation (EU) 2024/1689[^50] establishes a risk classification regime with direct legal consequences for AI-based cybersecurity systems. Agents with offensive capabilities equivalent to those of Mythos fall within the prohibited practices of Article 5 of the AI Act.[^51] Defensive VulnOps systems deployed on critical infrastructures or within the scope of network security are classified as high-risk systems pursuant to Annex III of the AI Act, points 6 and 7, subject to the obligations of Articles 9 to 17: risk management, data requirements, transparency, effective human oversight and technical documentation.[^52][^53] Article 86 of the AI Act additionally recognises the right of affected persons to request explanations concerning decisions taken with the assistance of high-risk AI systems, an autonomous right distinct from Article 22 of the GDPR.[^54]
+
+At the national level, the Spanish Agency for the Supervision of Artificial Intelligence (AESIA)[^55] acts as the competent authority for the enforcement of the AI Act in Spain. Non-compliance with obligations applicable to high-risk systems may entail fines of up to 3% of total annual global turnover (Art. 99.3 AI Act), or up to 6% in cases of infringement of the Article 5 prohibitions.
+
+Regarding civil liability, Directive (EU) 2024/2853 introduces defect presumptions applicable to AI products causing harm. The AI Liability Directive Proposal, pending formal adoption (lex ferenda), establishes a burden-of-proof reversal mechanism for high-risk systems. Insofar as defensive AI tools are accessible and economically viable, their non-deployment may become a benchmark of the due diligence expected of administrators.
+
+### 5.4. The Dual-Use Dilemma and the Risks of Loss of Control in Autonomous Agents
+
+The inherent duality of agentic AI poses an unprecedented structural challenge: the very capabilities that enable Project Glasswing for proactive patching support, mutatis mutandis, the development of zero-day exploits by adversarial actors.[^57] This capability symmetry eliminates the competence barrier that previously operated as a de facto filter for access to the most advanced techniques.
+
+The risks of loss of control over autonomous agents[^58] manifest, in the cybersecurity context, as a potential misalignment between the operator's objectives and the actions executed by the agent. Shutdown resistance as an instrumental strategy for mission accomplishment represents the most operationally relevant scenario. Mandatory technical mitigations — hardware-level emergency switches, ephemeral memory execution and predefined human intervention thresholds — are largely those required by Article 14 of the AI Act on effective human oversight.[^59]
+
+The Council of Europe Framework Convention on AI (CETS No. 225, 2024)[^60] and the NIST AI Risk Management Framework[^61] provide the relevant comparative law framework. The Convention establishes that AI systems must be designed to preserve the potential for human control throughout the entire lifecycle; the AI RMF articulates the GOVERN, MAP, MEASURE and MANAGE functions as tools for continuous management of agentic risk. The convergence of both frameworks with the AI Act suggests the consolidation of an emerging international due diligence standard for operators of AI-based cybersecurity systems.
+
+---
+
+## 6. Towards a «Mythos-Ready» Security Programme
+
+### 6.1. Autonomous Vulnerability Operations (VulnOps)
+
+Strategic literature converges on the view that the structural response to the agentic acceleration of threats is the establishment of a permanent Vulnerability Operations (VulnOps) function, analogous to DevOps but oriented towards the autonomous discovery and remediation of vulnerabilities before their public exploitation.[^62] VulnOps conceptually transcends reactive management based on CVE/NVD public advisories, operating in the plane of proactive detection prior to disclosure.
+
+The operational mandate encompasses three dimensions: full ownership of analysis across the organisation's entire software estate, including third-party dependencies; adversarial precedence in identifying weaknesses before their public exploitation; and continuous auditing of all code — both human-authored and synthetic — prior to merging into production environments.[^63][^64]
+
+The proposed performance indicators — internal Time-to-Exposure (TTE), the ratio of zero-days prevented to those publicly exploited, and VulnOps coverage rate — are aligned with ISO/IEC 27001 and NIST SP 800-53[^65] on the measurement of security control effectiveness.
+
+### 6.2. Risk Register and Action Plan (90-Day Horizon)
+
+The 90-day action plan proposed below constitutes a strategic imperative of the first order for organisations operating in sectors with significant attack surfaces.
+
+**Table 4. Strategic «Mythos-Ready» Action Plan (90-Day Horizon)**
+
+| **Priority Action** | **Start** | **Horizon** | **Key Objective** | **Owner** | **Success Metric** |
+|---|---|---|---|---|---|
+| VulnOps Deployment (CI/CD + legacy) | Immediate | Ongoing | Automated audit of pipelines and legacy systems | CISO + Engineering | 100% critical coverage (Day 30) |
+| Accelerated Governance | Week 1 | 6 months | Reduce friction in AI defence approval | CISO + Legal | <7 days for approval (Day 45) |
+| Hardening of Defensive Agents | Month 1 | 45 days | Strengthen prompts + recovery + sandboxing | Security Engineering | 0 sandbox escapes (Day 45) |
+| Risk Model Update | Week 1 | 45 days | Incorporate collapsed TTE and OC3+ in prioritisation | Risk Management | OC3+ prioritisation active (Day 30) |
+| Attack Surface Reduction (SBOMs) | Month 1 | 90 days | Real SBOMs + decommission unmaintained software | Asset Management | 20% reduction (Day 90) |
+| Automated Response (<15 min) | 90 days | 12 months | Machine-speed containment playbooks | SOC | Containment <15 min (Day 90) |
+
+Sequential execution is critical: during weeks 1 and 2, the operational foundation (VulnOps) and accelerated governance mechanisms are established; in month 1, defensive agent hardening and risk model updates are activated; by month 3, attack surface reduction and automated response playbook deployment are completed. Foundational security controls — deep segmentation, Zero Trust architecture and phishing-resistant multi-factor authentication — retain full validity as a first line of defence limiting the blast radius of agentic attacks.
+
+### 6.3. Collective Defence and the Role of Public-Private Coalitions
+
+The paradigm established by Project Glasswing demonstrates that individual security is insufficient against threats operating at ecosystem scale.[^66] Institutionalised defence coalitions — CISA JCDC.AI in the North American context and ENISA's coordinated CVD mechanism under Article 12 of the NIS2 Directive[^67] — constitute the natural vehicle for this collective strategy.
+
+The multiplier impact model is the decisive economic argument: a vulnerability patched through Glasswing potentially protects one billion devices, compared to the limited reach of individual patching.[^68] Active participation in these coalitions is, within the proposed framework, a relevant due diligence indicator both for purposes of the AI Act and the future civil liability regime.
+
+---
+
+## 7. Conclusions and Recommendations
+
+### 7.1. Executive Summary of Findings
+
+The research confirms that Claude Mythos Preview and Project Glasswing constitute a structural discontinuity in the offensive-defensive balance of cybersecurity, for the first time documenting an AI system capable of complex reasoning over code with sufficient autonomy to discover, exploit and chain zero-days at scale without prior human intervention.[^69]
+
+Four findings concentrate the most far-reaching implications. The collapse of exposure time: the disclosure-to-exploitation window has contracted from 756 days in 2018 to under 24 hours in 2026, invalidating reactive patching cycles.[^70] The longevity-security fallacy: vulnerabilities with lifespans of 16 to 27 years in extensively audited code bases have been identified within hours.[^71] Absolute economic asymmetry: the cost of AI-driven zero-day exploit development ($24.40) represents a 99.8% reduction relative to human equivalent costs, democratising access to elite attack capabilities.[^72] The structural defence deficit: human teams operate at human speed while vulnerability discovery proceeds at machine speed.
+
+### 7.2. Resilience Roadmap for the Agentic AI Era
+
+In the short term (90 days), organisations must establish the VulnOps unit with agentic auditing capacity over CI/CD pipelines and legacy code, implement an accelerated governance model with approval timelines below seven days for AI defensive technologies, and complete the mapping of their AI systems pursuant to the AI Act, with implementation of activity logs and emergency stop mechanisms.[^73][^74]
+
+In the medium term (6 to 12 months), participation in CVD coalitions (CISA JCDC.AI, ENISA, Glasswing), hardening of defensive agents under the G-I-A framework, and compilation of comprehensive SBOMs must be consolidated. In the long term, native Zero Trust architecture, deep microsegmentation and containment playbooks with a target time objective below 15 minutes constitute the pillars of permanent resilience.
+
+The proposed success metrics, aligned with ISO/IEC 27001 and NIST SP 800-53,[^75][^76] are: (i) reduction of internal TTE from weeks to hours within 90 days; (ii) a ratio of ten zero-days prevented for each one publicly exploited within six months; (iii) a 20% reduction in attack surface within 12 months; and (iv) agentic containment time below 15 minutes on a permanent basis.
+
+The fundamental conclusion is as follows: organisations that execute this roadmap will recover speed parity with agentic adversarial actors; those that do not will face an existentially significant risk exposure in the face of capabilities that evolve monthly. Resilience is, in this new paradigm, an architectural imperative, not a response attribute.
+
+---
+
+## 8. References
+
+### I. Legislation
+
+Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 on Artificial Intelligence, OJ L, 12 July 2024 [AI Act].
+
+Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data, OJ L 119, 4 May 2016 [GDPR].
+
+Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 on measures for a high common level of cybersecurity across the Union, OJ L 333, 27 December 2022 [NIS2].
+
+Directive (EU) 2024/2853 of the European Parliament and of the Council of 23 October 2024 on liability for defective products.
+
+Royal Decree 729/2023 of 22 August 2023 establishing the Spanish Agency for the Supervision of Artificial Intelligence, BOE No. 201, 23 August 2023.
+
+Council of Europe, Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law, CETS No. 225, opened for signature 5 September 2024.
+
+European Commission, Proposal for a Directive on Liability for Artificial Intelligence, COM(2022) 496 final, Brussels, 28 September 2022 [lex ferenda].
+
+### II. Academic Literature
+
+GARCEZ, A. D. and LAMB, L. C., «Neurosymbolic AI: The 3rd Wave», *Artificial Intelligence Review*, vol. 53, no. 8 (2020), pp. 1–24. https://doi.org/10.1007/s10462-020-09876-2.
+
+KITCHENHAM, B. and CHARTERS, S., *Procedures for Performing Systematic Literature Reviews in Software Engineering* (Technical Report EBSE-2007-01), Keele University and Durham University, 2007.
+
+LAKE, B. M. et al., «Building Machines That Learn and Think Like People», *Behavioral and Brain Sciences*, vol. 46 (2023), e3. https://doi.org/10.1017/S0140525X22000027.
+
+PEARL, J. and MACKENZIE, D., *The Book of Why: The New Science of Cause and Effect*, Basic Books, New York, 2018.
+
+### III. Institutional and Technical Documents
+
+Anthropic, *Project Glasswing: Coordinated Vulnerability Disclosure at Scale*, 6 April 2026. https://www.anthropic.com/project/glasswing.
+
+Anthropic, *Model Card: Claude Mythos Preview* (2026b). https://www.anthropic.com/model-cards/mythos.
+
+Cloud Security Alliance, *AI-Driven Cybersecurity: The Next Frontier*, 2026. https://cloudsecurityalliance.org/research/ai-cybersecurity-2026.
+
+GitHub Security Lab, *Open Source Vulnerability Trends 2026*, 2026. https://securitylab.github.com/research/opensource-vulns-2026.
+
+IBM Research, *KnowGraph: Neurosymbolic Cybersecurity*, 2025. https://research.ibm.com/knowgraph-cyber.
+
+MITRE Corporation, *ATLAS: Adversarial Threat Landscape for AI Systems*, 2025. https://atlas.mitre.org.
+
+NIST, *Cybersecurity Framework 2.0*, 2024. https://www.nist.gov/cyberframework.
+
+NIST, *AI Risk Management Framework 1.0 (AI RMF 1.0)*, January 2023. https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf.
+
+NIST, *Special Publication 800-53 Rev. 5*, 2020. https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final.
+
+OWASP Foundation, *OWASP Top 10 for Large Language Model Applications v1.1*, 2025. https://owasp.org/www-project-top-10-for-large-language-model-applications/.
+
+RAND Corporation, *Operational Capability Levels for Autonomous Cyber Agents (OC Framework)*, 2025. https://www.rand.org/pubs/research_reports/RR1234.html.
+
+Zero Day Initiative, *Zero Day Clock: Exploitation Timelines 2018–2026*, 2026. https://www.zerodayinitiative.com/resources/reports.
+
+ZALEWSKI, M., *American Fuzzy Lop (AFL)* [Software], 2014. http://lcamtuf.coredump.cx/afl/.
+
+---
+
+[^2]: Anthropic, *Project Glasswing: Coordinated Vulnerability Disclosure at Scale* (6 April 2026), available at: https://www.anthropic.com/project/glasswing [accessed: 19/04/2026].
+[^3]: Ibid.
+[^4]: Cloud Security Alliance, *AI-Driven Cybersecurity: The Next Frontier* (2026), p. 14.
+[^5]: Ibid.
+[^6]: Anthropic, op. cit., note 2.
+[^7]: Cloud Security Alliance, op. cit., note 4.
+[^8]: GitHub Security Lab, *Open Source Vulnerability Trends 2026* (2026).
+[^9]: Zero Day Initiative, *Zero Day Clock: Exploitation Timelines 2018–2026* (2026).
+[^10]: NIST, *Cybersecurity Framework 2.0* (2024).
+[^11]: OWASP Foundation, *OWASP Top 10 for Large Language Model Applications v1.1* (2025).
+[^12]: Anthropic, op. cit., note 2.
+[^13]: RAND Corporation, *Operational Capability Levels for Autonomous Cyber Agents (OC Framework)* (2025). See also Anthropic, op. cit., note 2.
+[^14]: Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 on Artificial Intelligence [hereinafter the AI Act], OJ L, 12 July 2024.
+[^15]: Arts. 9, 10, 13, 14 and 17 of the AI Act, establishing the risk management system, training data requirements, transparency, human oversight and technical documentation requirements applicable to high-risk systems.
+[^16]: NIST, *Cybersecurity Framework 2.0* (2024).
+[^17]: Zero Day Initiative, op. cit., note 9.
+[^18]: Anthropic, op. cit., note 2.
+[^19]: Cloud Security Alliance, op. cit., note 4.
+[^20]: RAND Corporation, op. cit., note 13.
+[^21]: Anthropic, op. cit., note 2.
+[^22]: Ibid.
+[^23]: Anthropic, op. cit., notes 2 and 9.
+[^24]: Ibid.
+[^25]: Anthropic, op. cit., note 2.
+[^26]: Ibid.
+[^27]: Directive (EU) 2022/2555 of the European Parliament and of the Council of 14 December 2022 [NIS2], OJ L 333, 27 December 2022, Art. 12.
+[^28]: Anthropic, op. cit., note 2.
+[^29]: GARCEZ, A. D. and LAMB, L. C., «Neurosymbolic AI: The 3rd Wave», *Artificial Intelligence Review*, vol. 53, no. 8 (2020), pp. 1–24.
+[^30]: MITRE Corporation, *ATLAS: Adversarial Threat Landscape for AI Systems* (2025).
+[^31]: LAKE, B. M. et al., «Building Machines That Learn and Think Like People», *Behavioral and Brain Sciences*, vol. 46 (2023), e3.
+[^32]: Anthropic, *Model Card: Claude Mythos Preview* (2026b).
+[^33]: IBM Research, *KnowGraph: Neurosymbolic Cybersecurity* (2025).
+[^34]: PEARL, J. and MACKENZIE, D., *The Book of Why: The New Science of Cause and Effect*, Basic Books, New York, 2018.
+[^35]: Anthropic, op. cit., note 2.
+[^36]: KITCHENHAM, B. and CHARTERS, S., *Procedures for Performing Systematic Literature Reviews in Software Engineering* (Technical Report EBSE-2007-01), Keele University and Durham University, 2007.
+[^37]: Ibid.
+[^38]: Anthropic, op. cit., note 2.
+[^39]: Anthropic, op. cit., notes 2 and 9.
+[^40]: NIST, *Cybersecurity Framework 2.0* (2024).
+[^41]: MITRE Corporation, *ATLAS* (2025).
+[^42]: OWASP Foundation, *OWASP Top 10 for LLM Applications v1.1* (2025).
+[^43]: Anthropic, op. cit., note 2.
+[^44]: GitHub Security Lab, op. cit., note 8.
+[^45]: Anthropic, op. cit., note 2.
+[^46]: Ibid.
+[^47]: Ibid.
+[^48]: NIST, *Cybersecurity Framework 2.0* (2024).
+[^49]: NIS2, Art. 12.
+[^50]: AI Act (2024/1689).
+[^51]: Art. 5.1 AI Act. Prohibited AI practices are enumerated in Article 5; Annex III lists high-risk AI systems.
+[^52]: Arts. 9, 10, 13, 14 and 17 AI Act.
+[^53]: Art. 72 AI Act, regarding post-market monitoring of general-purpose AI models with systemic risk.
+[^54]: Art. 86 AI Act. Recognises the right to explanations for decisions involving high-risk AI systems; distinct from Art. 22 GDPR.
+[^55]: AESIA, established by Royal Decree 729/2023 as the national competent authority for AI Act supervision in Spain.
+[^57]: Anthropic, op. cit., note 2.
+[^58]: Anthropic, *Model Card: Claude Mythos Preview* (2026b).
+[^59]: Arts. 9, 10, 13, 14 and 17 AI Act.
+[^60]: Council of Europe, *Framework Convention on AI* (CETS No. 225, 2024), first legally binding international treaty on AI.
+[^61]: NIST, *AI Risk Management Framework 1.0 (AI RMF 1.0)* (January 2023).
+[^62]: Anthropic, op. cit., note 2.
+[^63]: Ibid.
+[^64]: Cloud Security Alliance, op. cit., note 4.
+[^65]: ISO/IEC 27001:2022; NIST, *SP 800-53 Rev. 5* (2020).
+[^66]: Anthropic, op. cit., note 2.
+[^67]: NIS2, Art. 12.
+[^68]: Cloud Security Alliance, op. cit., note 4.
+[^69]: Anthropic, op. cit., note 2.
+[^70]: Zero Day Initiative, op. cit., note 9.
+[^71]: Anthropic, op. cit., note 2.
+[^72]: Ibid.
+[^73]: Arts. 9, 10, 13, 14 and 17 AI Act.
+[^74]: AESIA, op. cit., note 55.
+[^75]: ISO/IEC 27001:2022; NIST SP 800-53 Rev. 5 (2020).
+[^76]: Ibid.
