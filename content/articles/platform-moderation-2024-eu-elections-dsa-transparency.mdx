@@ -1,0 +1,79 @@
+---
+title: "Platform Moderation and the 2024 EU Elections: What the DSA Data Reveals"
+seoTitle: "Platform Moderation and the 2024 EU Elections: What the DSA Data Reveals"
+metaDescription: "Analysis of 1.58 billion moderation actions across 8 major EU platforms shows no meaningful adaptation during the 2024 European Parliament elections."
+ogTitle: "Platform Moderation and the 2024 EU Elections: What the DSA Data Reveals"
+ogDescription: "A new study examining 1.58 billion DSA Transparency Database records finds that major social media platforms showed no significant changes in content moderation behavior before, during, or after the 2024 European Parliament elections."
+date: "2026-04-23"
+category: "regulatory-analysis"
+subcategory: "platform-governance"
+topics:
+  - "DSA"
+  - "content-moderation"
+  - "platform-regulation"
+  - "election-integrity"
+  - "transparency"
+author: "Elena Markov"
+authorSlug: "elena-markov"
+slug: "platform-moderation-2024-eu-elections-dsa-transparency"
+readingTime: 9
+pdfUrl: "/pdfs/1776875289643.pdf"
+---
+
+Of 1.58 billion moderation actions recorded across eight major social media platforms over an eight-month period surrounding the 2024 European Parliament elections, not one platform produced statistically meaningful evidence of having adjusted its enforcement behavior in response to the heightened democratic stakes. That is the central and sobering finding of a peer-reviewed study published on arXiv in April 2026 by researchers from the University of Pisa, IIT-CNR, and the University of Duisburg-Essen.
+
+The paper offers what is arguably the most comprehensive audit of the EU's Digital Services Act Transparency Database (DSA-TDB) to date — a centralized, publicly accessible repository managed by the European Commission where *Very Large Online Platforms* (VLOPs) are legally required to submit *statements of reasons* (SoRs) for every content moderation decision affecting EU users. Launched in September 2023, the database was heralded as a breakthrough in regulatory transparency. This study tests that claim against empirical reality.
+
+## Stable Patterns Where Disruption Was Expected
+
+The study covers the period from March 1 to October 31, 2024, structured around three analytical phases: pre-electoral (to June 5), inter-electoral (June 10 to July 17, spanning the parliamentary vote and the presidential election), and post-electoral (through October 31). The eight VLOPs examined — Facebook, Instagram, LinkedIn, Pinterest, Snapchat, TikTok, X (formerly Twitter), and YouTube — collectively submitted 1.58 billion SoRs during this window.
+
+The methodological approach is rigorous: time series decomposition, trend slope computation, *Trend Strength Index* analysis, *Dynamic Time Warping* distance matrices for cross-platform comparison, and *Pruned Exact Linear Time* (PELT) change-point detection. Across all these techniques, the conclusion is consistent — moderation volumes and response delays remained broadly stable before, during, and after the elections. The European Parliament vote on June 6–9 and the presidential election on July 18 appear in the data as unremarkable dates, indistinguishable from adjacent routine periods.
+
+This finding acquires particular weight when set against the platforms' own self-assessments. Under Articles 34 and 42 of the DSA, VLOPs are required to publish annual systemic risk assessment reports. In those documents, Facebook, Instagram, and YouTube described dedicated monitoring teams, new automated tools, and strengthened review processes specifically targeting electoral content. TikTok reported creating new automated mitigation systems for the election period. X, Pinterest, and LinkedIn each acknowledged electoral risks at varying degrees of intensity. None of these declared efforts left a discernible trace in the DSA-TDB.
+
+## When External Events Do — and Elections Don't — Move the Needle
+
+Paradoxically, the data does show platform moderation responding to external events — just not the ones regulators were most concerned about. The research team applied change-point detection to identify dates when moderation patterns shifted significantly across platforms, then investigated what occurred on or just before those dates.
+
+Two dates recurred across multiple platforms in the volume time series: June 29 and July 19, 2024. The former followed the EU's adoption of new sanctions against Belarus over its involvement in the Russo-Ukrainian war, triggering a surge in conflict-related content moderation across five platforms. The latter corresponds to the CrowdStrike IT outage that disrupted millions of Windows systems worldwide, generating widespread online activity and subsequent enforcement responses across three platforms. In the delay time series, notable change points align with the European Parliament vote on migration and asylum reforms (April 10) and periods of intensified conflict in Gaza and the West Bank (late July and early August).
+
+The implication is nuanced: platform moderation systems are evidently responsive to high-salience external events. The problem is that the elections themselves — the event for which the entire DSA compliance framework was explicitly stress-tested — did not register as a comparable trigger. Whether this reflects an absence of election-specific content requiring moderation, an absence of operational adjustment by the platforms, or a structural limitation in what the database can capture, remains an open question. The study is careful not to foreclose any of these explanations.
+
+## The One Clear Signal: LinkedIn's Delayed Electoral Enforcement
+
+Against a backdrop of stability, a single moderation event stands out with sufficient specificity to warrant confidence. On September 11, 2024, LinkedIn exhibited a sharp spike in moderation volume driven overwhelmingly by comments flagged under the *negative effects on civic discourse or elections* category — a notably precise classification compared to the generic labels most platforms habitually use. Critically, the content being moderated had been published in mid-July, during the inter-electoral phase, but was not acted upon until approximately 45 days later. Nearly all decisions on that day were manual, signaling a deliberate, non-automated review process.
+
+The researchers treat this case as methodologically instructive, not merely substantively interesting. It was LinkedIn's use of a granular, specific category — rather than the pervasive catch-all *scope of platform service* — that made the electoral connection identifiable at all. It is a proof of concept for what the DSA-TDB could reveal if platforms consistently applied precise reporting classifications: the database becomes analytically useful precisely in proportion to the specificity of the information submitted.
+
+## Persistent Transparency Deficits One Year On
+
+The second research question — whether data quality has improved since the database's launch — yields a discouraging answer. The study compares the initial 100-day period (September 2023 to January 2024) against the most recent 100-day period in the dataset (July to October 2024).
+
+The *scope of platform service* category remains the dominant moderation label across the database, used in 41.04% of SoRs in the recent period, down only marginally from 42.68% initially. This single category covers an unusually broad range of restrictions — age, geography, language, disallowed goods, nudity — making it nearly impossible to derive meaningful insights from aggregate counts alone. Facebook and Instagram have actually increased their reliance on this generic label over the past year, while YouTube and Snapchat have reduced it substantially.
+
+Optional fields, which could provide the contextual richness necessary for meaningful oversight, remain almost entirely unused. TikTok, Instagram, Facebook, and LinkedIn populated none of them in the recent period. Pinterest, YouTube, Snapchat, and X filled a small fraction of optional fields in a subset of SoRs. This pattern was flagged in initial assessments of the database; the current study confirms that it has not meaningfully changed.
+
+Data integrity issues persist as well. Several platforms — TikTok, Facebook, Snapchat, and LinkedIn — submitted SoRs indicating that content was moderated before it was published, a logical impossibility pointing to inadequate internal quality controls. TikTok alone submitted over 12,000 such erroneous records on a single day (May 10, 2024). While these represent a small fraction of total SoRs, they can distort analysis under certain filtering conditions, underscoring the need for integrity checks before drawing regulatory conclusions.
+
+X remains the most problematic case. The platform continues to report zero moderation delay across all its submissions, combined with a claim that 99% of its decisions are purely manual. Given that deepfakes constitute X's primary reported moderation target — a content type that is notoriously difficult to detect manually at scale — this reporting pattern lacks plausibility. A chi-square test comparing X's initial and recent period data returns p = 0.99, indicating that its reporting practices have not changed at all since the database launched. The European Commission opened formal proceedings against X in December 2023 partly on the basis of these inconsistencies; the study finds no evidence that the platform has remediated them.
+
+## Regulatory and Practitioner Implications
+
+The study surfaces a structural problem that extends beyond any individual platform's conduct: self-reported transparency frameworks are inherently limited in their capacity to detect the very behaviors they are designed to monitor. Platforms that comply formally with the DSA's reporting obligations can simultaneously maintain operational opacity — filling mandatory fields with broad classifications while leaving optional fields empty, submitting data that technically satisfies schema requirements but yields minimal analytical value.
+
+For legal practitioners advising platforms on DSA compliance, the distinction between formal and substantive transparency is now a live regulatory risk. The European Commission's proceedings against Facebook, Instagram, and X in connection with the 2024 elections signal that formal compliance with reporting obligations is not a shield against enforcement action where substantive electoral integrity concerns remain unaddressed.
+
+For regulators and researchers, the study reinforces the case for the data access mechanisms being developed under Article 40(4) of the DSA — a new access portal that would allow cross-referencing self-reported data against non-public platform information. Without such mechanisms, subtle but potentially significant shifts in moderation practice will continue to be invisible to external observers, regardless of what the transparency database formally contains.
+
+> 📄 **Full document available**
+> [When Transparency Falls Short: Auditing Platform Moderation During a High-Stakes Election](https://arxiv.org/abs/2604.19285) — available for direct download on arXiv.
+
+## Key Takeaways
+
+- None of the eight major EU VLOPs showed statistically significant changes in moderation volume or delay in response to the 2024 European Parliament elections, despite publicly declaring election-specific mitigation measures.
+- Platform moderation did respond to other high-salience events (Belarus sanctions, CrowdStrike outage, Gaza conflict), suggesting the systems are operationally capable of adjustment — raising harder questions about why electoral risks did not trigger comparable responses.
+- LinkedIn's September 2024 enforcement spike is the sole case where election-related moderation can be identified with confidence, enabled by the platform's use of a specific DSA category label rather than generic classifications.
+- Reliance on the *scope of platform service* category remains near-unchanged at ~41%, confirming that vague reporting practices documented in 2023 have not been corrected.
+- X's reporting practices have shown no statistically meaningful change since the database launched, with persistently implausible zero-delay claims and near-universal manual moderation assertions.
+- The gap between declared mitigation efforts and observable enforcement patterns calls for cross-validation mechanisms — combining self-reported data with non-public platform data — as a necessary condition for meaningful regulatory oversight of electoral integrity risks.
