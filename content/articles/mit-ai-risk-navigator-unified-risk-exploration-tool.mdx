@@ -1,0 +1,70 @@
+---
+seoTitle: "MIT AI Risk Navigator: One Interface for AI Risk Data"
+metaDescription: "MIT's AIRI launches a unified web tool linking risks, incidents, and governance across 7 domains and 24 subdomains. Version 1 now live at airi-navigator.com."
+ogTitle: "MIT AI Risk Navigator: One Interface for AI Risk Research"
+ogDescription: "The MIT AI Risk Initiative has connected its four major datasets under a shared taxonomy for the first time. Researchers, regulators, and practitioners can now navigate the full AI risk landscape from a single interface."
+date: "2026-04-22"
+category: "technology-trends"
+subcategory: "ai-risk-tools"
+topics:
+  - "ai-risk"
+  - "risk-taxonomy"
+  - "governance-data"
+  - "mit-airi"
+  - "regulatory-analysis"
+author: "Elena Markov"
+authorSlug: "elena-markov"
+slug: "mit-ai-risk-navigator-unified-risk-exploration-tool"
+readingTime: 6
+pdfUrl: "/pdfs/1776868045576.pdf"
+---
+
+Four separate databases. Four different interfaces. No shared navigation layer. For years, that was the practical reality of working with the MIT AI Risk Initiative's data — genuinely valuable, but difficult to use in aggregate. A researcher wanting to trace a risk from its academic characterization through to real-world incidents and the governance frameworks designed to address it had no systematic way to do so. That friction has now been resolved.
+
+The MIT AI Risk Initiative (AIRI) has released the **AI Risk Navigator**, a publicly accessible web tool at [airi-navigator.com](https://airi-navigator.com) that centralizes all of AIRI's current datasets under a shared taxonomy. The tool was built by Spencer Michaels as part of a fellowship with the Cambridge Boston Alignment Initiative, with mentorship from Alexander Saeri and Peter Slattery. Version 1, published in April 2026, integrates four major datasets: catalogued academic risks, documented real-world incidents, global governance documents, and concrete mitigation actions drawn from leading frameworks.
+
+## A Taxonomy as Shared Infrastructure
+
+The Navigator's central architectural decision is to make AIRI's risk domain taxonomy — not any individual dataset — the primary entry point. The taxonomy spans seven domains: discrimination and toxicity, privacy and security, misinformation, malicious actors and misuse, human-computer interaction, socioeconomic and environmental harms, and AI system safety and limitations. These are broken into 24 more specific subdomains, each with its own definition, causal dimensions, and cross-dataset representation.
+
+This structure allows a user to select any subdomain and immediately see the academic risk characterization, the incident record, and the governance landscape side by side. The homepage taxonomy grid provides an immediate quantitative orientation: each cell displays how many risks, incidents, and governance documents fall within that domain. *Malicious Actors & Misuse* leads with 491 documented incidents and 771 governance documents; *Human-Computer Interaction* shows a significant gap, with 106 catalogued risks but only 35 incidents — a pattern worth examining for researchers and auditors alike.
+
+The design philosophy is one of co-location rather than synthesis. The Navigator assembles the relevant data; it does not interpret the connections between datasets. That judgment is left to the user, a deliberate choice given the methodological constraints discussed below.
+
+## Subdomain Pages, Search, and Visualization
+
+Each of the 24 subdomain detail pages brings together the relevant slice of all four datasets in a single view. The page for subdomain 3.1 — *False or Misleading Information* — illustrates the analytical value of this approach. According to AIRI's data, incidents in this subdomain have doubled since 2024, placing it third across all 24 subdomains by incident volume. At the same time, the subdomain is *under-governed*: its share of incidents exceeds its share of governance coverage by a measurable margin. This kind of cross-dataset signal — abundant incidents, lagging regulatory response — is precisely what was invisible when the datasets existed in isolation.
+
+Beyond the taxonomy layer, the Navigator offers a global search engine with both semantic and keyword matching that queries across all datasets, taxonomies, and definitions simultaneously. Practitioners can also browse each dataset individually using combinable filters: locating all fraud-related incidents since 2012, or filtering for defunct state-level regulations that addressed algorithmic bias, takes seconds rather than hours of manual search.
+
+Dataset-level visualizations provide a higher-order perspective on structure and distribution — how risks spread across the taxonomy, where incidents cluster, which domains have the most or least governance coverage. All charts are exportable as PNG files, directly suitable for inclusion in regulatory submissions, audit reports, and policy briefings. These visualizations are also planned for integration into AIRI's main website.
+
+## Methodological Transparency as a Design Principle
+
+The Navigator does not paper over the limitations of its underlying data. AIRI's documentation is explicit: each incident is classified under a single risk domain even when it spans several; governance data skews toward U.S. sources and may not accurately represent global AI governance in aggregate. The tool is designed around these constraints, being selective about which cross-dataset comparisons it surfaces and transparent about what the data can and cannot support.
+
+This approach deserves recognition as a model for evidence-based policy tools. For legal and compliance teams advising clients on AI risk, the willingness to surface methodological caveats alongside findings is not a limitation — it is a signal of analytical rigor. Data-driven arguments built on the Navigator will be more defensible precisely because the tool's constraints are documented and visible.
+
+## Practical Implications for Legal and Compliance Practice
+
+For practitioners building AI risk assessments, the Navigator addresses a concrete operational problem. Constructing a well-evidenced risk argument for a specific domain — facial recognition in employment screening, for example, or generative AI in financial advice — previously required manually aggregating academic literature, searching multiple incident databases, and tracking regulatory documents across jurisdictions. The Navigator performs that aggregation instantly, reducing preparation time and improving coverage.
+
+For regulatory counsel, the governance layer is particularly valuable. It enables rapid comparison of which subdomains have active governance instruments versus mere proposals, how document volume tracks against incident volume, and where regulatory production is disproportionate to recorded harm. The governance gap metric built into subdomain pages — which quantifies whether a domain is over- or under-governed relative to its incident share — is a useful starting point for scoping regulatory risk assessments or identifying gaps in existing compliance frameworks.
+
+## What Comes Next
+
+Version 1 integrates four datasets. AIRI has three additional datasets at various stages of completion; as the catalog grows from four to seven, each addition will enable cross-dataset analyses not yet possible with current coverage. The roadmap also includes a systematic mapping between AIRI's risk and mitigation taxonomies — closing the loop from risk identification to concrete mitigation actions — along with dark mode, expanded visualizations, and downloadable data with codebooks. User feedback submitted before June 1, 2026 will directly shape development priorities.
+
+> 📄 **Full document available**
+> [Introducing the AI Risk Navigator — MIT AIRI, April 2026](/pdfs/1776868045576.pdf) — available for direct download.
+
+---
+
+**Key takeaways for practitioners:**
+
+- The Navigator is now live at airi-navigator.com and freely accessible; no account required.
+- Subdomain detail pages provide immediate cross-dataset evidence assembly for any of 24 AI risk areas — directly applicable to risk assessments, regulatory submissions, and audit scoping.
+- The governance gap metric on subdomain pages offers a defensible, data-backed starting point for identifying under-regulated risk areas.
+- All charts export as PNG; evidence can be pulled directly into reports and presentations.
+- Three additional datasets are in active development; capabilities will expand materially over the next several months.
+- Feedback window closes June 1, 2026 — practitioners with domain-specific use cases have an opportunity to shape the tool's roadmap.
