@@ -1,0 +1,131 @@
+title: "Berkeley GPAI Risk Profile v1.2: What Legal Teams Must Know"
+seoTitle: "Berkeley GPAI Risk Profile v1.2: What Legal Teams Must Know"
+metaDescription: "UC Berkeley's CLTC releases v1.2 of its GPAI risk-management standards profile, evaluating Claude, GPT-5, Llama 4 and Gemini 3 Pro — and setting a de facto compliance benchmark."
+ogTitle: "Berkeley GPAI Risk Profile v1.2: What Legal Teams Must Know"
+ogDescription: "UC Berkeley's Center for Long-Term Cybersecurity has published the most comprehensive risk-management framework for general-purpose AI models to date, benchmarking real frontier models and filling the gap left by still-evolving EU GPAI codes of conduct."
+date: "2026-04-30"
+category: "regulatory-analysis"
+subcategory: "AI-governance"
+topics:
+  - "AI-risk-management"
+  - "regulatory-compliance"
+  - "algorithmic-accountability"
+  - "AI-governance"
+  - "GPAI"
+  - "NIST-AI-RMF"
+  - "EU-AI-Act"
+author: "James Okafor"
+authorSlug: "james-okafor"
+slug: "berkeley-gpai-risk-management-profile-v1-2"
+readingTime: 17
+pdfUrl: "/pdfs/berkeley-gpai-risk-management-profile-v1-2.pdf"
+
+---
+
+# Berkeley Already Benchmarks Claude, GPT-5, and Llama 4 Against Its Own Standard. Europe Is Still Negotiating Its Code of Conduct.
+
+The Center for Long-Term Cybersecurity at UC Berkeley published, in April 2026, version 1.2 of its *General-Purpose AI Risk-Management Standards Profile* — the most comprehensive reference document to date for managing the risks of general-purpose AI (GPAI) models. This is not an academic exercise: the same publication includes a comparative evaluation of the actual practices of the world's leading AI companies — Anthropic, OpenAI, Meta, and Google — using the profile's own criteria as a benchmark. And it names names: Claude Sonnet 4.6, GPT-5, Llama 4, and Gemini 3 Pro.
+
+Meanwhile, in Brussels, the Code of Conduct for GPAI models under the EU AI Regulation remains in its consultation phase. Several major AI developers have already signed on, but the final document is not closed. Berkeley did not wait: it published first, evaluated afterward, and left a roadmap of what remains to be done. For any lawyer, compliance officer, or regulator working with these models, ignoring this document in 2026 is simply an analytical error.
+
+## A Profile Born from the Inadequacy of General Frameworks
+
+The document's starting point is a recognition that many in AI governance have long signaled without daring to state it this plainly: the NIST AI Risk Management Framework (AI RMF) and ISO/IEC 23894 are generic frameworks, applicable to any AI system — but GPAI models present qualitatively distinct problems that those frameworks do not adequately cover.
+
+What are those qualitative differences? The profile enumerates them precisely. GPAI models have the potential to be applied across multiple sectors simultaneously. They occupy a central position in the AI value chain: they are the core model upon which hundreds or thousands of downstream applications are built. They exhibit *emergent properties* — capabilities not anticipated in the original design that can be both beneficial and dangerous. And, most striking from a legal perspective, their scale and reach create risks of *correlated failures*: if a GPAI model underlying many systems fails in a particular way, that failure can propagate simultaneously to all of them.
+
+This is where the analysis gets complicated, and where the Berkeley profile makes a genuine contribution to the debate: it does not simply list risks but proposes a risk management architecture specifically calibrated for this class of systems. It does so by articulating the four NIST AI RMF functions — *Govern*, *Map*, *Measure*, *Manage* — but adding layers of specificity that the original framework does not contemplate.
+
+## The Profile's Architecture: Four Functions, Dozens of Subcategories
+
+The document follows the logic of the four NIST AI RMF functions, adapted to GPAI. Understanding what each means in this context matters, because the translation is not automatic.
+
+The *Govern* function addresses the policies, processes, and organizational structures needed to manage AI risks. In the GPAI context, this includes the distribution of responsibilities between *upstream* developers — those who create the base model — and *downstream* developers — those who build applications on top of it. The profile is explicit: whoever has more information, more resources, and more capacity to act on a specific risk also bears more responsibility for managing it. This is, in essence, the logic of Article 25 of the EU AI Regulation applied to the GPAI value chain, though Berkeley formulates it in a more operationally useful way.
+
+The most notable addition under *Govern* in version 1.2 is subcategory Govern 5.1: the requirement to collect, consider, and integrate *feedback* from external parties — including independent third-party evaluations — regarding the model's potential impacts. The profile does not frame this as a generic transparency recommendation; it elevates it to high-priority status and establishes that developers must create accessible channels for users and affected persons to report problems. The logic is sound: no organization, however sophisticated its internal team, can anticipate all the uses and adverse effects of a system as versatile as a GPAI model.
+
+The *Map* function is perhaps the densest and most useful for those working on impact assessment. This is where the profile addresses systematic risk identification: reasonably foreseeable uses, potential abuses, impacts on individuals and vulnerable groups, and systemic effects. Subcategory Map 1.5 — establishing risk tolerance thresholds — deserves particular attention. The profile directly cites NIST AI RMF 1.0: when a system presents unacceptable negative risk levels, development and deployment must cease in a safe manner until risks can be sufficiently managed. This is not rhetoric — it is a stop condition, a conceptual kill switch that the profile elevates to a required organizational criterion.
+
+Subcategory Map 5.1, expanded in this version 1.2, catalogs factors for serious or catastrophic harm. The list is long and worth reading carefully. It includes: correlated bias and discrimination; impacts on social trust or democratic processes; correlated robustness failures; potential for high-impact malicious uses such as cyberweapons or CBRN (chemical, biological, radiological, or nuclear) weapons; capability to manipulate or deceive humans in harmful ways; loss of understanding and control over a real-world AI system; and, newly in this version, manipulation and deception, *sandbagging* during evaluations of dangerous capabilities, situational awareness, socioeconomic and labor market disruption, and the possible intractability of removing backdoors.
+
+That last point is particularly significant. The profile acknowledges that in some cases it may be impossible to reliably remove certain vulnerabilities or behaviors introduced during training. This has direct implications for any liability analysis: if a developer cannot guarantee that a backdoor has been eliminated, what standard of due diligence is required? Is it sufficient to document the risk and implement compensating controls, or are there situations where the only responsible course is not to deploy the model at all?
+
+## The New Risk Taxonomy: A Step Toward Standardization
+
+Section 2.2.1, added in this version, introduces a proposed risk taxonomy for GPAI models. This is perhaps the most technically significant contribution of the document, and also the most relevant to the work of harmonizing different regulatory frameworks.
+
+One of the principal difficulties in the AI governance space is that different frameworks — the NIST AI RMF, the EU AI Regulation, ISO standards, sector-specific initiatives — use different vocabularies to describe partially overlapping risk categories. The absence of a shared taxonomy makes it difficult to compare assessments, harmonize obligations, and demonstrate conformity with multiple frameworks simultaneously.
+
+Berkeley's proposal in version 1.2 is preliminary — the authors themselves acknowledge that restructuring the profile around that taxonomy is an objective for future versions — but the mere act of proposing an explicit taxonomy with differentiated and justified categories is a meaningful methodological advance. A companion document published simultaneously maps the profile's categories against the requirements of the EU AI Act and the GPAI Code of Practice. That mapping work is of enormous practical value for any organization that needs to demonstrate conformity with European regulation.
+
+## The Risks This Profile Elevates to Emergency Status
+
+There is a structural tension in any risk management document for emerging technologies: if it is too conservative, it becomes irrelevant to the actors who need it most; if too permissive, it legitimizes inadequate practices. The Berkeley profile navigates this tension with notable intellectual honesty, explicitly acknowledging that the practices described are necessary but not necessarily sufficient to achieve acceptable risk levels.
+
+What is most striking about this v1.2 is the explicit incorporation of risks that two or three years ago would have been considered too speculative for a public policy document. *Sandbagging* — the possibility that a model conceals its capabilities during safety evaluations — is a paradigmatic example. This is not science fiction: it is behavior that has already been observed in laboratory settings and has direct implications for the validity of any dangerous-capability evaluation. If a model can hide what it is capable of, pre-deployment evaluations may be systematically misleading.
+
+*Situational awareness* is another newly incorporated risk. The document does not speculate about artificial general intelligence or apocalyptic scenarios; it simply notes that some frontier models show evidence of capacity to reason about their own deployment context, and that this can have consequences for the predictability of their behavior. It is a cautious formulation, but the mere fact that it appears in a risk management document from a first-tier academic institution signals that the conversation has fundamentally changed.
+
+Socioeconomic and labor market disruption is also included for the first time in this version. The profile takes no position on the net balance between AI's benefits and labor costs; what it establishes is that GPAI model developers must identify, document, and consider these types of impacts within their risk analysis. This is consistent with the EU AI Regulation's approach — which situates risk management within the broader context of fundamental rights — but goes further by operationalizing it as a concrete risk management requirement, not merely a general principle.
+
+## The Allocation of Responsibility Between Upstream and Downstream Developers
+
+One of the profile's most practical contributions is its treatment of responsibility allocation between upstream and downstream developers. The logic is straightforward in principle but complex in practice: the entity that develops the base model has access to information about its capabilities, vulnerabilities, and behaviors that application developers simply do not have. That information asymmetry justifies an asymmetry in the due diligence burden.
+
+The profile formalizes this principle as an operational guide: organizations should take responsibility for the risk assessment and risk management tasks for which they have access to relevant information, possess necessary resources, or have the opportunity to develop capabilities sufficient for constructive action — especially when those advantages are substantially greater than those of other actors in the value chain.
+
+This formulation has direct consequences for the European regulatory debate. The EU AI Regulation establishes differentiated obligations for providers of general-purpose AI models with systemic risk (Article 55) and for application developers who incorporate them (Article 25). But translating those legal obligations into concrete risk management practices remains a work in progress. The Berkeley profile offers a map of that translation that legal advisers and compliance officers should have at hand when working through the Regulation's articles.
+
+The EU GPAI Code of Conduct — cited in the profile itself as a source integrated into this version — is a natural complement. But while that code remains in negotiation, the Berkeley profile functions as a de facto reference standard. Several major AI developers have already signed on to the European Code of Conduct: that means, in practice, they are using frameworks like Berkeley's to demonstrate conformity with commitments that do not yet have a definitive form.
+
+## Post-Deployment Monitoring: The High-Priority Addition That Changes Everything
+
+Perhaps the single most consequential addition to v1.2 for compliance teams is the elevation of Manage 4.1 — post-deployment monitoring — to high-priority status. The argument is straightforward and hard to contest: risk management does not end with deployment. GPAI models can exhibit unexpected behaviors when exposed to real user populations and use contexts not represented in pre-deployment evaluation environments.
+
+The profile specifies what continuous monitoring must include: mechanisms for capturing and evaluating user feedback, appeal and override procedures, decommissioning protocols, incident response plans, and change management processes. This is not a general principle of operational oversight; it is a structured framework that organizations are expected to implement and document.
+
+For legal teams advising on AI system governance, this has immediate implications. Risk management plans that treat deployment as the endpoint of analysis are now insufficient against this standard — and likely insufficient against the EU AI Regulation as well. Any organization deploying a GPAI model that cannot demonstrate an operational post-deployment monitoring program is operating below the baseline of responsible practice that Berkeley, and increasingly regulators, expect.
+
+## Evaluating Real Models: Claude, GPT-5, Llama 4, Gemini 3 Pro
+
+Version 1.2 is accompanied by a separate document — also available on the Berkeley CLTC site — that applies the profile to current frontier models. The models evaluated in this round are Claude Opus 4.5, GPT-5, Llama 4, and Gemini 3 Pro. This comparative evaluation is one of the most valuable elements of the entire initiative: not because the scores are definitive — the document itself presents them with extensive methodological caveats — but because it demonstrates that the profile is applicable to real systems and generates observable differences between distinct practices.
+
+The fact that the authors publish both the v1.1 and v1.2 results for the same models allows readers to track how company practices have evolved between profile versions. This is, methodologically, exactly what a good evaluation mechanism should do: create incentives for continuous improvement and make that improvement — or its absence — visible to external parties.
+
+The practical implication for regulatory affairs should not be missed. If an academically sourced reference standard can be applied to the real models of the world's leading AI companies and produce differentiated, comparable results, that standard has all the elements needed to be adopted as a reference by regulators. It would not be the first time a soft law document ends up incorporated by reference into hard law regulation.
+
+## Limitations the Document Acknowledges
+
+The Berkeley profile has the uncommon merit of enumerating its own limitations with precision and without euphemism. The most important is also the most obvious: the profile can only cover identified risks, not all possible risks. In a field evolving this rapidly, the gap between identified and total possible risks may be substantial. The authors explicitly warn that this gap may be especially consequential in categories where outcomes are severe and irreversible — loss of control, large-scale manipulation, catastrophic misuse — and that this may warrant additional caution beyond the specific practices described in the document.
+
+The profile also does not cover all aspects of organizational risk management: it does not, for example, provide guidance on network infrastructure security or information system components beyond the model itself. That is not a deficiency — it is outside the document's declared scope — but practitioners using it should be aware of that boundary.
+
+Also notable is what the profile acknowledges must be addressed in future versions: restructuring the profile around a predefined risk taxonomy, developing targeted supplementary guidance differentiated by stakeholder type, expanding guidance on internal deployment and AI R&D, and enhancing risk-to-mitigation mapping. These are honest limitations, and the existence of a public roadmap to address them is itself good governance practice.
+
+## What Legal and Compliance Teams Need to Take Away
+
+There is a question always worth asking when analyzing a document of this kind: what changes concretely for a lawyer or compliance officer working in the AI sector after reading it?
+
+In this case, the answer is fairly concrete.
+
+**The risk management of GPAI models requires a differentiated standard, not merely the application of generic frameworks.** The Berkeley profile is being adopted as a de facto reference by evaluators and regulators. Advising a client on compliance without knowing it is already an analytical weakness.
+
+**The allocation of responsibility between upstream and downstream developers has clear operational criteria.** The key is not only who deployed the model, but who had access to relevant risk information and the capacity to act on it. This is directly relevant to any civil or administrative liability analysis.
+
+**Post-deployment monitoring is not optional — it is a high-priority category.** Risk management plans that treat deployment as the final point of analysis are insufficient against this standard.
+
+**Third-party independent feedback, including external evaluations, is a governance requirement, not an extra.** Organizations that lack accessible channels for reporting problems with their models are failing to meet a best-practice expectation that this profile elevates to priority status.
+
+**The impossibility of measuring a risk does not exempt organizations from documenting it.** This principle — Measure 3.2 of the profile — has direct due diligence consequences: a company that cannot measure the risk of irremovable backdoors in its model must document that inability with the same rigor it would apply to a successful measurement.
+
+**Risk tolerance thresholds must be defined before deployment, not after an incident.** Map 1.5 is, in practical terms, the documentary foundation that should underpin any go/no-go decision on a GPAI model. If that documentation does not exist, the deployment decision has a governance problem.
+
+**The new risk taxonomy and the mapping to the EU AI Act are harmonization tools** that allow organizations to demonstrate conformity with multiple regulatory frameworks using a common language. For organizations operating across multiple jurisdictions, this is a significant compliance asset.
+
+The full profile, with detailed subcategories and reference resources, is available for download at the link below. The comparative model evaluation, the standards mapping, and the Agentic AI Risk-Management Standards Profile are companion documents published simultaneously by Berkeley CLTC.
+
+---
+
+*Document analyzed: General-Purpose AI Risk-Management Standards Profile, Version 1.2, April 2026. Authors: Nada Madkour, Jessica Newman, Deepika Raman, Krystal Jackson, Evan R. Murphy, Charlotte Yuan, and Dan Hendrycks. Center for Long-Term Cybersecurity / Berkeley AI Research Lab, University of California, Berkeley.*
+
+[Download full document — Berkeley GPAI Risk-Management Standards Profile v1.2 (PDF)](/pdfs/berkeley-gpai-risk-management-profile-v1-2.pdf)
