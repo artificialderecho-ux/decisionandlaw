@@ -1,0 +1,169 @@
+---
+title: "ICO Storage and Access Technologies Guidance 2026 Explained"
+seoTitle: "ICO Storage and Access Technologies Guidance 2026 Explained"
+metaDescription: "The ICO's April 2026 guidance overhauls cookie regulation: 43,000 UK providers affected, new DUAA exceptions to PECR, and tighter consent design standards."
+ogTitle: "ICO Storage and Access Technologies Guidance 2026 Explained"
+ogDescription: "The ICO's April 2026 guidance moves beyond cookies to regulate the full stack of tracking technologies. Here is what changed, what remains open, and what organisations must do now."
+date: "2026-05-02"
+category: "regulatory-analysis"
+subcategory: "data-governance"
+topics:
+  - "privacy"
+  - "data-governance"
+  - "regulatory-compliance"
+  - "consent"
+  - "online-tracking"
+author: "Isla Vinter"
+authorSlug: "isla-vinter"
+slug: "ico-storage-access-technologies-guidance-2026"
+readingTime: 18
+pdfUrl: "/pdfs/ICO_Storage_Access_Technologies_Impact_Assessment_April2026.pdf"
+---
+
+## 43,000 providers, one updated guidance: the ICO rewrites the rules of online tracking
+
+The UK's Information Commissioner's Office published its updated guidance on storage and access technologies (SATs) in April 2026, accompanied by a detailed impact assessment. The document replaces the 2019 "cookies and similar technologies" guidance and does something more consequential than a stylistic refresh: it repositions the entire regulatory framework around how organisations store and access information on users' devices.
+
+The numbers alone signal the scale of the intervention. Approximately 43,000 online service providers in the UK are estimated to use cookies or another form of SAT. Around 1.8 million UK businesses advertise online and are therefore indirectly affected by how the guidance shapes consent practices and data availability. And roughly 57 million people in the UK — virtually every internet user — interact with these technologies on a daily basis without realising the legal architecture that is supposed to govern that interaction.
+
+This is not a technical document for web developers alone. It is a regulatory statement about one of the most commercially contested spaces in the digital economy: the infrastructure of online behavioural advertising.
+
+---
+
+## From cookies to SATs: why the terminology shift matters
+
+The decision to retire the label "cookies and similar technologies" in favour of "storage and access technologies" is not cosmetic. It reflects a fundamental shift in how the tracking ecosystem operates — and how it must be regulated.
+
+Since 2019, major browsers have progressively restricted third-party cookies. Safari and Firefox implemented full blocking years ago. Google's Chrome, after years of delays and reversals, has continued tightening restrictions. This has pushed the industry toward alternative tracking mechanisms that replicate the economic function of cookies — user identification and behavioural profiling — through technically distinct means.
+
+The ICO's 2026 guidance catalogues these technologies with regulatory precision: tracking pixels, link decoration and navigational tracking, scripts and tags, web storage (also known as local storage or HTML5 storage), and device fingerprinting. None of these are new. What is new is that all of them now receive equal regulatory weight, rather than being treated as footnotes to the primary discussion of cookies.
+
+The scale of their deployment is striking. The impact assessment estimates that up to 73% of UK websites use link decoration, 54% employ web storage, and approximately 13,900 providers use scripts and tags. Against this, only 9.2% of organisations self-report using cookies to collect personal data through the UK Business Data Survey. That gap — between the technical reality of tracking and the organisational perception of compliance obligations — is precisely the problem the guidance sets out to address.
+
+---
+
+## The legal architecture: PECR, UK GDPR, and the DUAA
+
+Three legal instruments form the normative foundation of the guidance, and their interaction defines the complexity of compliance.
+
+Regulation 6 PECR establishes the baseline rule: no organisation may store information on a user's terminal equipment, or access information already stored there, without prior consent — unless the storage or access is strictly necessary to provide the service the user has requested. This structure has governed cookie regulation since the UK transposition of the ePrivacy Directive. Its logic is simple: tracking requires consent; functionality does not.
+
+The UK GDPR operates as a parallel layer. Whenever the use of SATs involves the processing of personal data — which is almost always the case when any form of individual identification or profiling is possible — the full GDPR framework applies: lawful basis, purpose limitation, data minimisation, transparency, and rights. This means that even where PECR consent is not required, a lawful basis under UK GDPR must independently exist.
+
+The Data (Use and Access) Act 2025 introduces the most significant legislative change. The DUAA expands the exceptions to Regulation 6 PECR to permit the use of SATs for certain statistical purposes and website functionality improvements without requiring prior consent. It also grants the Government a new power to add further exceptions via secondary legislation.
+
+This last point deserves close attention. The impact assessment acknowledges that the Government is currently exploring whether to create exceptions for some online advertising purposes under the new Regulation 6A PECR power. The ICO has indicated it will publish a letter of advice to Government on this matter in spring 2026. The practical consequence is that a significant portion of the digital advertising ecosystem is operating in regulatory limbo: current law requires consent for behavioural advertising, but there is a live political process that could modify or partially remove that requirement.
+
+---
+
+## What the DUAA exceptions actually change — and what they do not
+
+The new statistical and functionality exceptions introduced by the DUAA represent a real but narrow shift. Understanding their actual scope is critical for compliance planning.
+
+The exceptions allow organisations to use SATs without consent when the purpose is genuinely statistical — understanding how visitors use a service at an aggregate or anonymised level — or to improve service functionality. This responds to a longstanding industry concern: basic analytics should not require the same consent friction as personalised behavioural advertising.
+
+However, the exceptions operate within a constraint that the guidance makes explicit. Where the use of SATs for statistical purposes involves the processing of personal data — which will almost always be the case when analytics can be linked to individual users — the UK GDPR's requirements remain fully applicable. The PECR consent obligation may fall away, but the need to identify a lawful basis under UK GDPR does not. For most organisations, that lawful basis will be legitimate interests, which requires a documented balancing test demonstrating that the organisation's interests do not override the rights and freedoms of data subjects.
+
+The practical effect is a displacement rather than an elimination of compliance burden. Organisations that previously needed to obtain PECR consent for basic analytics now need to ensure their UK GDPR legitimate interests assessment is robust. For many, this may not represent a meaningful reduction in regulatory overhead — particularly for those without established data protection governance structures.
+
+---
+
+## The intermediary ecosystem: 840 vendors listed, 500 estimated active, one diffuse chain of responsibility
+
+One of the most significant findings in the impact assessment concerns the intermediary layer of the tracking ecosystem. The ICO estimates that approximately 500 businesses operate as intermediaries in the UK digital advertising market — including ad servers, supply and demand side platforms, ad verification services, data management platforms, consent management platforms, ad exchanges, and ad networks.
+
+This estimate sits between two reference points: the IAB's vendor register, which lists around 840 businesses, and the Online Advertising Programme impact assessment from DSIT, which estimated around 70 key market players. The ICO settled on 500 based on industry expert input gathered through its consultation process. The gap between 840 and 500 — and the methodological uncertainty that produces it — matters regulatorily: the ICO is attempting to govern an ecosystem whose boundaries it cannot precisely map.
+
+Research cited in the impact assessment adds texture to this opacity. On average, more than 80 third parties access a user's data within seconds of that user opening a web page. This means that the moment a user interacts with a consent banner and makes a choice, that choice propagates — or fails to propagate — across a network of actors that the user cannot see, cannot meaningfully understand, and often cannot even identify.
+
+This creates a structural challenge for the consent paradigm. Valid consent under UK GDPR must be specific, informed, and freely given. If the individual granting consent cannot realistically comprehend who will process their data and for what purposes — because the ecosystem itself resists that comprehension — the legal quality of that consent is questionable. The guidance reinforces informational clarity requirements and provides examples of good and poor consent design, but these are informational solutions to what may be a structural problem.
+
+---
+
+## User behaviour and the privacy paradox
+
+The impact assessment includes user-facing data that deserves careful reading. ICO-commissioned research found that 48% of UK adults accept cookies when visiting a new website, 21% reject them, and 24% decide based on the specific site. Meanwhile, 40% of adults never read cookie preferences or privacy policies when visiting new sites, and 44% report sharing more personal information than they would like at least once a week.
+
+This is a textbook illustration of the privacy paradox: individuals express concern about privacy but their behaviour in the specific moment of consent does not reflect that concern. The paradox has been well documented in academic literature, and it raises a normative question that the guidance does not — and perhaps cannot — answer: if users systematically fail to engage with consent mechanisms in ways that reflect their stated preferences, can individual consent function as an adequate mechanism for protecting privacy in a high-volume, complex-ecosystem context?
+
+The guidance's response is to raise the quality standards for consent design. The ICO reinforces the requirement that rejecting cookies must be as easy as accepting them — a standard that its 2025 enforcement action achieved across 95% of the top 1,000 UK websites. It provides new examples of compliant and non-compliant consent interfaces, building on its harmful design practices work with the CMA. And it uses the must/should/could framework to signal regulatory expectations with greater precision.
+
+These are meaningful interventions. But they operate at the margin of a deeper tension: the digital advertising ecosystem is built on personal data obtained through consent mechanisms whose quality has historically been managed downward by design.
+
+---
+
+## The consent-or-pay model: a market design problem in regulatory clothing
+
+The guidance does not focus primarily on consent-or-pay models — the ICO published separate guidance on this topic in 2024 — but the impact assessment acknowledges their growing presence in the UK market, led by news publishers, and the regulatory questions they generate.
+
+Consent-or-pay presents users with a binary: accept behavioural tracking, or pay a subscription fee to access content without personalised advertising. The model has developed partly as a response to falling cookie match rates — the synchronisation of user identities across platforms — as browsers restrict third-party cookies. It has also emerged in the wake of EU court proceedings involving Meta and the implementation of the Digital Markets Act.
+
+The core legal question is whether consent given under a consent-or-pay model is genuinely free. If access to a service is conditioned on accepting tracking, the coercive dimension of that condition may undermine the voluntariness that valid consent requires. The European Data Protection Board addressed this question in the context of Meta's pay-or-consent model, finding that compliance was possible in principle but subject to strict conditions. Post-Brexit, the ICO has regulatory space to develop its own position — more permissive or more restrictive than the EDPB's approach — and the guidance does not close that question definitively.
+
+The impact assessment notes that consultation respondents flagged higher bounce rates and increased consumer friction as potential consequences of these models at scale, as well as the risk of costs being passed on to consumers. These economic dynamics complicate the regulatory picture: a stricter approach to consent quality may accelerate the adoption of consent-or-pay models, which introduces its own concerns about access to information and differential treatment of users who cannot afford to pay.
+
+---
+
+## What the impact assessment acknowledges but does not resolve
+
+The ICO's impact assessment is unusually candid about its own methodological limitations. It repeatedly acknowledges the scarcity of robust evidence, the difficulty of quantifying affected groups, and the impossibility of monetising many of the identified impacts. This transparency is methodologically responsible — and it has implications for how the document should be read.
+
+Familiarisation costs for organisations are estimated at £176 per reading of the guidance by a Data Protection Officer-level staff member. The ICO suggests that three readings per organisation — accounting for the document's complexity — would produce a familiarisation cost of approximately £528 per organisation. Consultation respondents suggested these figures may be underestimates. One respondent estimated additional compliance costs for their organisation of between £150,000 and £275,000 over 12 to 18 months, composed of legal and governance review, technical reconfiguration of consent management platforms, staff training across digital, data, marketing, and compliance teams, and documentation development to evidence lawful reliance on new exceptions.
+
+Distributional impacts deserve attention. The compliance burden of the guidance falls indiscriminately across organisations of vastly different sizes. A global technology platform and a regional news publisher with a handful of staff are both subject to the same regulatory framework. The impact assessment acknowledges this concern — noting that implementation costs may fall disproportionately on SMEs — but stops short of recommending differentiated compliance pathways.
+
+---
+
+## Three questions the guidance leaves open
+
+The guidance advances regulatory clarity on many fronts. But three substantive questions remain unresolved, and they are the ones most likely to generate litigation and supervisory action in the coming years.
+
+The first concerns special category data and SATs. The guidance illustrates the risk clearly: a user who visits the website of a charity dedicated to a specific medical condition may inadvertently reveal sensitive health information through that visit, which is then captured by a third-party tag. The interaction between the new DUAA statistical exceptions and the heightened requirements for processing special category data under UK GDPR is not fully developed in the guidance. Organisations in health, mental health, religion, sexual orientation, or political opinion-adjacent sectors need clearer criteria for how to manage this intersection.
+
+The second open question is the allocation of responsibility across the intermediary chain. The guidance notes that using third-party SATs may involve joint controllership under UK GDPR. But the practical mechanics of distributing that responsibility — which actor is responsible for what, how controller agreements should be structured, and what happens when a downstream intermediary processes data in ways the upstream service provider did not anticipate — remain areas of significant legal uncertainty.
+
+The third concerns children and adolescents. The impact assessment cites evidence that the framing and language of privacy information and consent requests frequently exceeds the comprehension of children. The guidance does not establish a differentiated regime for minor users in the context of SATs. This gap may be intentional — deferring to the ICO's Children's Code — but in practice it creates an unaddressed area of risk for any online service with a significant youth audience.
+
+---
+
+## What organisations should do now
+
+The practical implications of the ICO's 2026 guidance are clear enough to support immediate action, even against a backdrop of ongoing legislative development.
+
+Organisations should audit their full SAT inventory — not just cookies. Device fingerprinting, web storage, link decoration, and third-party scripts all fall within the scope of Regulation 6 PECR and must be included in consent management processes and privacy notices. Many organisations will discover SATs in use that they did not know about or had not categorised as subject to PECR.
+
+Where the new DUAA statistical exceptions are relied upon, organisations must document their UK GDPR lawful basis independently. The elimination of the PECR consent requirement for these uses does not reduce the obligation to identify and document a compliant basis under UK GDPR — most likely legitimate interests, with a completed balancing test.
+
+Consent management platforms and interface design should be reviewed against the guidance's new examples. The must/should/could framework clarifies where the ICO will focus supervisory attention: the "must" requirements are non-negotiable. The 95% compliance rate for top UK websites on the reject-equally-easy standard sets the baseline; the new guidance raises expectations beyond that baseline.
+
+Organisations that rely significantly on third-party intermediaries for data collection, analytics, or advertising should revisit their data processing agreements. The question of joint controllership, and the allocation of responsibility across the supply chain, is an area where the guidance signals expectations without providing complete answers — and where enforcement action is most likely to create clarifying precedent.
+
+---
+
+## A guidance document that regulates the present while the legislature shapes the future
+
+The ICO's 2026 guidance on storage and access technologies is legally rigorous, methodologically transparent, and genuinely more useful to practitioners than the 2019 document it replaces. The expansion of the SAT taxonomy, the incorporation of DUAA exceptions, the must/should/could framework, and the concrete consent design examples all represent meaningful progress.
+
+What the guidance cannot resolve is the structural uncertainty created by the Government's ongoing review of potential advertising exceptions. The digital advertising ecosystem is making compliance and investment decisions under a regulatory framework that may change materially within months. The ICO's role — to enforce current law while providing advance guidance on future expectations — is inherently constrained in that environment.
+
+The deeper question that neither the guidance nor any regulatory document can settle is whether the individual consent model is the right mechanism for governing a tracking ecosystem of this scale and complexity. The evidence cited in the impact assessment — 80 third parties accessing user data within seconds of a page load, 40% of users never reading privacy information, 44% sharing more personal information than they would like — suggests that informational consent operates at the margins of a structural problem. Regulatory guidance can raise the floor. Whether it can change the architecture is a different question.
+
+For now, the floor has been raised. Organisations that have not yet aligned their SAT practices with the 2026 guidance should treat that alignment as urgent — not because the ICO has announced an imminent enforcement wave, but because the regulatory standard has been clearly articulated, the affected population is precisely defined, and the regulator's track record on this topic demonstrates it will act.
+
+---
+
+**Read the full document:**
+
+The complete ICO impact assessment — including cost-benefit analysis, affected group estimates, and consultation responses — is available for download: [ICO Guidance on the Use of Storage and Access Technologies — Impact Assessment, April 2026](/pdfs/ICO_Storage_Access_Technologies_Impact_Assessment_April2026.pdf).
+
+---
+
+**Key takeaways for practitioners:**
+
+- The full SAT taxonomy is regulated — device fingerprinting, web storage, link decoration, and scripts carry the same obligations as cookies under Regulation 6 PECR.
+- New DUAA statistical exceptions remove the PECR consent requirement for qualifying analytics uses, but UK GDPR lawful basis obligations remain fully operative.
+- Government may add advertising-related exceptions via secondary legislation — no compliance infrastructure decision should ignore this variable.
+- 43,000 UK online service providers are directly affected; the self-reporting gap suggests many do not know they are within scope.
+- Joint controllership across the intermediary chain is an unresolved area where enforcement action will create precedent.
+- The consent-or-pay model remains legally ambiguous in the UK post-Brexit regulatory space.
+- Children's use of online services with SATs is a gap in the guidance that carries real legal risk for services with youth audiences.
