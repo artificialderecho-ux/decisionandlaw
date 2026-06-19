@@ -52,7 +52,7 @@ export default function ArticleFooterBadge({
               marginBottom: '4px',
             }}
           >
-            Liderado por humanos · Supervisado por IA
+            Human-Led · Machine Oversight
           </p>
           <p
             style={{
@@ -64,8 +64,7 @@ export default function ArticleFooterBadge({
               marginBottom: '4px',
             }}
           >
-            Contenido liderado por humanos con supervisión, revisión y corrección
-            asistida por inteligencia artificial.
+            Human-led content with AI-assisted supervision, review, and correction.
           </p>
           <a
             href={dffLink}
