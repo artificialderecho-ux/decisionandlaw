@@ -7,7 +7,8 @@ import {
   KeyTakeaways, 
   PracticeNote, 
   CaseCitation, 
-  RelatedCases 
+  RelatedCases,
+  HumanLedBadge,
 } from '../../components/article';
 import ArticleDisclaimer from '../../components/article/ArticleDisclaimer';
 import { NewsArticleStructuredData } from '../../components/StructuredData';
@@ -77,6 +78,7 @@ export default function ArticleClient({ article }: ArticleClientProps) {
                 Breaking
               </span>
             )}
+            <HumanLedBadge size="sm" />
           </div>
           
           <h1 style={{ 

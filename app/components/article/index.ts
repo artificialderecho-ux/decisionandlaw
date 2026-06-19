@@ -3,3 +3,4 @@ export { KeyTakeaways } from './KeyTakeaways';
 export { PracticeNote } from './PracticeNote';
 export { CaseCitation } from './CaseCitation';
 export { RelatedCases } from './RelatedCases';
+export { default as HumanLedBadge } from './HumanLedBadge';
