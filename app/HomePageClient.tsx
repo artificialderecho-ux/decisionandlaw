@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { WebsiteStructuredData } from "./components/StructuredData"
-import HumanLedBadge from "./components/article/HumanLedBadge"
+
 
 const FEATURED_ARTICLES = [
   {
@@ -229,7 +229,6 @@ export default function HomePageClient({ articles }: HomePageProps) {
                   gap: "8px",
                 }}>
                   {displayArticles[0].category}{displayArticles[0].state ? ` — ${displayArticles[0].state}` : ""}
-                  <HumanLedBadge size="sm" showLabel={false} />
                 </div>
                 <h3 style={{
                   fontSize: "clamp(20px, 3vw, 28px)",
@@ -293,7 +292,6 @@ export default function HomePageClient({ articles }: HomePageProps) {
                     gap: "8px",
                   }}>
                     {article.category}{article.state ? ` — ${article.state}` : ""}
-                    <HumanLedBadge size="sm" showLabel={false} />
                   </div>
                   <h3 style={{
                     fontSize: "16px",

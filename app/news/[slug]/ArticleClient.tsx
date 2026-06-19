@@ -8,8 +8,8 @@ import {
   PracticeNote, 
   CaseCitation, 
   RelatedCases,
-  HumanLedBadge,
 } from '../../components/article';
+import ArticleFooterBadge from '../../components/article/ArticleFooterBadge';
 import ArticleDisclaimer from '../../components/article/ArticleDisclaimer';
 import { NewsArticleStructuredData } from '../../components/StructuredData';
 
@@ -78,7 +78,6 @@ export default function ArticleClient({ article }: ArticleClientProps) {
                 Breaking
               </span>
             )}
-            <HumanLedBadge size="sm" />
           </div>
           
           <h1 style={{ 
@@ -211,6 +210,9 @@ export default function ArticleClient({ article }: ArticleClientProps) {
             }))} 
           />
         )}
+
+        {/* DFF HMC Badge */}
+        <ArticleFooterBadge />
 
         {/* Back to News */}
         <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '1px solid #e5e5e5' }}>

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { type Article } from 'contentlayer/generated';
 import AuthorAvatar from '@/app/components/AuthorAvatar';
-import HumanLedBadge from '@/app/components/article/HumanLedBadge';
+
 
 const AUTHOR_INITIALS: Record<string, string> = {
   'Elena Markov': 'EM',
@@ -60,7 +60,6 @@ function ArticleCard({ article }: { article: Article }) {
               {article.category}
             </span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <HumanLedBadge size="sm" />
               <span style={{ fontSize: '12px', color: '#8e8e93' }}>
                 {new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
               </span>
