@@ -1,0 +1,102 @@
+---
+title: "Domain Expertise, Not Coding Skill, Drives Success With AI Agents"
+seoTitle: "Domain Expertise, Not Coding Skill, Drives Success With AI Agents"
+metaDescription: "Anthropic's 400,000-session study of Claude Code finds domain expertise, not coding background, predicts success with AI agents — with direct implications for legal work."
+ogTitle: "Why Domain Expertise Beats Coding Skill When Working With AI Agents"
+ogDescription: "A new Anthropic study of 400,000 AI coding sessions finds that understanding the problem, not formal programming training, determines whether an agentic AI session succeeds — a finding with direct implications for how legal teams adopt AI."
+date: "2026-06-19"
+category: "technology-trends"
+subcategory: "agentic-ai-adoption"
+topics:
+  - "workflow-automation"
+  - "legal-tech"
+  - "agentic-ai"
+  - "justice-access"
+author: "Hiro Tanaka"
+authorSlug: "hiro-tanaka"
+slug: "domain-expertise-ai-agents-anthropic-study"
+readingTime: 13
+pdfUrl: "https://www.anthropic.com/research/claude-code-expertise"
+---
+
+Anyone trying to forecast how AI will reshape professional work runs into the same problem: there is far more speculation than evidence. A new report from Anthropic, published June 16, 2026, is a rare exception. Authored by Zoe Hitzig, Maxim Massenkoff, Eva Lyubich, Ryan Heller, and Peter McCrory, *Agentic coding and persistent returns to expertise* analyzes roughly 400,000 interactive sessions of Claude Code — Anthropic's AI coding agent — from about 235,000 users between October 2025 and April 2026. The findings are not just about software development. They offer one of the clearest empirical pictures available of how domain knowledge interacts with AI agency, and what that interaction means for who benefits as agentic AI spreads into knowledge work generally, including legal practice.
+
+[Read the full report (PDF)](https://www.anthropic.com/research/claude-code-expertise)
+
+## A framework built on real usage, not benchmarks
+
+Most of what we know about frontier AI capability comes from benchmarks: controlled tasks designed to measure what a model can do in isolation. Anthropic's study takes a different approach. Rather than asking what Claude Code can do, the authors ask what happens when real people — with real goals, real time constraints, and wildly varying levels of expertise — actually use it.
+
+The methodology is privacy-preserving throughout: no researcher reads individual transcripts, and all classifications happen through automated, aggregate analysis with a minimum threshold of distinct users before any result is reported. Each session is classified along several dimensions: the kind of work being done (one of nine "work modes," from building new code to writing documents), who makes which decisions (the user or the model), the user's apparent expertise at the specific task, and whether the session succeeded. These classifications are validated against independent telemetry — for instance, more than 90% of sessions the classifier labeled as code-modifying showed actual code changes in the underlying logs.
+
+The resulting picture is granular enough to support claims that go well beyond "AI is getting more capable." It supports claims about *who* is capable of using that capability effectively, and why.
+
+## The division of labor: humans plan, agents execute
+
+The first structural finding concerns who decides what. Using a decision-attribution classifier, the researchers separate the meaningful decisions in a session into two categories: planning decisions (what to do, which approach to take, what counts as finished) and execution decisions (which files to touch, what code to write, which commands to run). Each decision in a session is then attributed to either the user or to Claude.
+
+The result is a clean division of labor. On average, users make about 70% of planning decisions, while Claude makes about 80% of execution decisions. In practice: people decide what to build, and the agent decides how to build it. This pattern holds whether the user is highly technical or not — but the volume of execution work the agent performs scales sharply with how much control the user cedes. When users keep tight control of execution (handling more than 80% of execution decisions themselves), the agent takes about 8 actions per turn. When users hand over planning control as well (Claude makes more than 80% of planning decisions), the agent's action count nearly doubles, to about 16 per turn.
+
+This is a meaningful finding for legal teams evaluating AI tools. It confirms that current agentic systems are not autonomous decision-makers in any meaningful sense — they are highly capable executors operating under continuous human direction. The locus of professional judgment, and therefore professional liability, remains squarely with the person directing the work.
+
+## The central finding: expertise, not credentials, predicts success
+
+The report's most consequential contribution is its treatment of expertise. The authors built a five-point classifier — from novice to expert — that does not measure formal training or job title. It measures something narrower and more useful: how precisely a user frames instructions, what they ask the agent to verify, and whether the user tends to catch the agent's mistakes or the reverse. Crucially, this measure is task-specific, not person-specific. A senior software engineer asking a first question about an unfamiliar framework is a novice at that task. An accountant who has never written a line of Python, but who specifies exactly which reconciliation rules a script must enforce and catches the one edge case it mishandles at month-end close, is rated an expert at that task.
+
+This distinction matters because it isolates the variable that actually predicts outcomes. The data show that expertise — defined this way — drives a dramatic difference in how much an AI agent accomplishes per instruction. In sessions with novice-rated users, each prompt sets off about 5 actions from Claude and roughly 600 words of output. In sessions with expert-rated users, the same kind of prompt sets off chains of 12 actions carrying more than five times the output — about 3,200 words. This gap holds across every category of work and every band of estimated task value, and remains statistically significant after controlling for work type, task value, month, occupation, and model version.
+
+The implication is sharp: agentic AI tools do not equalize the playing field between people with different levels of subject-matter knowledge. They amplify the gap. A person who understands the problem extracts substantially more value from the same tool than a person who does not — not because the tool behaves differently, but because expertise changes what the person is able to ask for, verify, and correct.
+
+There is, however, an important qualification. Most of the gain in success rates is concentrated in the move from novice to intermediate competence. The gap between intermediate and expert users is comparatively modest. As the authors put it, "proficiency in a domain is enough to use the tool almost as effectively as those with deep mastery." For any organization designing AI training programs, this is the single most actionable finding in the report: getting people from novice to competent captures most of the available benefit. Investing further in deep specialization yields real but diminishing returns.
+
+## Success doesn't track job title — it tracks understanding
+
+A second major finding concerns occupation. The researchers infer each user's profession from contextual signals in the session — file structure, referenced artifacts (legal filings, clinical data, financial reports), vocabulary — while explicitly instructing the classifier not to treat the act of writing code as evidence of a coding profession. A lawyer who builds a script to flag missing clauses across a folder of contracts is classified under legal occupations, not software occupations, even though the session is technically coding work.
+
+Roughly 70% of sessions could be classified this way. Software and mathematical occupations remain the largest single group, but business and finance, arts and design, management, and life and physical sciences follow closely. The fastest-growing non-software occupation groups in the sample are management, sales, and — notably for this publication's readers — legal occupations.
+
+What happens when these different professions actually use the tool to produce code is the more striking result. Software engineers reach "verified success" (a strict measure requiring both a judged success and hard evidence such as passing tests or committed code) in about 34% of code-producing sessions. Users from other professions reach verified success in about 29% of the same kind of sessions — a five-point gap that has neither widened nor narrowed over the seven months observed, even as both groups' success rates climbed. Every one of the ten largest occupation groups in the dataset lands within seven percentage points of software engineers on this measure. Management occupations actually edge out software engineers on verified success, which the authors attribute, plausibly, to management skills that transfer directly to directing an agent — and possibly to managers being more likely to explicitly confirm in writing when they got what they asked for, which feeds the success classifier.
+
+For legal professionals specifically, this finding undercuts a common assumption: that meaningful use of AI coding or automation tools requires a technical background most lawyers don't have. The data suggest the opposite. What predicts success is the same thing that has always predicted good legal work product — precise specification of the problem, a clear sense of what "done" looks like, and the judgment to catch when something is wrong. A lawyer who can specify a discovery workflow precisely is better positioned to direct an AI agent through building it than a generalist software developer with no knowledge of discovery rules.
+
+## How the work itself has changed
+
+Beyond who succeeds, the report tracks how the nature of the work has shifted over the seven-month observation window. The clearest trend: the share of sessions spent fixing broken code fell from 33% to 19%. In its place, work that surrounds code — rather than code itself — grew substantially. Sessions focused on operating software (deploying, configuring, monitoring) rose from 14% to 21%. Sessions producing data analysis and prose documents nearly doubled, from about 10% to 20% combined.
+
+The tasks also became more economically valuable. Using a method that compares each session's work to comparable freelance job postings — a relative, not absolute, measure of value — the authors estimate that the typical session's value rose 27% between October and April. Building tasks grew in estimated value by 43%, operating tasks by 34%, and fixing tasks by 32%.
+
+Read together, these trends describe a shift away from agentic AI as a code-repair tool and toward agentic AI as an end-to-end production tool — one capable of taking a task from specification through deployment, analysis, and documentation. For legal technology specifically, this matches what many firms are already observing: AI tools are moving past document drafting and into workflow execution — populating case management systems, running compliance checks across document sets, generating client-facing analysis. The Anthropic data suggest this shift is general across knowledge work, not specific to any one industry.
+
+## Why novices give up — and why that matters for training design
+
+The report's treatment of failure is as instructive as its treatment of success. The authors track sessions that "hit trouble" — meaning the model records hard evidence that something went wrong: errors, failed tests, repeated retries, or the user expressing frustration. Among troubled sessions, the share that still end in verified success rises sharply with expertise: from 4% for novice-rated sessions to 15% for expert-rated ones, holding work type, task value, month, subject matter, and occupation constant.
+
+More striking still is the abandonment rate. A troubled session is classified as "abandoned" if it ends in failure with zero lines of code written — meaning the user simply walked away. Nineteen percent of sessions involving novice-rated users end abandoned, against just 5–7% for everyone above novice level. In other words, the least experienced users are roughly three to four times more likely to give up entirely when an AI agent runs into a problem, rather than push through to a resolution.
+
+The authors offer an important caveat: experts encounter trouble less often to begin with, so the troubled sessions they do have likely involve harder problems — the average estimated value of a troubled session roughly doubles from the bottom to the top of the expertise scale. Some of the recovery-rate gap, in other words, reflects that novices get stuck on routine problems while experts get stuck on genuinely hard ones. Even accounting for this, the pattern supports a clear conclusion: a substantial part of what expertise contributes is not avoiding errors but recovering from them. Knowing enough about the domain to diagnose what went wrong and redirect the agent is itself a skill, and it is unevenly distributed.
+
+This has direct implications for how legal organizations should structure AI adoption. Training programs that focus exclusively on tool mechanics — how to write a prompt, which buttons to click — will underperform training that builds the underlying domain fluency needed to recognize when an AI agent's output is wrong. The Anthropic data suggest that investment in substantive legal training pays AI-adoption dividends, not just professional-development ones.
+
+## What this means for the legal profession and its regulators
+
+The report is not a legal or policy document, but several of its findings bear directly on debates currently active in legal technology governance, particularly around professional responsibility rules for AI-assisted work and the emerging regulatory frameworks — in the EU, the UK, and a growing number of U.S. states — that govern AI deployment in professional services.
+
+A first implication concerns supervision requirements. Rules requiring "meaningful human oversight" of AI-assisted legal work — whether under bar association guidance, court standing orders, or statutory frameworks like the EU AI Act's Article 14 — typically treat human oversight as a binary condition: present or absent. Anthropic's data complicate that framing considerably. The quality of human oversight is not binary; it is graded, and it scales with the overseer's domain expertise in ways that produce measurably different outcomes. A supervising attorney with strong subject-matter command produces materially different — and materially safer — outcomes from the same AI tool than one without it. Oversight requirements that do not account for this gradient risk certifying formal compliance while missing the substance of the protection they're meant to provide.
+
+A second implication concerns access to justice. If domain expertise, rather than technical training, is what predicts successful AI-assisted legal work, the bottleneck on broader adoption is not coding literacy but substantive legal knowledge — which is, if anything, more concentrated and harder to redistribute than technical skill. This cuts against optimistic narratives suggesting AI tools will straightforwardly democratize legal capability for self-represented litigants or under-resourced practices. The Anthropic findings suggest a more complicated picture: AI agents amplify whatever domain knowledge a user already brings. A self-represented litigant with limited legal knowledge may get materially less reliable help from the same AI tool than an attorney with deep subject-matter expertise — even though both have access to the identical technology.
+
+A third implication concerns the structure of legal training itself. If the gains from agentic AI concentrate heavily in the transition from novice to competent — with comparatively modest additional returns from competent to true mastery — then legal education and continuing legal education programs designed around AI literacy should prioritize building broad-based domain competence over cultivating narrow technical specialists. The fastest path to organization-wide benefit is raising the floor, not deepening the ceiling.
+
+## A leading indicator for the rest of knowledge work
+
+The authors close with a claim that deserves attention precisely because it is testable, not rhetorical: coding, they argue, is a leading case for what happens as agentic tools expand into other forms of knowledge work. Coding is unusually well suited to AI agents because it has highly verifiable outputs — code passes or fails its tests — and relatively formalized rules. Legal work, medical diagnosis, and financial advice are messier: verification is harder, rules are less formal, and feedback on quality is slower and noisier. That may slow the pace at which agentic AI reshapes those fields relative to software development. But the underlying mechanism the report identifies — that AI agents amplify domain expertise rather than substitute for it — has no obvious reason to be specific to coding. If it generalizes, the implication for legal practice is direct: the lawyers and legal organizations that benefit most from agentic AI will not be the ones with the most sophisticated tools, but the ones with the deepest, most precisely articulable understanding of the problems they are solving.
+
+The authors also propose using these same metrics — returns to expertise, success rates by occupation, the composition and value of tasks — as an early-warning system for future shifts. If the returns to expertise begin to shrink over time, that would signal that models are starting to supply the judgment that human experts currently provide, broadening the tool's benefits beyond domain specialists. If they persist or grow, expertise remains the binding constraint on what these tools can deliver. For legal organizations planning multi-year AI adoption strategies, that distinction — whether expertise will keep mattering or start mattering less — is arguably the single most consequential open question the report leaves on the table.
+
+## A note on the report's limits
+
+The authors are candid about what the study does not show. It does not measure real-world outcomes — whether code or work product generated in a session was ultimately used, discarded, or proved valuable after the fact. It excludes non-interactive, programmatic usage of Claude Code, which represents a substantial share of total activity. And every classification in the report depends on a language model's reading of a session transcript; while the authors validate these classifications against independent telemetry and report high agreement rates, transcript-based classification at this scale remains inherently difficult to validate against ground truth, particularly for long, complex sessions that defy easy human labeling.
+
+These limitations matter for how confidently the findings should be extrapolated to legal practice specifically, where the report's underlying data — drawn primarily from software development tasks — is necessarily a proxy rather than a direct measurement. Still, as one of the first large-scale empirical studies of how domain expertise interacts with agentic AI in practice, the report offers legal organizations a genuinely useful evidence base for decisions that, until now, have mostly been made on intuition.
+
+The central lesson is straightforward enough to act on immediately: agentic AI tools reward the people who already understand the problem they're trying to solve, and they do comparatively little for those who don't. For the legal profession, that means the path to meaningful AI adoption runs through deepening substantive expertise — not around it.
