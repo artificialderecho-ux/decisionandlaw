@@ -1,0 +1,288 @@
+---
+title: "GSA Proposes New Data Safeguarding Clause for Federal LLMs"
+seoTitle: "GSA Proposes New Data Safeguarding Clause for Federal LLMs"
+metaDescription: "GSA's proposed GSAR 552.239-7001 clause would govern how contractors handle government data in LLM systems, reshaping IP rights and compliance duties."
+ogTitle: "GSA's New Data Safeguarding Clause for Federal LLM Contracts"
+ogDescription: "A close look at GSA's draft GSAR clause 552.239-7001, which sets binding data, IP, and compliance rules for contractors deploying LLMs in federal contracts."
+date: "2026-06-20"
+category: "regulatory-analysis"
+subcategory: "federal-procurement"
+topics:
+  - "federal-acquisition-regulation"
+  - "ai-procurement"
+  - "regulatory-compliance"
+  - "large-language-models"
+  - "government-contracts"
+  - "intellectual-property"
+author: "James Okafor"
+authorSlug: "james-okafor"
+slug: "gsa-data-safeguarding-clause-federal-llm-procurement"
+readingTime: 18
+---
+
+## Executive Summary
+
+On June 17, 2026, the U.S. General Services Administration (GSA) published a revised draft of proposed GSAR clause 552.239-7001, "Basic Safeguarding of Data Within Large Language Model Artificial Intelligence Systems (LLMs)," in the Federal Register. The notice replaces a January 2026 draft that drew substantial industry pushback, and it represents the most comprehensive attempt to date to govern the use of generative AI systems contractually within federal procurement. GSA is accepting public comments through August 3, 2026, and will hold a listening session on July 14, 2026.
+
+This article offers a detailed legal analysis of the proposed clause — its regulatory antecedents, structure, obligations, and the underlying tensions between government data sovereignty, intellectual property, and the business models of the AI industry. Although framed as a "data safeguarding" measure, the clause functions as a far broader instrument of AI governance, reallocating intellectual property rights, embedding ideological-neutrality standards into contract law, and redistributing compliance risk across the AI supply chain.
+
+## I. Introduction: AI at the Procurement Crossroads
+
+The rise of large-scale generative AI systems — particularly Large Language Models (LLMs) — has strained the categories that federal acquisition law has traditionally relied on. These systems are algorithmically opaque, depend on vast and often third-party training data, and generate outputs that are not deterministically programmed. They fit awkwardly into the conventional legal boxes of "product," "service," or "tool."
+
+Public procurement sits at the front line of this disruption. When an LLM processes government data — anything from citizen inquiries to classified material — a series of foundational questions arises. Who owns the inputs submitted to the model and the outputs it generates? Can the government trust that a model trained on external data will not import bias or vulnerabilities? What happens when a contractor fine-tunes a model for a particular agency's needs? Can the government independently verify a system's reliability?
+
+GSAR 552.239-7001 is GSA's attempt to answer these questions. The clause assembles a detailed body of obligations that, as outside counsel have noted, amounts to the most comprehensive effort so far to define what contractors must do when deploying AI capabilities in the performance of a federal contract. Its significance reaches beyond GSA itself: it is likely to become a template for other federal agencies and, in time, an international reference point.
+
+## II. Regulatory Background: The Federal AI Ecosystem
+
+GSA's clause does not emerge in a vacuum. It sits within a fast-evolving body of federal AI policy that has developed since 2023.
+
+### A. Executive Order 14110 (Biden, 2023)
+
+On October 30, 2023, President Biden signed Executive Order 14110, "Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence." The order set out eight guiding principles for AI governance, emphasizing that AI must be safe and secure and that this requires robust, reliable, repeatable, and standardized evaluations of AI systems. It also addressed intellectual property policy and the mitigation of risks such as fraud, discrimination, bias, and disinformation.
+
+Although EO 14110 took a broad, multilateral approach to AI governance, its implementation was cut short by the change in administration in January 2025. The order was formally revoked by Executive Order 14179, "Removing Barriers to American Leadership in Artificial Intelligence," signed January 31, 2025.
+
+### B. Executive Order 14319 (Trump, 2025) and the "Unbiased AI Principles"
+
+The clause's most direct political foundation is Executive Order 14319, "Preventing Woke AI in the Federal Government," signed by President Trump on July 23, 2025. The order establishes two "Unbiased AI Principles" that must govern federal agencies' procurement of LLMs:
+
+**1. Truth-seeking.** LLMs must be truthful in responding to user prompts that seek factual information or analysis, prioritizing historical accuracy, scientific inquiry, and objectivity, and acknowledging uncertainty where reliable information is incomplete or contradictory.
+
+**2. Ideological neutrality.** LLMs must be neutral, nonpartisan tools that do not manipulate responses in favor of ideological dogmas such as diversity, equity, and inclusion (DEI) frameworks. Developers must not intentionally encode partisan or ideological judgments into a model's outputs unless those judgments are prompted by, or otherwise readily accessible to, the end user.
+
+The order grounds these principles in specific, widely cited examples of perceived ideological bias in AI models. It states that one major AI model changed the race or sex of historical figures — including the Pope, the Founding Fathers, and Vikings — when prompted for images, because it had been trained to prioritize DEI requirements at the cost of accuracy. It further states that another model refused to produce images celebrating the achievements of white people while complying with the same request for people of other races, and that, in a separate instance, a model asserted that a user should not "misgender" another person even if doing so were necessary to stop a nuclear apocalypse.
+
+EO 14319 builds on EO 13960 of December 2020, "Promoting the Use of Trustworthy Artificial Intelligence in the Federal Government," and asserts that while the federal government should be hesitant to regulate the functionality of AI models in the private marketplace, it has an obligation, in the context of federal procurement, not to acquire models that sacrifice truthfulness and accuracy for the sake of ideological agendas.
+
+### C. OMB Memorandum M-25-22
+
+On April 3, 2025, the Office of Management and Budget (OMB) issued Memorandum M-25-22, "Driving Efficient Acquisition of Artificial Intelligence in Government." The memorandum, which rescinds and replaces the prior administration's M-24-18, provides agencies with guidance for acquiring AI more responsibly, organized around three themes:
+
+1. **Ensuring the government and the public benefit from a competitive U.S. AI market.** Competition allows the government to acquire the best solutions at the lowest cost; agencies must pay attention to supplier sourcing, data portability, and long-term interoperability to avoid costly vendor lock-in.
+
+2. **Safeguarding taxpayer dollars through AI performance tracking and risk management.** Agencies must ensure that the AI systems they acquire are fit for purpose and deliver consistent results that preserve public trust.
+
+3. **Promoting effective AI acquisition through cross-functional engagement.** Robust collaboration among officials with varied expertise is essential to addressing the novel challenges AI introduces.
+
+M-25-22 applies to any AI system or service acquired by or on behalf of covered agencies and is complemented by OMB M-25-21, which governs agencies' use of AI more broadly.
+
+## III. Structure and Content of the Proposed Clause
+
+The version of GSAR 552.239-7001 published on June 17, 2026 has a complex structure, running from foundational definitions to specific obligations imposed on different actors across the AI supply chain.
+
+### A. Applicability
+
+Under the official clause text, the contracting officer must insert the clause "in solicitations and contracts, including those for commercial products and services, when Government data will be processed by a LLM." The clause carves out two significant exceptions:
+
+1. **Common commercial product exception.** The clause does not apply where "the LLM is embedded in a common commercial product, such as a word processor or map navigation system."
+
+2. **Incidental functionality exception.** The clause does not apply where "the LLM functionality is incidental to the primary purpose of the core requirement being procured."
+
+This narrowing of scope is significant: it directly addresses industry's central objection to the January 2026 draft, which was criticized as excessively broad.
+
+### B. Definitions: The Clause's Conceptual Architecture
+
+The clause builds an elaborate definitional apparatus that establishes the core legal categories governing LLMs in federal procurement:
+
+**Government Data** means Data Inputs and Data Outputs.
+
+**Data Inputs** means "all data, information, personally identifiable information (PII), or content submitted to the LLM and related operational systems by, or created for, the Government, including but not limited to user prompts, queries, instructions, system prompts, source data, documents, knowledge bases, Government email addresses, user account information, and any other information or content submitted to the LLM and related operational systems by or on behalf of the Government."
+
+**Data Outputs** means "all data, information, PII, any improvements, enhancements, corrections, annotations, or other modifications made to Data Inputs, or content generated by the LLM in the performance of this contract, including but not limited to responses, results, analyses, anonymized data, derivative data, metadata, logs, synthetic data, and any other output or action produced by the LLM."
+
+**Background Data** means "any pre-existing proprietary content, reference materials, knowledge bases, or other intellectual property owned or controlled by the Contractor that may be referenced, retrieved, augmented, or otherwise incorporated into the LLM's processing or outputs through any enrichment mechanism."
+
+**Custom Development** means "any design of or modifications, customizations, configurations, or enhancements to LLMs … developed specifically for the Government under this contract or task/delivery order, including any modifications, customizations, configurations, or enhancements to LLMs as a result of model training or fine-tuning." The definition explicitly excludes background intellectual property — underlying supporting services, default configurations, or mechanisms — existing prior to the contract or developed independently by the contractor.
+
+**Material Change** means "any modification that could affect the trustworthiness, security, or operational integrity of the performance of the contract, especially as they pertain to the processing and protection of Government Data."
+
+### C. The Four AI Supply-Chain Roles
+
+One of the clause's most significant innovations is its definition of four distinct roles within the LLM ecosystem, each carrying its own "flowdown" obligations. The roles map onto the actor categories of NIST's AI Risk Management Framework (AI RMF 1.0), Appendix A:
+
+**1. LLM Developer** — "the party that performs LLM Development Tasks … by designing, developing, training, fine-tuning, calibrating, testing, publishing, licensing, or otherwise making available an LLM, including model weights, interfaces, model cards, safety documentation, or conditional usage restrictions."
+
+**2. LLM System Operator** — "the party that performs LLM Deployment and Operation & Monitoring … tasks by hosting, serving, operating, or providing access to an LLM or LLM System, including through cloud infrastructure, model endpoints, runtime environments, API availability, capacity management, logging, retention, and runtime security."
+
+**3. LLM System Integrator** — "the party that performs LLM Design and LLM Deployment … tasks by selecting, configuring, adapting, or materially controlling how an LLM System performs in a specific deployment or use case, including by selecting models, setting system prompts, prompt templates, Retrieval-Augmented Generation (RAG) sources, fine-tuning data, tools, plugins, agents, guardrails, filters, evaluation criteria, human-review thresholds, or output constraints."
+
+**4. LLM Service Provider** — "the party that performs LLM Deployment and Operation & Monitoring … tasks by providing an LLM-enabled application, product, service, workflow, API, user interface, or business capability to Customers or End Users, and controlling the manner in which the service is presented, accessed, administered, supported, or used within that application or workflow."
+
+### D. Flowdown Requirements
+
+The clause requires the prime contractor to extend ("flow down") specific paragraphs of the base clause to any subcontractor or service provider performing one of the defined roles. Four corresponding supplemental clauses give each role a tailored compliance scope:
+
+- 552.239-7001-1 — LLM Developer Flowdown Requirements
+- 552.239-7001-2 — LLM System Operator Flowdown Requirements
+- 552.239-7001-3 — LLM System Integrator Flowdown Requirements
+- 552.239-7001-4 — LLM Service Provider Flowdown Requirements
+
+Where a single entity performs multiple roles, multiple flowdown clauses apply simultaneously.
+
+## IV. Analysis of Substantive Obligations
+
+### A. Intellectual Property and Data Rights
+
+The clause's intellectual property regime is arguably its most controversial and transformative feature.
+
+**1. Government ownership of Government Data and Custom Developments.** The clause states plainly: "The Government retains full ownership of, and will own, all Government Data and Custom Developments. The Contractor does not have any rights to use Government Data or Custom Developments provided to the Contractor other than those described in paragraph (e)(1)(iii)."
+
+**2. Limited, revocable license back to the contractor.** The contractor receives a "limited, revocable, non-exclusive, non-transferable, worldwide, fully paid-up, royalty-free right and license" to copy, store, transmit, modify, display, and use Government Data and Custom Developments, but only for performing the contract's specific requirements, providing required technical support and maintenance, and other uses expressly authorized in writing by the contracting officer.
+
+**3. Assignment of resulting IP rights.** "To the extent the Contractor obtains any intellectual property rights in Government Data, or any improvements, enhancements, feedback, or derivative works thereof, the Contractor assigns and transfers all such rights to the Government effective immediately upon creation." Notably, the contractor retains ownership of the underlying LLM, base models, and Background Data in their original form.
+
+**4. License grant to the government.** The contractor must grant the government "an irrevocable, royalty-free, non-exclusive license to use the LLM for the duration of the work defined in the contract or task/delivery order."
+
+**5. Prohibited uses of Government Data.** The clause enumerates specific prohibited uses, including:
+
+- Training, fine-tuning, or otherwise improving an LLM — including LLMs operated by third parties — or developing or improving LLMs for any other customer or for any commercial or non-commercial purpose.
+- Using Government Data to inform the contractor's advertising, marketing, sales, monetization, strategy, operations, or other business decisions, or providing it to other government or non-government entities.
+- Retaining, accessing, or using Government Data beyond the scope and duration expressly permitted in the contract.
+- Selling or licensing Government Data to any party.
+
+### B. Data Handling and Protection Requirements
+
+The clause imposes detailed obligations for handling government data, including:
+
+**1. Reasonable safeguards.** The contractor "must implement reasonable technical, administrative, physical, and organizational safeguards to protect Government Data from loss, damage, destruction, unauthorized alteration, or corruption, and prevent its unauthorized, accidental, or unlawful access, disclosure, use, or processing."
+
+**2. Restricted human access.** Contractors must implement "Data Handling Procedures that restrict human access to Government Data," including automated processing without human content review, technical access controls, encrypted transmission, and audit logging that tracks activity without capturing or displaying the underlying data.
+
+**3. Data localization.** Government Data may not be removed from agreed-upon premises or FedRAMP-authorized services without the contracting officer's express written consent.
+
+**4. Logical segregation.** All Government Data must be "logically segregated from the Data of any non-Government customer or client, and … not commingled with Data of other customers or clients," with adequate defense-in-depth through access controls, labeling, and encryption.
+
+**5. Secure deletion.** Upon completion, termination, or expiration of the contract, the contractor must "securely and permanently delete all such Government Data and any Custom Developments … and certify deletion to the Contracting Officer in writing," absent contrary written instructions.
+
+The clause also addresses **foreign ownership and control**: contractors must maximize the use of LLMs developed, managed, and operated by U.S.-incorporated entities subject to U.S. law, and must ensure no foreign government can compel disclosure of Government Data or compromise an LLM's integrity or security — extending to any component performing core model, storage, output-generation, or security functions.
+
+### C. Unbiased AI Principles and Government Evaluation
+
+The clause directly incorporates EO 14319's Unbiased AI Principles and pairs them with a detailed evaluation and remediation regime:
+
+**1. Unbiased AI Principles.** The contractor must ensure the LLM is developed and monitored in accordance with truth-seeking and ideological-neutrality principles, and "must implement continuous improvement processes to enhance detection and mitigation of performance, trustworthiness, bias, and/or systems generating illegal or prohibited content."
+
+**2. Government evaluation rights.** "The Government reserves the right to conduct automated assessments of the LLM, as deployed and configured for government users, at any time using its own benchmarks." These assessments may evaluate bias, truthfulness, safety, and unsolicited ideological content. Critically, "the Government is under no obligation to disclose or provide access to the underlying data, methodologies, or systems," except for data or methodologies used as the basis for an adverse action.
+
+**3. Non-compliance.** The government retains the right to suspend use of the LLM until performance issues are resolved. If the contracting officer terminates the contract for cause due to a failure to remediate noncompliance with the Unbiased AI Principles, "the Contractor is liable for reasonable decommissioning costs," subject to a cap to be specified by the contracting officer as a percentage of contract value.
+
+### D. Change Notification
+
+The clause establishes a detailed change-notification regime:
+
+**1. Advance notice of material changes.** Contractors must provide written notice at least thirty (30) calendar days before any planned material change affecting the contracted services, including adding or replacing an LLM or any of the four role-holders, changes that reduce data-protection controls or alter FedRAMP authorization status, or any modification made to comply with a non-U.S. government statute, regulation, or policy.
+
+**2. Model version changes.** Contractors must use reasonable efforts to provide the government with concurrent access to any successor LLM for a minimum evaluation period of thirty (30) calendar days for major versions and fifteen (15) calendar days for minor versions before discontinuing or replacing a model in use.
+
+**3. Safety and performance degradation.** Contractors must notify the contracting officer within seven (7) calendar days of identifying any change that materially increases output bias, decreases safety guardrails or behavioral constraints, or degrades the performance or truthfulness of outputs.
+
+## V. Implications for Contractors
+
+The proposed clause carries deep implications for contractors that provide or use LLMs in the context of federal contracts. Outside counsel at Venable LLP have observed that the clause will impose substantial obligations on contractors that process government data through LLMs. These implications fall into several categories.
+
+### A. Supply-Chain Remapping
+
+Contractors will need to map their AI supply chains to identify every actor performing one of the four defined roles. Each such actor must accept the corresponding flowdown clause — a process likely to require significant renegotiation with subcontractors and service providers.
+
+### B. Intellectual Property Management
+
+The prohibition on using Government Data to train or improve models — including for other customers — directly cuts against business models that rely on user feedback and usage data to improve AI systems over time. Contractors will need technical and organizational controls to ensure Government Data is not repurposed for these ends.
+
+### C. Compliance and Documentation
+
+The clause demands extensive documentation, including disclosure of every LLM used and every entity performing a defined role, tools enabling the government to maintain detailed processing records, certification of data deletion upon contract termination, and strict change-notification timelines (thirty days for material changes, seven days for safety or performance degradation).
+
+### D. Liability Risk
+
+The decommissioning-cost provision introduces meaningful financial exposure, particularly because compliance can be assessed against government benchmarks that are not subject to disclosure. A contractor found out of compliance with the Unbiased AI Principles, after written notice and a failure to remediate, may be held liable for the government's reasonable costs of unwinding the engagement.
+
+### E. Challenges for Foundation Model Providers
+
+LLM Developers — companies such as OpenAI, Anthropic, and Google — face particular challenges. The clause requires these providers to accept obligations that can conflict with standard commercial practice, including the prohibition on using government interaction data for training and the requirement to provide concurrent access to successor model versions during extended evaluation windows.
+
+## VI. Tensions and Controversies
+
+### A. Technological Sovereignty Versus Industry Business Models
+
+The clause reflects a fundamental tension between the state's technological sovereignty — its need to control data and critical infrastructure — and an AI industry whose business models often depend on access to large datasets for continuous training and improvement. The prohibition on using Government Data for training is particularly significant in this respect.
+
+### B. The Embedding of Political Content in Technical Regulation
+
+EO 14319, and by extension GSA's clause, explicitly embed political content within technical AI regulation. The order identifies concepts such as critical race theory, transgenderism, unconscious bias, intersectionality, and systemic racism as examples of ideology that must be excluded from AI systems procured by the federal government. This politicization of technical standards raises questions about the neutrality of the regulation itself and its potential effect on innovation.
+
+### C. Evaluation and Transparency
+
+The clause gives the government the right to run "automated assessments" of an LLM using its own benchmarks, while expressly relieving it of any obligation to disclose the underlying data, methodology, or systems — except where those materials form the basis of an adverse action. This informational asymmetry raises fairness concerns about the evaluation process and a contractor's practical ability to contest a finding of noncompliance.
+
+### D. The Challenge of Practical Implementation
+
+The clause imposes granular obligations that may be difficult to operationalize for complex, often opaque AI systems. The requirement that an LLM be "truthful" and "neutral" raises genuine epistemological questions: how is "truth" defined in domains where multiple legitimate interpretations coexist? How is "neutrality" ensured without simply introducing bias in the opposite direction?
+
+## VII. Comparison with International Regulatory Frameworks
+
+GSA's clause invites comparison with other international AI regulatory frameworks.
+
+### A. The EU AI Act
+
+The EU AI Act, which has been phasing into force since 2024, takes a risk-based approach, sorting AI systems into unacceptable-, high-, limited-, and minimal-risk tiers. Unlike GSA's clause, the EU AI Act is not limited to public procurement and does not explicitly incorporate ideological considerations. Both frameworks nonetheless share underlying concerns about transparency, safety, and non-discrimination.
+
+### B. Sectoral Regulation in China
+
+China has implemented specific rules for recommendation algorithms and generative AI, including its Administrative Measures for Generative AI Services. These rules emphasize content security and alignment with socialist values — an interesting, if politically inverted, parallel to EO 14319's emphasis on ideological neutrality.
+
+### C. G7 and OECD Initiatives
+
+The G7 has adopted a Code of Conduct for advanced AI system developers, while the OECD has developed its own AI Principles. These international frameworks tend to be more general and less prescriptive than GSA's clause, reflecting the difficulty of reaching international consensus on sensitive issues such as content regulation.
+
+## VIII. Outlook and Recommendations
+
+### A. For Contractors and AI Vendors
+
+1. **Map the supply chain.** Identify every actor performing one of the clause's defined roles and assess its capacity to meet the corresponding flowdown obligations.
+
+2. **Review data-use policies.** Audit data-handling practices to ensure Government Data is never used for training, model improvement, or commercial purposes.
+
+3. **Build compliance infrastructure.** Establish systems for the documentation, notification, and certification the clause requires.
+
+4. **Participate in the comment process.** Submit comments to GSA before August 3, 2026, identifying areas of concern and proposing alternative language.
+
+### B. For Government Agencies
+
+1. **Build evaluation capacity.** Develop the technical expertise needed to run automated LLM assessments in-house.
+
+2. **Coordinate across agencies.** Align implementation of the clause with other agencies to ensure consistency.
+
+3. **Consider small-business impact.** Evaluate alternatives that minimize the burden on small contractors, as required under the Regulatory Flexibility Act.
+
+### C. For Policymakers
+
+1. **Clarify standards.** Provide additional guidance on how the Unbiased AI Principles will be interpreted and applied in practice.
+
+2. **Build appeal mechanisms.** Establish a process for contractors to contest noncompliance findings based on undisclosed government evaluations.
+
+3. **Conduct a full impact assessment.** Evaluate the clause's effects on innovation, competition, and small contractors before finalizing it.
+
+## IX. Conclusion
+
+GSAR 552.239-7001 marks a milestone in the regulation of AI within public procurement. By establishing a detailed regime governing data safeguarding, intellectual property, ethical standards, and change notification, the clause transforms AI governance from a set of voluntary principles into a body of binding contractual requirements.
+
+At the same time, the clause raises fundamental questions about the relationship between the state and technology, the politicization of technical standards, and the balance between technological sovereignty and innovation. Its implementation will require close collaboration among government, industry, and academia to achieve the goals of data protection and reliability without unduly stifling innovation.
+
+If adopted, GSAR 552.239-7001 would convert AI governance into a binding contractual requirement for any company selling AI capabilities to the federal government — with direct consequences for compliance teams, legal departments, procurement leadership, and third-party risk functions. The success of this effort will depend on every stakeholder's ability to navigate these complexities with both technical and legal rigor.
+
+## References
+
+1. Executive Order 13960 of December 3, 2020, "Promoting the Use of Trustworthy Artificial Intelligence in the Federal Government," 85 FR 78939 (Dec. 8, 2020).
+2. Executive Order 14110 of October 30, 2023, "Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence," 88 FR 75191 (Nov. 1, 2023).
+3. Executive Order 14179 of January 31, 2025, "Removing Barriers to American Leadership in Artificial Intelligence," 90 FR 8991 (Jan. 31, 2025).
+4. Executive Order 14319 of July 23, 2025, "Preventing Woke AI in the Federal Government," 90 FR 35389 (July 28, 2025).
+5. Office of Management and Budget, Memorandum M-25-22, "Driving Efficient Acquisition of Artificial Intelligence in Government" (April 3, 2025).
+6. Office of Management and Budget, Memorandum M-25-21, "Accelerating Federal Use of AI through Innovation, Governance, and Public Trust" (2025).
+7. Office of Management and Budget, Memorandum M-24-18, "Advancing the Responsible Acquisition of Artificial Intelligence in Government" (2024).
+8. General Services Administration, "General Services Acquisition Regulation; Acquisition of Information and Communication Technology; Notice of Listening Sessions and Request for Comments," 91 FR 36559 (June 17, 2026) (proposed GSAR clause 552.239-7001).
+9. National Institute of Standards and Technology, "Artificial Intelligence Risk Management Framework (AI RMF 1.0)," NIST AI 100-1 (Jan. 2023).
+10. Venable LLP, "GSA Proposes Revisions to Clause on Basic Safeguarding of Data within Large Language Model Artificial Intelligence Systems (LLMs)," June 18, 2026.
+11. Crowell & Moring LLP, "GSA Issues Proposed AI Contract Clause, Seeks Feedback," June 17, 2026.
+12. Compliance Week, "GSA's draft AI Clause turns governance into a contractual mandate," March 19, 2026.
