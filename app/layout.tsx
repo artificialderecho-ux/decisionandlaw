@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
@@ -12,6 +12,15 @@ const geistSans = Geist({
 
 const BASE_URL = 'https://decisionandlaw.com';
 
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  minimumScale: 1,
+  userScalable: true,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -23,13 +32,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Decision&Law Editorial Team", url: BASE_URL }],
   creator: "Decision&Law",
   publisher: "Decision&Law",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    minimumScale: 1,
-    userScalable: true,
-  },
   robots: {
     index: true,
     follow: true,
