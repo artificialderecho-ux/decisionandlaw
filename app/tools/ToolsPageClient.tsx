@@ -1,89 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
+import { TOOLS_BY_CATEGORY } from '../lib/tools';
 
-const TOOLS = {
-  'Research': [
-    {
-      name: 'Casetext (CoCounsel)',
-      url: 'https://casetext.com',
-      description: 'AI legal assistant for research, document review, and deposition preparation. Trusted by thousands of law firms.',
-      bestFor: 'Litigation attorneys needing rapid case law analysis and draft generation.',
-    },
-    {
-      name: 'Harvey',
-      url: 'https://harvey.ai',
-      description: 'Custom AI trained on practice areas including tax, corporate, and international law. Backed by OpenAI.',
-      bestFor: 'Large law firms and in-house legal teams requiring domain-specialized AI.',
-    },
-    {
-      name: 'vLex',
-      url: 'https://vlex.com',
-      description: 'Global legal intelligence platform with AI-powered search and analytics across jurisdictions.',
-      bestFor: 'Cross-border legal research and comparative law analysis.',
-    },
-    {
-      name: 'Jus Mundi (Jus AI)',
-      url: 'https://jusmundi.com',
-      description: 'AI agent specialized in international arbitration and cross-border dispute resolution.',
-      bestFor: 'International arbitration practitioners and sovereign counsel.',
-    },
-  ],
-  'Contracts': [
-    {
-      name: 'Ironclad',
-      url: 'https://ironclad.ai',
-      description: 'Contract lifecycle management with AI for drafting, negotiation, and compliance workflows.',
-      bestFor: 'Legal ops teams managing high-volume contract portfolios.',
-    },
-    {
-      name: 'LEGALFLY',
-      url: 'https://legalfly.io',
-      description: 'Privacy-first AI workspace with native Microsoft 365 integration and data anonymization.',
-      bestFor: 'Organizations with strict data privacy requirements.',
-    },
-    {
-      name: 'Evisort (by Workday)',
-      url: 'https://evisort.com',
-      description: 'AI contract analytics and extraction platform for enterprise-scale contract portfolios.',
-      bestFor: 'Corporate legal departments needing contract data intelligence.',
-    },
-    {
-      name: 'Spellbook',
-      url: 'https://spellbook.legal',
-      description: 'AI drafting assistant integrated with Microsoft Word, trained on contract language.',
-      bestFor: 'Transactional lawyers and solo practitioners seeking drafting efficiency.',
-    },
-  ],
-  'E-Discovery': [
-    {
-      name: 'Relativity',
-      url: 'https://relativity.com',
-      description: 'Industry-standard platform for e-discovery with generative AI capabilities.',
-      bestFor: 'Litigation support teams handling complex discovery at scale.',
-    },
-    {
-      name: 'Everlaw',
-      url: 'https://everlaw.com',
-      description: 'AI-powered e-discovery with data visualization and narrative-building tools.',
-      bestFor: 'Trial teams constructing evidence-based case narratives.',
-    },
-  ],
-  'Legal Ops': [
-    {
-      name: 'Brightflag',
-      url: 'https://brightflag.com',
-      description: 'AI-driven legal spend management and e-billing platform with analytics.',
-      bestFor: 'Corporate legal departments optimizing outside counsel spend.',
-    },
-    {
-      name: 'Thomson Reuters Legal Tracker',
-      url: 'https://legaltracker.thomsonreuters.com',
-      description: 'Matter management, e-billing, and analytics platform for in-house teams.',
-      bestFor: 'Enterprise legal operations seeking integrated matter and spend visibility.',
-    },
-  ],
-};
+const TOOLS = TOOLS_BY_CATEGORY;
 
 const ICONS: Record<string, React.ReactNode> = {
   Research: (
@@ -238,26 +159,41 @@ export default function ToolsPageClient() {
                       {tool.bestFor}
                     </p>
                   </div>
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      fontSize: '12px',
-                      fontWeight: '500',
-                      color: '#0066cc',
-                      textDecoration: 'none',
-                      marginTop: 'auto',
-                    }}
-                  >
-                    Visit site
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </a>
+                  <div style={{ display: 'flex', gap: '14px', marginTop: 'auto', flexWrap: 'wrap' }}>
+                    <Link
+                      href={`/tools/${tool.slug}`}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        color: '#1a1a1a',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      Tool profile
+                    </Link>
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '12px',
+                        fontWeight: '500',
+                        color: '#0066cc',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      Visit site
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>

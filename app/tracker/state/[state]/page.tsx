@@ -1,19 +1,30 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { states } from '../../../lib/states';
+import { State, states } from '../../../lib/states';
 import { TRACKER_CONTENT } from '../../../lib/tracker-content';
 import { Metadata } from 'next';
 
 const BASE_URL = 'decisionandlaw.com';
 
-function getStateJsonLd(state: any, baseUrl: string) {
-  const statusText = state.aiLegalStatus === 'enacted' 
-    ? 'Comprehensive AI legislation enacted' 
-    : state.aiLegalStatus === 'active-legislation' 
-    ? 'Active AI legislation pending' 
-    : state.aiLegalStatus === 'monitoring' 
-    ? 'Monitoring AI developments' 
-    : 'No specific AI legislation';
+export function generateStaticParams() {
+  return states.map((state) => ({ state: state.slug }));
+}
+
+function getStatusTextForSeo(status: State['aiLegalStatus']) {
+  switch (status) {
+    case 'enacted':
+      return 'Comprehensive AI legislation enacted';
+    case 'active-legislation':
+      return 'Active AI legislation pending';
+    case 'monitoring':
+      return 'Monitoring AI developments';
+    default:
+      return 'No specific AI legislation';
+  }
+}
+
+function getStateJsonLd(state: State, baseUrl: string) {
+  const statusText = getStatusTextForSeo(state.aiLegalStatus);
 
   return {
     '@context': 'https://schema.org',
@@ -29,6 +40,14 @@ function getStateJsonLd(state: any, baseUrl: string) {
       'url': `https://${baseUrl}`,
       'name': 'Decision&Law',
       'description': 'AI Legal Intelligence for US Professionals',
+    },
+    'mainEntity': {
+      '@type': 'Thing',
+      'name': `${state.name} AI Legal Landscape`,
+      'about': {
+        '@type': 'Thing',
+        'name': 'Artificial Intelligence Law',
+      },
     },
     'breadcrumb': {
       '@type': 'BreadcrumbList',
@@ -73,12 +92,18 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     };
   }
 
+  const ogImageUrl = `/api/og?state=${state.abbreviation}&name=${encodeURIComponent(state.name)}`;
+
   return {
     title: `${state.name} AI Law for Lawyers 2025 | Decision&Law`,
     description: `Complete guide to AI regulations and legal requirements for lawyers in ${state.name}. Current status: ${state.aiLegalStatus === 'enacted' ? 'Comprehensive AI legislation enacted' : state.aiLegalStatus === 'active-legislation' ? 'Active AI legislation pending' : state.aiLegalStatus === 'monitoring' ? 'Monitoring AI developments' : 'No specific AI legislation'}.`,
     keywords: `${state.name} AI law, ${state.name} artificial intelligence regulations, ${state.name} legal AI requirements, ${state.abbreviation} AI compliance, ${state.name} bar association AI guidance`,
     alternates: {
       canonical: `https://${BASE_URL}/tracker/state/${stateSlug}`,
+      languages: {
+        'en-US': `https://${BASE_URL}/tracker/state/${stateSlug}`,
+        'x-default': `https://${BASE_URL}/tracker/state/${stateSlug}`,
+      },
     },
     openGraph: {
       title: `${state.name} AI Law for Lawyers 2025 | Decision&Law`,
@@ -86,6 +111,20 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
       url: `https://${BASE_URL}/tracker/state/${stateSlug}`,
       type: 'article',
       siteName: 'Decision&Law',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${state.name} AI Law`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${state.name} AI Law for Lawyers 2025 | Decision&Law`,
+      description: `AI regulations and legal framework for legal professionals in ${state.name}`,
+      images: [ogImageUrl],
     },
   };
 }

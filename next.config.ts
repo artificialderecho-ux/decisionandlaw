@@ -41,6 +41,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: '/tools/westlaw-ai-assist', destination: '/tools', permanent: true },
+      { source: '/tools/clio-manage', destination: '/tools', permanent: true },
+      { source: '/tools/relativity-ai', destination: '/tools/relativity', permanent: true },
+      { source: '/tools/casetext', destination: '/tools/casetext-cocounsel', permanent: true },
+      { source: '/tools/klarity', destination: '/tools', permanent: true },
+      { source: '/tools/luminance', destination: '/tools', permanent: true },
+      { source: '/tools/practice-platform', destination: '/tools', permanent: true },
+    ];
+  },
 };
 
 export default withContentlayer(nextConfig);
