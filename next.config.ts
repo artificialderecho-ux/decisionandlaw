@@ -19,6 +19,20 @@ const nextConfig: NextConfig = {
     pagesBufferLength: 5,
   },
   compress: true,
+  async redirects() {
+    return [
+      {
+        source: '/articles',
+        destination: '/news',
+        permanent: true,
+      },
+      {
+        source: '/articles/:slug',
+        destination: '/news/:slug',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
